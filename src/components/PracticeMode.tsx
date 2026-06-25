@@ -53,6 +53,28 @@ export function PracticeMode({ onBackToMenu }: PracticeModeProps) {
     refreshQuestion(selectedTables)
   }
 
+  const answerButtonClassName = (option: number) => {
+    let className = 'answer-btn'
+
+    if (!isSubmitted && selectedAnswer === option) {
+      className += ' selected-pending'
+    }
+
+    if (isSubmitted && selectedAnswer === option) {
+      className += ' selected-final'
+    }
+
+    if (isSubmitted && option === question.correctAnswer) {
+      className += ' correct'
+    }
+
+    if (isSubmitted && selectedAnswer === option && option !== question.correctAnswer) {
+      className += ' wrong'
+    }
+
+    return className
+  }
+
   const handleSelectionDone = () => {
     refreshQuestion(selectedTables)
     setFeedback('Practice does not affect your campaign progress.')
@@ -94,15 +116,7 @@ export function PracticeMode({ onBackToMenu }: PracticeModeProps) {
             <button
               key={option}
               type="button"
-              className={`answer-btn ${
-                !isSubmitted && selectedAnswer === option
-                  ? 'selected'
-                  : isSubmitted && option === question.correctAnswer
-                    ? 'correct'
-                    : isSubmitted && option === selectedAnswer
-                      ? 'wrong'
-                      : ''
-              }`}
+              className={answerButtonClassName(option)}
               onClick={() => setSelectedAnswer(option)}
               disabled={isSubmitted}
             >

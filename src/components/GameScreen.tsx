@@ -42,7 +42,11 @@ export function GameScreen({
     let className = 'answer-btn'
 
     if (!hasSubmitted && selectedAnswer === option) {
-      className += ' selected'
+      className += ' selected-pending'
+    }
+
+    if (hasSubmitted && feedback && feedback.selectedAnswer === option) {
+      className += ' selected-final'
     }
 
     if (hasSubmitted && option === question.correctAnswer) {
