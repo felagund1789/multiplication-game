@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import type { GameText } from '../i18n/translations'
 import type { AnswerFeedback, Question } from '../types/game'
 
 interface GameScreenProps {
@@ -6,6 +7,7 @@ interface GameScreenProps {
   score: number
   currentStreak: number
   longestStreak: number
+  text: GameText
   onAnswer: (answer: number) => AnswerFeedback
   onNextQuestion: () => void
   onBackToMenu: () => void
@@ -16,6 +18,7 @@ export function GameScreen({
   score,
   currentStreak,
   longestStreak,
+  text,
   onAnswer,
   onNextQuestion,
   onBackToMenu,
@@ -64,19 +67,19 @@ export function GameScreen({
     <main className="screen game-screen">
       <header className="panel scoreboard">
         <div>
-          <p className="metric-label">Score</p>
+          <p className="metric-label">{text.score}</p>
           <p className="metric-value">{score}</p>
         </div>
         <div>
-          <p className="metric-label">Streak</p>
+          <p className="metric-label">{text.streak}</p>
           <p className="metric-value">{currentStreak}</p>
         </div>
         <div>
-          <p className="metric-label">Longest</p>
+          <p className="metric-label">{text.longest}</p>
           <p className="metric-value">{longestStreak}</p>
         </div>
         <button type="button" className="small-btn" onClick={onBackToMenu}>
-          Main Menu
+          {text.mainMenu}
         </button>
       </header>
 
@@ -100,11 +103,11 @@ export function GameScreen({
         <div className="question-actions">
           {!hasSubmitted ? (
             <button type="button" className="small-btn action-btn" disabled={selectedAnswer === null} onClick={handleSubmit}>
-              Submit Answer
+              {text.submitAnswer}
             </button>
           ) : (
             <button type="button" className="small-btn action-btn" onClick={onNextQuestion}>
-              Next Question
+              {text.nextQuestion}
             </button>
           )}
         </div>
@@ -112,8 +115,8 @@ export function GameScreen({
         {feedback && (
           <p className={`feedback ${feedback.isCorrect ? 'ok' : 'bad'}`}>
             {feedback.isCorrect
-              ? `Great job! +${feedback.pointsAwarded + feedback.streakBonus} points`
-              : `Not this time. Correct answer: ${feedback.correctAnswer}`}
+              ? text.correctFeedback(feedback.pointsAwarded + feedback.streakBonus)
+              : text.incorrectFeedback(feedback.correctAnswer)}
           </p>
         )}
       </section>

@@ -1,13 +1,15 @@
 import { useMemo, useState } from 'react'
 import { TABLE_STAGE_ORDER } from '../data/stages'
+import type { PracticeText } from '../i18n/translations'
 import { createPracticeQuestion } from '../services/questionService'
 import type { Question } from '../types/game'
 
 interface PracticeModeProps {
+  text: PracticeText
   onBackToMenu: () => void
 }
 
-export function PracticeMode({ onBackToMenu }: PracticeModeProps) {
+export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
   const [selectedTables, setSelectedTables] = useState<number[]>([2, 3, 4])
   const [question, setQuestion] = useState<Question>(() => createPracticeQuestion([2, 3, 4]))
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
@@ -43,8 +45,8 @@ export function PracticeMode({ onBackToMenu }: PracticeModeProps) {
 
     setFeedback(
       isCorrect
-        ? 'Nice! You got it right.'
-        : `Keep trying! The correct answer was ${question.correctAnswer}.`,
+        ? text.correctFeedback
+        : text.incorrectFeedback(question.correctAnswer),
     )
     setIsSubmitted(true)
   }
@@ -77,19 +79,19 @@ export function PracticeMode({ onBackToMenu }: PracticeModeProps) {
 
   const handleSelectionDone = () => {
     refreshQuestion(selectedTables)
-    setFeedback('Practice does not affect your campaign progress.')
+    setFeedback(text.campaignHint)
   }
 
   return (
     <main className="screen practice-screen">
       <header className="panel practice-header">
         <div>
-          <p className="eyebrow">Practice Mode</p>
-          <h1>Pick Your Tables</h1>
-          <p className="subtitle">Selected: {sortedSelected.join(', ')}</p>
+          <p className="eyebrow">{text.eyebrow}</p>
+          <h1>{text.title}</h1>
+          <p className="subtitle">{text.selectedLabel}: {sortedSelected.join(', ')}</p>
         </div>
         <button type="button" className="small-btn" onClick={onBackToMenu}>
-          Main Menu
+          {text.mainMenu}
         </button>
       </header>
 
@@ -105,7 +107,7 @@ export function PracticeMode({ onBackToMenu }: PracticeModeProps) {
           </button>
         ))}
         <button type="button" className="small-btn" onClick={handleSelectionDone}>
-          Apply Selection
+          {text.applySelection}
         </button>
       </section>
 
@@ -128,11 +130,11 @@ export function PracticeMode({ onBackToMenu }: PracticeModeProps) {
         <div className="question-actions">
           {!isSubmitted ? (
             <button type="button" className="small-btn action-btn" disabled={selectedAnswer === null} onClick={handleSubmit}>
-              Submit Answer
+              {text.submitAnswer}
             </button>
           ) : (
             <button type="button" className="small-btn action-btn" onClick={handleNextQuestion}>
-              Next Question
+              {text.nextQuestion}
             </button>
           )}
         </div>
