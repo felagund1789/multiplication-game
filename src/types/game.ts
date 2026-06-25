@@ -7,7 +7,8 @@ export interface StageDefinition {
   title: string
   description: string
   kind: StageKind
-  table?: number
+  tables: number[]
+  allowedFormats: QuestionFormat[]
   minimumAnswers: number
   minimumAccuracy: number
 }

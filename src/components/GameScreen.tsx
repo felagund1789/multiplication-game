@@ -1,10 +1,7 @@
 import { useState } from 'react'
-import { ProgressPath } from './ProgressPath'
-import type { AnswerFeedback, Question, StageDefinition } from '../types/game'
+import type { AnswerFeedback, Question } from '../types/game'
 
 interface GameScreenProps {
-  stages: StageDefinition[]
-  currentStageIndex: number
   question: Question
   score: number
   currentStreak: number
@@ -14,8 +11,6 @@ interface GameScreenProps {
 }
 
 export function GameScreen({
-  stages,
-  currentStageIndex,
   question,
   score,
   currentStreak,
@@ -70,7 +65,6 @@ export function GameScreen({
         )}
       </section>
 
-      <ProgressPath stages={stages} currentStageIndex={currentStageIndex} />
     </main>
   )
 }

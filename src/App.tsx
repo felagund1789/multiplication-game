@@ -9,7 +9,7 @@ type Screen = 'menu' | 'game' | 'practice'
 
 function App() {
   const [screen, setScreen] = useState<Screen>('menu')
-  const { stages, progress, question, answerQuestion, startNewGame, hasSavedGame } = useMultiplicationGame()
+  const { progress, question, answerQuestion, startNewGame, hasSavedGame } = useMultiplicationGame()
 
   const handleStartNewGame = () => {
     startNewGame()
@@ -33,8 +33,6 @@ function App() {
 
   return (
     <GameScreen
-      stages={stages}
-      currentStageIndex={progress.currentStageIndex}
       question={question}
       score={progress.score}
       currentStreak={progress.currentStreak}

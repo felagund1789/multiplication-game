@@ -115,20 +115,19 @@ function formatForStage(stage: StageDefinition): QuestionFormat {
 }
 
 export function createQuestionForStage(stage: StageDefinition): Question {
-  if (stage.kind === 'table' && stage.table) {
-    return buildQuestion('standard', stage.table, randomInt(1, PRACTICE_MULTIPLIER_MAX))
-  }
+  const stageTables = stage.tables.length > 0 ? stage.tables : [...TABLE_STAGE_ORDER]
+  const stageFormats =
+    stage.allowedFormats.length > 0
+      ? stage.allowedFormats
+      : stage.kind === 'mixed'
+        ? ['standard', 'missingLeft', 'missingRight']
+        : [formatForStage(stage)]
 
-  if (stage.kind === 'mixed') {
-    const format = pickRandom(['standard', 'missingLeft', 'missingRight'] as const)
-    const left = pickRandom(TABLE_STAGE_ORDER)
-    const right = randomInt(1, PRACTICE_MULTIPLIER_MAX)
-    return buildQuestion(format, left, right)
-  }
-
-  const left = pickRandom(TABLE_STAGE_ORDER)
+  const left = pickRandom(stageTables)
   const right = randomInt(1, PRACTICE_MULTIPLIER_MAX)
-  return buildQuestion(formatForStage(stage), left, right)
+  const format = pickRandom(stageFormats)
+
+  return buildQuestion(format, left, right)
 }
 
 export function createPracticeQuestion(selectedTables: number[]): Question {
