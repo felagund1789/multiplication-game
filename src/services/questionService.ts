@@ -116,7 +116,7 @@ function formatForStage(stage: StageDefinition): QuestionFormat {
 
 export function createQuestionForStage(stage: StageDefinition): Question {
   const stageTables = stage.tables.length > 0 ? stage.tables : [...TABLE_STAGE_ORDER]
-  const stageFormats =
+  const stageFormats: QuestionFormat[] =
     stage.allowedFormats.length > 0
       ? stage.allowedFormats
       : stage.kind === 'mixed'
