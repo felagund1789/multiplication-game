@@ -1,0 +1,91 @@
+import { useMemo, useState } from 'react'
+import { TABLE_STAGE_ORDER } from '../data/stages'
+import { createPracticeQuestion } from '../services/questionService'
+import type { Question } from '../types/game'
+
+interface PracticeModeProps {
+  onBackToMenu: () => void
+}
+
+export function PracticeMode({ onBackToMenu }: PracticeModeProps) {
+  const [selectedTables, setSelectedTables] = useState<number[]>([2, 3, 4])
+  const [question, setQuestion] = useState<Question>(() => createPracticeQuestion([2, 3, 4]))
+  const [feedback, setFeedback] = useState<string>('')
+
+  const sortedSelected = useMemo(() => [...selectedTables].sort((a, b) => a - b), [selectedTables])
+
+  const toggleTable = (table: number) => {
+    setSelectedTables((previous) => {
+      if (previous.includes(table)) {
+        const next = previous.filter((item) => item !== table)
+        return next.length === 0 ? previous : next
+      }
+
+      return [...previous, table]
+    })
+  }
+
+  const refreshQuestion = (tables: number[]) => {
+    setQuestion(createPracticeQuestion(tables))
+  }
+
+  const handleAnswer = (answer: number) => {
+    const isCorrect = answer === question.correctAnswer
+
+    setFeedback(
+      isCorrect
+        ? 'Nice! You got it right.'
+        : `Keep trying! The correct answer was ${question.correctAnswer}.`,
+    )
+
+    refreshQuestion(selectedTables)
+  }
+
+  const handleSelectionDone = () => {
+    refreshQuestion(selectedTables)
+    setFeedback('Practice does not affect your campaign progress.')
+  }
+
+  return (
+    <main className="screen practice-screen">
+      <header className="panel practice-header">
+        <div>
+          <p className="eyebrow">Practice Mode</p>
+          <h1>Pick Your Tables</h1>
+          <p className="subtitle">Selected: {sortedSelected.join(', ')}</p>
+        </div>
+        <button type="button" className="small-btn" onClick={onBackToMenu}>
+          Main Menu
+        </button>
+      </header>
+
+      <section className="panel table-selector">
+        {TABLE_STAGE_ORDER.map((table) => (
+          <button
+            key={table}
+            type="button"
+            className={`chip ${selectedTables.includes(table) ? 'on' : ''}`}
+            onClick={() => toggleTable(table)}
+          >
+            {table}
+          </button>
+        ))}
+        <button type="button" className="small-btn" onClick={handleSelectionDone}>
+          Apply Selection
+        </button>
+      </section>
+
+      <section className="panel question-panel" aria-live="polite">
+        <h2>{question.prompt}</h2>
+        <div className="answers-grid">
+          {question.options.map((option) => (
+            <button key={option} type="button" className="answer-btn" onClick={() => handleAnswer(option)}>
+              {option}
+            </button>
+          ))}
+        </div>
+        {feedback && <p className="feedback ok">{feedback}</p>}
+      </section>
+    </main>
+  )
+}

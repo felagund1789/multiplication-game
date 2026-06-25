@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Trebuchet MS', 'Verdana', sans-serif;
+  background: radial-gradient(circle at 20% 15%, #ffe8a8 0%, #ffbd66 34%, #ff7f4f 100%);
+  color: #1f2340;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font-family: inherit;
+}
