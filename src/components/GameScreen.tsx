@@ -1,46 +1,29 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { ProgressPath } from './ProgressPath'
-import type { AnswerFeedback, Question, StageDefinition, StageProgress } from '../types/game'
+import type { AnswerFeedback, Question, StageDefinition } from '../types/game'
 
 interface GameScreenProps {
-  stage: StageDefinition
   stages: StageDefinition[]
   currentStageIndex: number
   question: Question
   score: number
   currentStreak: number
   longestStreak: number
-  stageProgress: Record<string, StageProgress>
   onAnswer: (answer: number) => AnswerFeedback
   onBackToMenu: () => void
 }
 
 export function GameScreen({
-  stage,
   stages,
   currentStageIndex,
   question,
   score,
   currentStreak,
   longestStreak,
-  stageProgress,
   onAnswer,
   onBackToMenu,
 }: GameScreenProps) {
   const [feedback, setFeedback] = useState<AnswerFeedback | null>(null)
-
-  const stageStats = useMemo(() => {
-    const progress = stageProgress[stage.id]
-    const answered = progress?.answered ?? 0
-    const correct = progress?.correct ?? 0
-    const accuracy = answered === 0 ? 0 : Math.round((correct / answered) * 100)
-
-    return {
-      answered,
-      correct,
-      accuracy,
-    }
-  }, [stage.id, stageProgress])
 
   const handleAnswer = (answer: number) => {
     const result = onAnswer(answer)
@@ -68,7 +51,6 @@ export function GameScreen({
       </header>
 
       <section className="panel question-panel" aria-live="polite">
-        <p className="eyebrow">Current Stage: {stage.title}</p>
         <h2>{question.prompt}</h2>
 
         <div className="answers-grid">
@@ -77,13 +59,6 @@ export function GameScreen({
               {option}
             </button>
           ))}
-        </div>
-
-        <div className="stage-goal">
-          <p>
-            Stage progress: {stageStats.answered} answered, {stageStats.accuracy}% accuracy
-          </p>
-          <p>Goal: answer at least {stage.minimumAnswers} with {Math.round(stage.minimumAccuracy * 100)}%+ accuracy.</p>
         </div>
 
         {feedback && (
@@ -95,7 +70,7 @@ export function GameScreen({
         )}
       </section>
 
-      <ProgressPath stages={stages} currentStageIndex={currentStageIndex} stageProgress={stageProgress} />
+      <ProgressPath stages={stages} currentStageIndex={currentStageIndex} />
     </main>
   )
 }

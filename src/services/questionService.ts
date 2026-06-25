@@ -1,7 +1,7 @@
 import type { StageDefinition, Question, QuestionFormat } from '../types/game'
 import { TABLE_STAGE_ORDER } from '../data/stages'
 
-const PRACTICE_MULTIPLIER_MAX = 12
+const PRACTICE_MULTIPLIER_MAX = 10
 
 function randomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min

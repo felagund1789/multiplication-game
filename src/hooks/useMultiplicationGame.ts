@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { STAGES } from '../data/stages'
 import { loadGameProgress, saveGameProgress } from '../services/localStorageService'
 import { isStageComplete } from '../services/progressionService'
-import { createQuestionForStage, stagePoints } from '../services/questionService'
+import { createQuestionForStage, stageCompletionAccuracy, stagePoints } from '../services/questionService'
 import type { AnswerFeedback, GameProgress, Question, StageDefinition, StageProgress } from '../types/game'
 
 const STREAK_BONUS_EVERY = 3
@@ -53,11 +53,18 @@ export function useMultiplicationGame() {
     const pointsAwarded = isCorrect ? stagePoints(progress.currentStageIndex, question.format) : 0
 
     let nextStageIndex = progress.currentStageIndex
+    let nextStageProgress = updatedStageProgress
+    const hasReachedStageQuestionCount = updatedStageProgress.answered >= currentStage.minimumAnswers
+    const hasRequiredAccuracy =
+      stageCompletionAccuracy(updatedStageProgress.answered, updatedStageProgress.correct) >=
+      currentStage.minimumAccuracy
     const stageAdvanced =
       isStageComplete(currentStage, updatedStageProgress) && progress.currentStageIndex < STAGES.length - 1
 
     if (stageAdvanced) {
       nextStageIndex += 1
+    } else if (hasReachedStageQuestionCount && !hasRequiredAccuracy) {
+      nextStageProgress = { answered: 0, correct: 0 }
     }
 
     setProgress((previous) => ({
@@ -68,7 +75,7 @@ export function useMultiplicationGame() {
       longestStreak: Math.max(previous.longestStreak, nextStreak),
       stageProgress: {
         ...previous.stageProgress,
-        [currentStage.id]: updatedStageProgress,
+        [currentStage.id]: nextStageProgress,
       },
     }))
 
