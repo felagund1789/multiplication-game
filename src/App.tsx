@@ -9,7 +9,8 @@ type Screen = 'menu' | 'game' | 'practice'
 
 function App() {
   const [screen, setScreen] = useState<Screen>('menu')
-  const { progress, question, answerQuestion, startNewGame, hasSavedGame } = useMultiplicationGame()
+  const { progress, question, answerQuestion, goToNextQuestion, startNewGame, hasSavedGame } =
+    useMultiplicationGame()
 
   const handleStartNewGame = () => {
     startNewGame()
@@ -38,6 +39,7 @@ function App() {
       currentStreak={progress.currentStreak}
       longestStreak={progress.longestStreak}
       onAnswer={answerQuestion}
+      onNextQuestion={goToNextQuestion}
       onBackToMenu={() => setScreen('menu')}
     />
   )

@@ -10,6 +10,8 @@ interface PracticeModeProps {
 export function PracticeMode({ onBackToMenu }: PracticeModeProps) {
   const [selectedTables, setSelectedTables] = useState<number[]>([2, 3, 4])
   const [question, setQuestion] = useState<Question>(() => createPracticeQuestion([2, 3, 4]))
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const [feedback, setFeedback] = useState<string>('')
 
   const sortedSelected = useMemo(() => [...selectedTables].sort((a, b) => a - b), [selectedTables])
@@ -27,17 +29,27 @@ export function PracticeMode({ onBackToMenu }: PracticeModeProps) {
 
   const refreshQuestion = (tables: number[]) => {
     setQuestion(createPracticeQuestion(tables))
+    setSelectedAnswer(null)
+    setIsSubmitted(false)
+    setFeedback('')
   }
 
-  const handleAnswer = (answer: number) => {
-    const isCorrect = answer === question.correctAnswer
+  const handleSubmit = () => {
+    if (selectedAnswer === null || isSubmitted) {
+      return
+    }
+
+    const isCorrect = selectedAnswer === question.correctAnswer
 
     setFeedback(
       isCorrect
         ? 'Nice! You got it right.'
         : `Keep trying! The correct answer was ${question.correctAnswer}.`,
     )
+    setIsSubmitted(true)
+  }
 
+  const handleNextQuestion = () => {
     refreshQuestion(selectedTables)
   }
 
@@ -79,11 +91,38 @@ export function PracticeMode({ onBackToMenu }: PracticeModeProps) {
         <h2>{question.prompt}</h2>
         <div className="answers-grid">
           {question.options.map((option) => (
-            <button key={option} type="button" className="answer-btn" onClick={() => handleAnswer(option)}>
+            <button
+              key={option}
+              type="button"
+              className={`answer-btn ${
+                !isSubmitted && selectedAnswer === option
+                  ? 'selected'
+                  : isSubmitted && option === question.correctAnswer
+                    ? 'correct'
+                    : isSubmitted && option === selectedAnswer
+                      ? 'wrong'
+                      : ''
+              }`}
+              onClick={() => setSelectedAnswer(option)}
+              disabled={isSubmitted}
+            >
               {option}
             </button>
           ))}
         </div>
+
+        <div className="question-actions">
+          {!isSubmitted ? (
+            <button type="button" className="small-btn action-btn" disabled={selectedAnswer === null} onClick={handleSubmit}>
+              Submit Answer
+            </button>
+          ) : (
+            <button type="button" className="small-btn action-btn" onClick={handleNextQuestion}>
+              Next Question
+            </button>
+          )}
+        </div>
+
         {feedback && <p className="feedback ok">{feedback}</p>}
       </section>
     </main>

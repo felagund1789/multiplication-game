@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { AnswerFeedback, Question } from '../types/game'
 
 interface GameScreenProps {
@@ -7,6 +7,7 @@ interface GameScreenProps {
   currentStreak: number
   longestStreak: number
   onAnswer: (answer: number) => AnswerFeedback
+  onNextQuestion: () => void
   onBackToMenu: () => void
 }
 
@@ -16,13 +17,43 @@ export function GameScreen({
   currentStreak,
   longestStreak,
   onAnswer,
+  onNextQuestion,
   onBackToMenu,
 }: GameScreenProps) {
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
   const [feedback, setFeedback] = useState<AnswerFeedback | null>(null)
+  const hasSubmitted = feedback !== null
 
-  const handleAnswer = (answer: number) => {
-    const result = onAnswer(answer)
+  useEffect(() => {
+    setSelectedAnswer(null)
+    setFeedback(null)
+  }, [question])
+
+  const handleSubmit = () => {
+    if (selectedAnswer === null || hasSubmitted) {
+      return
+    }
+
+    const result = onAnswer(selectedAnswer)
     setFeedback(result)
+  }
+
+  const answerButtonClassName = (option: number) => {
+    let className = 'answer-btn'
+
+    if (!hasSubmitted && selectedAnswer === option) {
+      className += ' selected'
+    }
+
+    if (hasSubmitted && option === question.correctAnswer) {
+      className += ' correct'
+    }
+
+    if (hasSubmitted && feedback && !feedback.isCorrect && option === feedback.selectedAnswer) {
+      className += ' wrong'
+    }
+
+    return className
   }
 
   return (
@@ -50,10 +81,28 @@ export function GameScreen({
 
         <div className="answers-grid">
           {question.options.map((option) => (
-            <button key={option} type="button" className="answer-btn" onClick={() => handleAnswer(option)}>
+            <button
+              key={option}
+              type="button"
+              className={answerButtonClassName(option)}
+              onClick={() => setSelectedAnswer(option)}
+              disabled={hasSubmitted}
+            >
               {option}
             </button>
           ))}
+        </div>
+
+        <div className="question-actions">
+          {!hasSubmitted ? (
+            <button type="button" className="small-btn action-btn" disabled={selectedAnswer === null} onClick={handleSubmit}>
+              Submit Answer
+            </button>
+          ) : (
+            <button type="button" className="small-btn action-btn" onClick={onNextQuestion}>
+              Next Question
+            </button>
+          )}
         </div>
 
         {feedback && (

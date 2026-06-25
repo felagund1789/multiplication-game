@@ -27,14 +27,11 @@ export function useMultiplicationGame() {
   const currentStage = useMemo<StageDefinition>(() => STAGES[progress.currentStageIndex] ?? STAGES[0], [progress.currentStageIndex])
 
   const [question, setQuestion] = useState<Question>(() => createQuestionForStage(currentStage))
+  const [queuedQuestion, setQueuedQuestion] = useState<Question | null>(null)
 
   useEffect(() => {
     saveGameProgress(progress)
   }, [progress])
-
-  useEffect(() => {
-    setQuestion(createQuestionForStage(currentStage))
-  }, [currentStage])
 
   const answerQuestion = (selectedAnswer: number): AnswerFeedback => {
     const isCorrect = selectedAnswer === question.correctAnswer
@@ -80,7 +77,7 @@ export function useMultiplicationGame() {
     }))
 
     const nextStage = STAGES[nextStageIndex] ?? currentStage
-    setQuestion(createQuestionForStage(nextStage))
+    setQueuedQuestion(createQuestionForStage(nextStage))
 
     return {
       isCorrect,
@@ -92,8 +89,19 @@ export function useMultiplicationGame() {
     }
   }
 
+  const goToNextQuestion = () => {
+    if (queuedQuestion) {
+      setQuestion(queuedQuestion)
+      setQueuedQuestion(null)
+      return
+    }
+
+    setQuestion(createQuestionForStage(currentStage))
+  }
+
   const startNewGame = () => {
     setProgress(createInitialProgress())
+    setQueuedQuestion(null)
     setQuestion(createQuestionForStage(STAGES[0]))
   }
 
@@ -114,6 +122,7 @@ export function useMultiplicationGame() {
     currentStage,
     question,
     answerQuestion,
+    goToNextQuestion,
     startNewGame,
     hasSavedGame,
   }
