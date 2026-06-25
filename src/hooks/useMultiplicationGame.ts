@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { STAGES } from '../data/stages'
 import { loadGameProgress, saveGameProgress } from '../services/localStorageService'
-import { isStageComplete } from '../services/progressionService'
-import { createQuestionForStage, stageCompletionAccuracy, stagePoints } from '../services/questionService'
+import { evaluateStageThreshold } from '../services/progressionService'
+import { createQuestionForStage, stagePoints } from '../services/questionService'
 import type { AnswerFeedback, GameProgress, Question, StageDefinition, StageProgress } from '../types/game'
 
 const STREAK_BONUS_EVERY = 3
@@ -54,16 +54,16 @@ export function useMultiplicationGame() {
 
     let nextStageIndex = progress.currentStageIndex
     let nextStageProgress = updatedStageProgress
-    const hasReachedStageQuestionCount = updatedStageProgress.answered >= currentStage.minimumAnswers
-    const hasRequiredAccuracy =
-      stageCompletionAccuracy(updatedStageProgress.answered, updatedStageProgress.correct) >=
-      currentStage.minimumAccuracy
-    const stageAdvanced =
-      isStageComplete(currentStage, updatedStageProgress) && progress.currentStageIndex < STAGES.length - 1
+    const thresholdResult = evaluateStageThreshold(
+      currentStage,
+      updatedStageProgress,
+      progress.currentStageIndex < STAGES.length - 1,
+    )
+    const stageAdvanced = thresholdResult.shouldAdvance
 
     if (stageAdvanced) {
       nextStageIndex += 1
-    } else if (hasReachedStageQuestionCount && !hasRequiredAccuracy) {
+    } else if (thresholdResult.shouldReset) {
       nextStageProgress = { answered: 0, correct: 0 }
     }
 
