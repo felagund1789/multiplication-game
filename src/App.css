@@ -152,6 +152,14 @@ h2 {
   background: var(--mint);
 }
 
+.big-btn.secondary {
+  background: var(--sky);
+}
+
+.big-btn.extra {
+  background: var(--gold);
+}
+
 .big-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;

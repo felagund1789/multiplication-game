@@ -19,16 +19,16 @@ export function MainMenu({ canContinue, text, onContinue, onNewGame, onPractice,
       </section>
 
       <section className="panel menu-actions" aria-label={text.actionsAriaLabel}>
-        <button type="button" className="big-btn" onClick={onContinue} disabled={!canContinue}>
+        <button type="button" className="big-btn primary" onClick={onContinue} disabled={!canContinue}>
           {text.continueSavedGame}
         </button>
-        <button type="button" className="big-btn primary" onClick={onNewGame}>
+        <button type="button" className="big-btn" onClick={onNewGame}>
           {text.startNewGame}
         </button>
-        <button type="button" className="big-btn" onClick={onPractice}>
+        <button type="button" className="big-btn secondary" onClick={onPractice}>
           {text.practiceMode}
         </button>
-        <button type="button" className="big-btn" onClick={onCollection}>
+        <button type="button" className="big-btn extra" onClick={onCollection}>
           {text.collection}
         </button>
       </section>

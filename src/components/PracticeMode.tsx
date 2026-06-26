@@ -10,8 +10,8 @@ interface PracticeModeProps {
 }
 
 export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
-  const [selectedTables, setSelectedTables] = useState<number[]>([2, 3, 4])
-  const [question, setQuestion] = useState<Question>(() => createPracticeQuestion([2, 3, 4]))
+  const [selectedTables, setSelectedTables] = useState<number[]>([10])
+  const [question, setQuestion] = useState<Question>(() => createPracticeQuestion([10]))
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [feedback, setFeedback] = useState<string>('')
