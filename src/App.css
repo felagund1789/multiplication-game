@@ -466,7 +466,7 @@ h2 {
   text-decoration: underline;
 }
 
-.badges-toast-backdrop {
+.notification-backdrop {
   position: fixed;
   inset: 0;
   z-index: 40;
@@ -478,7 +478,7 @@ h2 {
   backdrop-filter: blur(4px);
 }
 
-.badges-toast {
+.notification-popup {
   width: min(560px, 100%);
   max-height: min(84svh, 760px);
   overflow: auto;
@@ -488,7 +488,7 @@ h2 {
   padding: 1.2rem;
 }
 
-.badges-toast-header {
+.notification-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -496,13 +496,13 @@ h2 {
   margin-bottom: 1rem;
 }
 
-.badges-toast h3 {
+.notification-popup h3 {
   margin: 0;
   font-size: var(--text-size-md);
   color: var(--ink);
 }
 
-.badge-toast-close {
+.notification-close {
   width: 2.2rem;
   height: 2.2rem;
   flex: 0 0 auto;
@@ -515,8 +515,13 @@ h2 {
   cursor: pointer;
 }
 
-.badge-toast-close:hover {
+.notification-close:hover {
   background: rgba(242, 99, 77, 0.2);
+}
+
+.notification-message {
+  margin-bottom: 1rem;
+  color: var(--soft-ink);
 }
 
 .practice-header {
@@ -714,7 +719,7 @@ h2 {
   letter-spacing: 0.5px;
 }
 
-.badges-toast-list {
+.notification-badge-list {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -744,7 +749,7 @@ h2 {
   text-align: center;
 }
 
-.badge-toast-dismiss {
+.notification-dismiss {
   display: block;
   min-width: 140px;
   margin: 1.2rem auto 0;

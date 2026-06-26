@@ -3,6 +3,7 @@ import type { GameText, RewardsText } from '../i18n/translations'
 import type { AnswerFeedback, Badge, BadgeType, Question, StageDefinition } from '../types/game'
 import { createQuestionForStage } from '../services/questionService'
 import { AdventureMap } from './AdventureMap'
+import { NotificationPopup } from './NotificationPopup'
 
 interface GameScreenProps {
   question: Question
@@ -38,9 +39,12 @@ export function GameScreen({
   const [replayQuestion, setReplayQuestion] = useState<Question | null>(null)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [feedback, setFeedback] = useState<AnswerFeedback | null>(null)
-  const [earnedBadges, setEarnedBadges] = useState<string[]>([])
-  const [isBadgePopupOpen, setIsBadgePopupOpen] = useState(false)
-  const [pendingMapReturn, setPendingMapReturn] = useState(false)
+  const [activeNotification, setActiveNotification] = useState<{
+    title: string
+    message?: string
+    badgeIds: string[]
+    shouldReturnToMap: boolean
+  } | null>(null)
   const hasSubmitted = feedback !== null
   const isReplayMode = replayStageIndex !== null
   const activeQuestion = (isReplayMode && replayQuestion) ? replayQuestion : question
@@ -48,27 +52,8 @@ export function GameScreen({
   useEffect(() => {
     setSelectedAnswer(null)
     setFeedback(null)
-    setEarnedBadges([])
-    setIsBadgePopupOpen(false)
-    setPendingMapReturn(false)
+    setActiveNotification(null)
   }, [question])
-
-  useEffect(() => {
-    if (feedback?.stageAdvanced) {
-      if (earnedBadges.length > 0) {
-        setPendingMapReturn(true)
-        setIsBadgePopupOpen(true)
-        return
-      }
-
-      const timer = setTimeout(() => {
-        onNextQuestion()
-        setViewMode('map')
-      }, 1100)
-
-      return () => clearTimeout(timer)
-    }
-  }, [earnedBadges.length, feedback?.stageAdvanced, onNextQuestion])
 
   const handleStartFromMap = () => {
     setReplayStageIndex(null)
@@ -93,12 +78,12 @@ export function GameScreen({
     setViewMode('map')
   }
 
-  const handleDismissBadgePopup = () => {
-    setIsBadgePopupOpen(false)
-    setEarnedBadges([])
+  const handleDismissNotification = () => {
+    const shouldReturnToMap = activeNotification?.shouldReturnToMap ?? false
 
-    if (pendingMapReturn) {
-      setPendingMapReturn(false)
+    setActiveNotification(null)
+
+    if (shouldReturnToMap) {
       onNextQuestion()
       setViewMode('map')
     }
@@ -126,9 +111,13 @@ export function GameScreen({
 
     const result = onAnswer(selectedAnswer)
     setFeedback(result)
-    if (result.newBadgeIds && result.newBadgeIds.length > 0) {
-      setEarnedBadges(result.newBadgeIds)
-      setIsBadgePopupOpen(true)
+    if (result.stageAdvanced || result.newBadgeIds.length > 0) {
+      setActiveNotification({
+        title: result.stageAdvanced ? text.stageCompleteTitle : rewardsText.toastTitle,
+        message: result.stageAdvanced ? text.stageCompleteMessage : undefined,
+        badgeIds: result.newBadgeIds,
+        shouldReturnToMap: result.stageAdvanced,
+      })
     }
   }
 
@@ -262,22 +251,17 @@ export function GameScreen({
         </section>
       )}
 
-      {isBadgePopupOpen && earnedBadges.length > 0 && (
-        <div className="badges-toast-backdrop" role="presentation">
-          <section
-            className="panel badges-toast"
-            role="dialog"
-            aria-modal="true"
-            aria-label={rewardsText.toastTitle}
-          >
-            <div className="badges-toast-header">
-              <h3>{rewardsText.toastTitle}</h3>
-              <button type="button" className="badge-toast-close" onClick={handleDismissBadgePopup}>
-                X
-              </button>
-            </div>
-            <div className="badges-toast-list">
-              {earnedBadges.map((badgeId) => {
+      {activeNotification && (
+        <NotificationPopup
+          isOpen
+          title={activeNotification.title}
+          message={activeNotification.message}
+          dismissLabel={activeNotification.shouldReturnToMap ? text.notificationClose : rewardsText.toastClose}
+          onDismiss={handleDismissNotification}
+        >
+          {activeNotification.badgeIds.length > 0 && (
+            <div className="notification-badge-list">
+              {activeNotification.badgeIds.map((badgeId) => {
                 const badge = Object.values(badgeDefinitions).find((b) => b.id === badgeId)
                 if (!badge) return null
 
@@ -289,11 +273,8 @@ export function GameScreen({
                 )
               })}
             </div>
-            <button type="button" className="small-btn badge-toast-dismiss" onClick={handleDismissBadgePopup}>
-              {rewardsText.toastClose}
-            </button>
-          </section>
-        </div>
+          )}
+        </NotificationPopup>
       )}
     </main>
   )

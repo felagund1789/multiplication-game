@@ -18,6 +18,9 @@ export interface GameText {
   streak: string
   longest: string
   mainMenu: string
+  stageCompleteTitle: string
+  stageCompleteMessage: string
+  notificationClose: string
   adventureMapTitle: string
   adventureMapHint: string
   adventureMapSelectPrompt: string
@@ -105,6 +108,9 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       streak: 'Streak',
       longest: 'Longest',
       mainMenu: 'Main Menu',
+      stageCompleteTitle: 'Stage Complete!',
+      stageCompleteMessage: 'The next location has been unlocked.',
+      notificationClose: 'Close',
       adventureMapTitle: 'Adventure Map',
       adventureMapHint: 'Travel the route and unlock new multiplication lands.',
       adventureMapSelectPrompt: 'Select your current location to begin the quiz.',
@@ -229,6 +235,9 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       streak: 'Σερι',
       longest: 'Μεγαλυτερο Σερι',
       mainMenu: 'Κεντρικό Μενού',
+      stageCompleteTitle: 'Το στάδιο ολοκληρώθηκε!',
+      stageCompleteMessage: 'Η επόμενη τοποθεσία ξεκλειδώθηκε.',
+      notificationClose: 'Κλείσιμο',
       adventureMapTitle: 'Χάρτης Περιπέτειας',
       adventureMapHint: 'Προχώρα στη διαδρομή και ξεκλείδωσε νέες περιοχές πολλαπλασιασμού.',
       adventureMapSelectPrompt: 'Επίλεξε την τρέχουσα τοποθεσία για να ξεκινήσεις το κουίζ.',
