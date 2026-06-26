@@ -1,14 +1,15 @@
 import type { CollectionText } from '../i18n/translations'
-import { BADGE_DEFINITIONS } from '../services/rewardsService'
+import type { Badge, BadgeType } from '../types/game'
 
 interface CollectionScreenProps {
   text: CollectionText
+  badgeDefinitions: Record<BadgeType, Badge>
   collectedBadgeIds: string[]
   onBackToMenu: () => void
 }
 
-export function CollectionScreen({ text, collectedBadgeIds, onBackToMenu }: CollectionScreenProps) {
-  const allBadges = Object.values(BADGE_DEFINITIONS)
+export function CollectionScreen({ text, badgeDefinitions, collectedBadgeIds, onBackToMenu }: CollectionScreenProps) {
+  const allBadges = Object.values(badgeDefinitions)
   const totalBadges = allBadges.length
   const earnedCount = collectedBadgeIds.length
 

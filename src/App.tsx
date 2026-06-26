@@ -5,6 +5,7 @@ import { PracticeMode } from './components/PracticeMode'
 import { CollectionScreen } from './components/CollectionScreen'
 import { TRANSLATIONS, type Language } from './i18n/translations'
 import { useMultiplicationGame } from './hooks/useMultiplicationGame'
+import { buildBadgeDefinitions } from './services/rewardsService'
 import './App.css'
 
 type Screen = 'menu' | 'game' | 'practice' | 'collection'
@@ -26,6 +27,7 @@ function App() {
   const { progress, question, answerQuestion, goToNextQuestion, startNewGame, hasSavedGame } =
     useMultiplicationGame()
   const text = TRANSLATIONS[language]
+  const badgeDefinitions = buildBadgeDefinitions(text.rewards)
 
   useEffect(() => {
     localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
@@ -88,6 +90,7 @@ function App() {
         </div>
         <CollectionScreen
           text={text.collection}
+          badgeDefinitions={badgeDefinitions}
           collectedBadgeIds={progress.collectedBadges}
           onBackToMenu={() => setScreen('menu')}
         />
@@ -121,6 +124,8 @@ function App() {
         currentStreak={progress.currentStreak}
         longestStreak={progress.longestStreak}
         text={text.game}
+        rewardsText={text.rewards}
+        badgeDefinitions={badgeDefinitions}
         onAnswer={answerQuestion}
         onNextQuestion={goToNextQuestion}
         onBackToMenu={() => setScreen('menu')}

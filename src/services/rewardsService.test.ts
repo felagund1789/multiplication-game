@@ -6,7 +6,6 @@ describe('determineBadgesToAward', () => {
     const badges = determineBadgesToAward(
       [],
       0,
-      0,
       true, // stageJustCompleted
       false,
       0,
@@ -15,20 +14,19 @@ describe('determineBadgesToAward', () => {
   })
 
   it('should award streak badges for reaching streak milestones', () => {
-    const badges3 = determineBadgesToAward([], 3, 0, false, false, 0)
+    const badges3 = determineBadgesToAward([], 3, false, false, 0)
     expect(badges3).toContain('streak3')
 
-    const badges5 = determineBadgesToAward([], 5, 0, false, false, 0)
+    const badges5 = determineBadgesToAward([], 5, false, false, 0)
     expect(badges5).toContain('streak5')
 
-    const badges10 = determineBadgesToAward([], 10, 0, false, false, 0)
+    const badges10 = determineBadgesToAward([], 10, false, false, 0)
     expect(badges10).toContain('streak10')
   })
 
   it('should award perfectStage badge for 100% accuracy stage completion', () => {
     const badges = determineBadgesToAward(
       [],
-      0,
       0,
       true, // stageJustCompleted
       true, // stageWasPerfect
@@ -41,7 +39,6 @@ describe('determineBadgesToAward', () => {
     const badges = determineBadgesToAward(
       [],
       0,
-      0,
       false,
       false,
       9, // totalStagesCompleted = STAGES.length
@@ -52,7 +49,6 @@ describe('determineBadgesToAward', () => {
   it('should not re-award badges that are already collected', () => {
     const badges = determineBadgesToAward(
       ['stage-complete'],
-      0,
       0,
       true,
       false,
@@ -65,7 +61,6 @@ describe('determineBadgesToAward', () => {
     const badges = determineBadgesToAward(
       [],
       5, // reaches streak5
-      0,
       true, // stageJustCompleted
       true, // stageWasPerfect
       1,

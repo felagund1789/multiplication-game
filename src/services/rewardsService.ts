@@ -1,56 +1,78 @@
 import type { Badge, BadgeType } from '../types/game'
 import { STAGES } from '../data/stages'
+import type { RewardsText } from '../i18n/translations'
 
-// Badge definitions with emojis and descriptions
-export const BADGE_DEFINITIONS: Record<BadgeType, Badge> = {
+const BADGE_BASES: Record<BadgeType, Pick<Badge, 'id' | 'type' | 'emoji'>> = {
   stageComplete: {
     id: 'stage-complete',
     type: 'stageComplete',
     emoji: '⭐',
-    name: 'Stage Master',
-    description: 'Complete any stage.',
   },
   streak3: {
     id: 'streak-3',
     type: 'streak3',
     emoji: '🔥',
-    name: 'Hot Streak',
-    description: 'Reach a 3-question streak.',
   },
   streak5: {
     id: 'streak-5',
     type: 'streak5',
     emoji: '🌟',
-    name: 'Burning Hot',
-    description: 'Reach a 5-question streak.',
   },
   streak10: {
     id: 'streak-10',
     type: 'streak10',
     emoji: '💥',
-    name: 'Unstoppable',
-    description: 'Reach a 10-question streak.',
   },
   perfectStage: {
     id: 'perfect-stage',
     type: 'perfectStage',
     emoji: '💯',
-    name: 'Flawless',
-    description: 'Complete a stage with 100% accuracy.',
   },
   allStagesComplete: {
     id: 'all-stages',
     type: 'allStagesComplete',
     emoji: '👑',
-    name: 'Champion',
-    description: 'Complete all stages.',
   },
+}
+
+export function buildBadgeDefinitions(rewardsText: RewardsText): Record<BadgeType, Badge> {
+  return {
+    stageComplete: {
+      ...BADGE_BASES.stageComplete,
+      name: rewardsText.badges.stageComplete.name,
+      description: rewardsText.badges.stageComplete.description,
+    },
+    streak3: {
+      ...BADGE_BASES.streak3,
+      name: rewardsText.badges.streak3.name,
+      description: rewardsText.badges.streak3.description,
+    },
+    streak5: {
+      ...BADGE_BASES.streak5,
+      name: rewardsText.badges.streak5.name,
+      description: rewardsText.badges.streak5.description,
+    },
+    streak10: {
+      ...BADGE_BASES.streak10,
+      name: rewardsText.badges.streak10.name,
+      description: rewardsText.badges.streak10.description,
+    },
+    perfectStage: {
+      ...BADGE_BASES.perfectStage,
+      name: rewardsText.badges.perfectStage.name,
+      description: rewardsText.badges.perfectStage.description,
+    },
+    allStagesComplete: {
+      ...BADGE_BASES.allStagesComplete,
+      name: rewardsText.badges.allStagesComplete.name,
+      description: rewardsText.badges.allStagesComplete.description,
+    },
+  }
 }
 
 export function determineBadgesToAward(
   collectedBadges: string[],
   currentStreak: number,
-  longestStreak: number,
   stageJustCompleted: boolean,
   stageWasPerfect: boolean,
   totalStagesCompleted: number,

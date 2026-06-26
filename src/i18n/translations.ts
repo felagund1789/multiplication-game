@@ -1,3 +1,5 @@
+import type { BadgeType } from '../types/game'
+
 export type Language = 'en' | 'el'
 
 export interface MenuText {
@@ -44,6 +46,16 @@ export interface CollectionText {
   backToMenu: string
 }
 
+export interface RewardBadgeText {
+  name: string
+  description: string
+}
+
+export interface RewardsText {
+  toastTitle: string
+  badges: Record<BadgeType, RewardBadgeText>
+}
+
 export interface LanguageText {
   languageLabel: string
   english: string
@@ -52,6 +64,7 @@ export interface LanguageText {
   game: GameText
   practice: PracticeText
   collection: CollectionText
+  rewards: RewardsText
 }
 
 export const TRANSLATIONS: Record<Language, LanguageText> = {
@@ -100,6 +113,35 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       locked: 'Locked',
       backToMenu: 'Main Menu',
     },
+    rewards: {
+      toastTitle: 'New Badges!',
+      badges: {
+        stageComplete: {
+          name: 'Stage Master',
+          description: 'Complete any stage.',
+        },
+        streak3: {
+          name: 'Hot Streak',
+          description: 'Reach a 3-question streak.',
+        },
+        streak5: {
+          name: 'Burning Hot',
+          description: 'Reach a 5-question streak.',
+        },
+        streak10: {
+          name: 'Unstoppable',
+          description: 'Reach a 10-question streak.',
+        },
+        perfectStage: {
+          name: 'Flawless',
+          description: 'Complete a stage with 100% accuracy.',
+        },
+        allStagesComplete: {
+          name: 'Champion',
+          description: 'Complete all stages.',
+        },
+      },
+    },
   },
   el: {
     languageLabel: 'Γλώσσα',
@@ -146,6 +188,35 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       earned: 'Στη συλλογή σου',
       locked: 'Κλειδωμένο',
       backToMenu: 'Κεντρικό Μενού',
+    },
+    rewards: {
+      toastTitle: 'Νέα Αυτοκόλλητα!',
+      badges: {
+        stageComplete: {
+          name: 'Δάσκαλος Σταδίου',
+          description: 'Ολοκλήρωσε οποιοδήποτε στάδιο.',
+        },
+        streak3: {
+          name: 'Καυτό Σερί',
+          description: 'Φτάσε σε σερί 3 σωστών απαντήσεων.',
+        },
+        streak5: {
+          name: 'Πολύ Καυτό',
+          description: 'Φτάσε σε σερί 5 σωστών απαντήσεων.',
+        },
+        streak10: {
+          name: 'Ασταμάτητος',
+          description: 'Φτάσε σε σερί 10 σωστών απαντήσεων.',
+        },
+        perfectStage: {
+          name: 'Αψεγάδιαστος',
+          description: 'Ολοκλήρωσε ένα στάδιο με 100% ακρίβεια.',
+        },
+        allStagesComplete: {
+          name: 'Πρωταθλητής',
+          description: 'Ολοκλήρωσε όλα τα στάδια.',
+        },
+      },
     },
   },
 }

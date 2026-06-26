@@ -73,7 +73,6 @@ export function useMultiplicationGame() {
     const newBadges = determineBadgesToAward(
       progress.collectedBadges,
       nextStreak,
-      progress.longestStreak,
       stageAdvanced,
       stageWasPerfect,
       nextStageIndex,

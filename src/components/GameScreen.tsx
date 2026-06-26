@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import type { GameText } from '../i18n/translations'
-import type { AnswerFeedback, Question } from '../types/game'
-import { BADGE_DEFINITIONS } from '../services/rewardsService'
+import type { GameText, RewardsText } from '../i18n/translations'
+import type { AnswerFeedback, Badge, BadgeType, Question } from '../types/game'
 
 interface GameScreenProps {
   question: Question
@@ -9,6 +8,8 @@ interface GameScreenProps {
   currentStreak: number
   longestStreak: number
   text: GameText
+  rewardsText: RewardsText
+  badgeDefinitions: Record<BadgeType, Badge>
   onAnswer: (answer: string) => AnswerFeedback
   onNextQuestion: () => void
   onBackToMenu: () => void
@@ -20,6 +21,8 @@ export function GameScreen({
   currentStreak,
   longestStreak,
   text,
+  rewardsText,
+  badgeDefinitions,
   onAnswer,
   onNextQuestion,
   onBackToMenu,
@@ -148,10 +151,10 @@ export function GameScreen({
 
       {earnedBadges.length > 0 && (
         <section className="panel badges-toast">
-          <h3>🎉 New Badges!</h3>
+          <h3>{rewardsText.toastTitle}</h3>
           <div className="badges-toast-list">
             {earnedBadges.map((badgeId) => {
-              const badge = Object.values(BADGE_DEFINITIONS).find((b) => b.id === badgeId)
+              const badge = Object.values(badgeDefinitions).find((b) => b.id === badgeId)
               if (!badge) return null
               
               return (
