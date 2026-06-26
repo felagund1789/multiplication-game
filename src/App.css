@@ -669,14 +669,45 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   min-width: 0;
   gap: 0.6rem;
-  padding: 1.2rem 1rem;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #fff8ef 0%, #ffead0 100%);
-  border: 2px solid var(--panel-border);
+  padding: 1.15rem 1.5rem 3.6rem;
+  border-radius: 0 0 192px 192px / 100px;
+  background:
+    radial-gradient(circle at 24% 18%, rgba(255, 245, 186, 0.88) 0%, rgba(255, 245, 186, 0) 42%),
+    linear-gradient(165deg, #fff1a6 0%, #ffd65c 38%, #efb93f 65%, #d79a27 100%);
+  border: 2px solid #c98d1e;
   text-align: center;
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.62),
+    inset 0 -10px 16px rgba(147, 87, 16, 0.22),
+    0 7px 14px rgba(116, 73, 15, 0.26);
+  transition: transform 200ms ease, box-shadow 200ms ease, filter 200ms ease;
+}
+
+.badge-card::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 0 0 192px 192px / 100px;
+  border: 1px solid rgba(255, 248, 195, 0.68);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.badge-card::after {
+  content: '';
+  position: absolute;
+  top: -36%;
+  left: -24%;
+  width: 72%;
+  height: 100%;
+  transform: rotate(-14deg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 75%);
+  pointer-events: none;
 }
 
 .badge-card.earned {
@@ -831,7 +862,7 @@ h2 {
 
   .badge-card {
     width: 100%;
-    padding: 1rem 0.85rem;
+    padding: 1rem 1.25rem 3.6rem;
   }
 }
 

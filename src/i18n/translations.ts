@@ -264,7 +264,7 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       continueSavedGame: 'Συνέχεια',
       startNewGame: 'Νέο Παιχνίδι',
       practiceMode: 'Εξάσκηση',
-      collection: 'Τα Αυτοκόλλητά Μου',
+      collection: 'Τα Μετάλλιά Μου',
     },
     game: {
       score: 'Σκορ',
@@ -344,17 +344,17 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       campaignHint: 'Η εξάσκηση δεν επηρεάζει την πρόοδο του βασικού παιχνιδιού.',
     },
     collection: {
-      title: 'Συλλογή Αυτοκόλλητων',
+      title: 'Συλλογή Μεταλλίων',
       earned: 'Στη συλλογή σου',
       locked: 'Κλειδωμένο',
       backToMenu: 'Κεντρικό Μενού',
     },
     rewards: {
-      toastTitle: 'Νέα Αυτοκόλλητα!',
+      toastTitle: 'Νέα Μετάλλια!',
       toastClose: 'Κλείσιμο',
       badges: {
         stageComplete: {
-          name: 'Δάσκαλος Σταδίου',
+          name: 'Τοπ Κατακτητής',
           description: 'Ολοκλήρωσε οποιοδήποτε στάδιο.',
         },
         stage1WhisperingForest: {
@@ -394,11 +394,11 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           description: 'Ολοκλήρωσε την Ακρόπολη του Στέμματος.',
         },
         streak5: {
-          name: 'Καυτό Σερί',
+          name: '5-Σερί',
           description: 'Φτάσε σε σερί 5 σωστών απαντήσεων.',
         },
         streak15: {
-          name: 'Πολύ Καυτό',
+          name: '15-Σερί',
           description: 'Φτάσε σε σερί 15 σωστών απαντήσεων.',
         },
         streak25: {
