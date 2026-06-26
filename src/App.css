@@ -720,8 +720,7 @@ h2 {
 }
 
 .badge-card.locked {
-  opacity: 0.6;
-  background: linear-gradient(135deg, #f5f5f5 0%, #efefef 100%);
+  opacity: 0.4;
   border-color: #ddd;
 }
 
