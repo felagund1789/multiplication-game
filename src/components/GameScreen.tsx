@@ -269,6 +269,7 @@ export function GameScreen({
                   <div key={badgeId} className="badge-toast-item">
                     <span className="badge-toast-emoji">{badge.emoji}</span>
                     <span className="badge-toast-name">{badge.name}</span>
+                    <span className="badge-toast-description">{badge.description}</span>
                   </div>
                 )
               })}
