@@ -18,6 +18,11 @@ export interface GameText {
   streak: string
   longest: string
   mainMenu: string
+  adventureMapTitle: string
+  adventureMapHint: string
+  completedLocation: string
+  currentLocation: string
+  lockedLocation: string
   submitAnswer: string
   nextQuestion: string
   trueLabel: string
@@ -87,6 +92,11 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       streak: 'Streak',
       longest: 'Longest',
       mainMenu: 'Main Menu',
+      adventureMapTitle: 'Adventure Map',
+      adventureMapHint: 'Travel the route and unlock new multiplication lands.',
+      completedLocation: 'Cleared',
+      currentLocation: 'Current',
+      lockedLocation: 'Locked',
       submitAnswer: 'Submit Answer',
       nextQuestion: 'Next Question',
       trueLabel: 'True',
@@ -162,6 +172,11 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       streak: 'Σερι',
       longest: 'Μεγαλυτερο Σερι',
       mainMenu: 'Κεντρικό Μενού',
+      adventureMapTitle: 'Χάρτης Περιπέτειας',
+      adventureMapHint: 'Προχώρα στη διαδρομή και ξεκλείδωσε νέες περιοχές πολλαπλασιασμού.',
+      completedLocation: 'Ολοκληρώθηκε',
+      currentLocation: 'Τρέχον',
+      lockedLocation: 'Κλειδωμένο',
       submitAnswer: 'Υποβολή Απάντησης',
       nextQuestion: 'Επόμενη Ερώτηση',
       trueLabel: 'Σωστό',

@@ -24,7 +24,7 @@ function loadStoredLanguage(): Language {
 function App() {
   const [screen, setScreen] = useState<Screen>('menu')
   const [language, setLanguage] = useState<Language>(() => loadStoredLanguage())
-  const { progress, question, answerQuestion, goToNextQuestion, startNewGame, hasSavedGame } =
+  const { stages, progress, question, answerQuestion, goToNextQuestion, startNewGame, hasSavedGame } =
     useMultiplicationGame()
   const text = TRANSLATIONS[language]
   const badgeDefinitions = buildBadgeDefinitions(text.rewards)
@@ -123,6 +123,8 @@ function App() {
         score={progress.score}
         currentStreak={progress.currentStreak}
         longestStreak={progress.longestStreak}
+        stages={stages}
+        currentStageIndex={progress.currentStageIndex}
         text={text.game}
         rewardsText={text.rewards}
         badgeDefinitions={badgeDefinitions}

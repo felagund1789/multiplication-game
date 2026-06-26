@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
 import type { GameText, RewardsText } from '../i18n/translations'
-import type { AnswerFeedback, Badge, BadgeType, Question } from '../types/game'
+import type { AnswerFeedback, Badge, BadgeType, Question, StageDefinition } from '../types/game'
+import { AdventureMap } from './AdventureMap'
 
 interface GameScreenProps {
   question: Question
   score: number
   currentStreak: number
   longestStreak: number
+  stages: StageDefinition[]
+  currentStageIndex: number
   text: GameText
   rewardsText: RewardsText
   badgeDefinitions: Record<BadgeType, Badge>
@@ -20,6 +23,8 @@ export function GameScreen({
   score,
   currentStreak,
   longestStreak,
+  stages,
+  currentStageIndex,
   text,
   rewardsText,
   badgeDefinitions,
@@ -100,6 +105,8 @@ export function GameScreen({
           {text.mainMenu}
         </button>
       </header>
+
+      <AdventureMap stages={stages} currentStageIndex={currentStageIndex} text={text} />
 
       <section className="panel question-panel" aria-live="polite">
         <h2>{question.prompt}</h2>

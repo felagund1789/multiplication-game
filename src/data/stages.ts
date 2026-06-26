@@ -14,7 +14,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Tables 1, 10 and 5.',
     kind: 'mixed',
     tables: [1, 10, 5],
-    allowedFormats: ['standard', 'missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
+    allowedFormats: ['standard', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
@@ -23,7 +23,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Tables 2, 4 and 8.',
     kind: 'mixed',
     tables: [2, 4, 8],
-    allowedFormats: ['standard', 'missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
+    allowedFormats: ['standard', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
@@ -32,7 +32,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Tables 3 and 6.',
     kind: 'mixed',
     tables: [3, 6],
-    allowedFormats: ['standard', 'missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
+    allowedFormats: ['standard', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
@@ -41,7 +41,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Tables 9 and 7.',
     kind: 'mixed',
     tables: [9, 7],
-    allowedFormats: ['standard', 'missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
+    allowedFormats: ['standard', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
