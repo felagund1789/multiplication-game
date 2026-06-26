@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { GameScreen } from './components/GameScreen'
+import { LanguageSwitcher } from './components/LanguageSwitcher'
 import { MainMenu } from './components/MainMenu'
 import { PracticeMode } from './components/PracticeMode'
 import { CollectionScreen } from './components/CollectionScreen'
@@ -38,25 +39,17 @@ function App() {
     setScreen('game')
   }
 
-  if (screen === 'menu') {
-    return (
-      <>
-        <div className="language-switcher" aria-label={text.languageLabel}>
-          <button
-            type="button"
-            className={`language-btn ${language === 'en' ? 'active' : ''}`}
-            onClick={() => setLanguage('en')}
-          >
-            {text.english}
-          </button>
-          <button
-            type="button"
-            className={`language-btn ${language === 'el' ? 'active' : ''}`}
-            onClick={() => setLanguage('el')}
-          >
-            {text.greek}
-          </button>
-        </div>
+  return (
+    <div className="app-root">
+      <LanguageSwitcher
+        language={language}
+        label={text.languageLabel}
+        englishLabel={text.english}
+        greekLabel={text.greek}
+        onChange={setLanguage}
+      />
+
+      {screen === 'menu' && (
         <MainMenu
           canContinue={hasSavedGame}
           text={text.menu}
@@ -65,98 +58,38 @@ function App() {
           onPractice={() => setScreen('practice')}
           onCollection={() => setScreen('collection')}
         />
-      </>
-    )
-  }
+      )}
 
-  if (screen === 'practice') {
-    return (
-      <>
-        <div className="language-switcher" aria-label={text.languageLabel}>
-          <button
-            type="button"
-            className={`language-btn ${language === 'en' ? 'active' : ''}`}
-            onClick={() => setLanguage('en')}
-          >
-            {text.english}
-          </button>
-          <button
-            type="button"
-            className={`language-btn ${language === 'el' ? 'active' : ''}`}
-            onClick={() => setLanguage('el')}
-          >
-            {text.greek}
-          </button>
-        </div>
+      {screen === 'practice' && (
         <PracticeMode text={text.practice} onBackToMenu={() => setScreen('menu')} />
-      </>
-    )
-  }
+      )}
 
-  if (screen === 'collection') {
-    return (
-      <>
-        <div className="language-switcher" aria-label={text.languageLabel}>
-          <button
-            type="button"
-            className={`language-btn ${language === 'en' ? 'active' : ''}`}
-            onClick={() => setLanguage('en')}
-          >
-            {text.english}
-          </button>
-          <button
-            type="button"
-            className={`language-btn ${language === 'el' ? 'active' : ''}`}
-            onClick={() => setLanguage('el')}
-          >
-            {text.greek}
-          </button>
-        </div>
+      {screen === 'collection' && (
         <CollectionScreen
           text={text.collection}
           badgeDefinitions={badgeDefinitions}
           collectedBadgeIds={progress.collectedBadges}
           onBackToMenu={() => setScreen('menu')}
         />
-      </>
-    )
-  }
+      )}
 
-  
-
-  return (
-    <>
-      <div className="language-switcher" aria-label={text.languageLabel}>
-        <button
-          type="button"
-          className={`language-btn ${language === 'en' ? 'active' : ''}`}
-          onClick={() => setLanguage('en')}
-        >
-          {text.english}
-        </button>
-        <button
-          type="button"
-          className={`language-btn ${language === 'el' ? 'active' : ''}`}
-          onClick={() => setLanguage('el')}
-        >
-          {text.greek}
-        </button>
-      </div>
-      <GameScreen
-        question={question}
-        score={progress.score}
-        currentStreak={progress.currentStreak}
-        longestStreak={progress.longestStreak}
-        stages={stages}
-        currentStageIndex={progress.currentStageIndex}
-        text={text.game}
-        rewardsText={text.rewards}
-        badgeDefinitions={badgeDefinitions}
-        onAnswer={answerQuestion}
-        onNextQuestion={goToNextQuestion}
-        onBackToMenu={() => setScreen('menu')}
-      />
-    </>
+      {screen === 'game' && (
+        <GameScreen
+          question={question}
+          score={progress.score}
+          currentStreak={progress.currentStreak}
+          longestStreak={progress.longestStreak}
+          stages={stages}
+          currentStageIndex={progress.currentStageIndex}
+          text={text.game}
+          rewardsText={text.rewards}
+          badgeDefinitions={badgeDefinitions}
+          onAnswer={answerQuestion}
+          onNextQuestion={goToNextQuestion}
+          onBackToMenu={() => setScreen('menu')}
+        />
+      )}
+    </div>
   )
 }
 
