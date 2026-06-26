@@ -25,6 +25,8 @@ export interface GameText {
   currentLocation: string
   lockedLocation: string
   startLocationButton: string
+  replayLocationButton: string
+  replayModeLabel: string
   returningToMap: string
   journeyLocations: Record<
     string,
@@ -109,6 +111,8 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       currentLocation: 'Current',
       lockedLocation: 'Locked',
       startLocationButton: 'Start Challenge',
+      replayLocationButton: 'Replay',
+      replayModeLabel: 'Replay mode — this won\'t affect your progress.',
       returningToMap: 'Location completed. Returning to the map...',
       journeyLocations: {
         'stage-1-standard': {
@@ -230,6 +234,8 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       currentLocation: 'Τρέχον',
       lockedLocation: 'Κλειδωμένο',
       startLocationButton: 'Έναρξη Πρόκλησης',
+      replayLocationButton: 'Επανάληψη',
+      replayModeLabel: 'Λειτουργία επανάληψης — δεν επηρεάζει την πρόοδό σου.',
       returningToMap: 'Η τοποθεσία ολοκληρώθηκε. Επιστροφή στον χάρτη...',
       journeyLocations: {
         'stage-1-standard': {

@@ -399,6 +399,50 @@ h2 {
   border-radius: 10px;
 }
 
+.map-replay-btn {
+  margin-top: 0.55rem;
+  width: 100%;
+  font-size: 0.82rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 10px;
+  background: rgba(104, 167, 255, 0.28);
+  color: #1a3a6b;
+  border: 2px solid rgba(104, 167, 255, 0.5);
+}
+
+.map-replay-btn:hover {
+  background: rgba(104, 167, 255, 0.42);
+}
+
+.replay-mode-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0.85rem;
+  background: rgba(104, 167, 255, 0.12);
+  border: 1.5px dashed rgba(104, 167, 255, 0.5);
+  border-radius: 12px;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: #1a3a6b;
+}
+
+.replay-exit-btn {
+  background: transparent;
+  border: 0;
+  color: var(--sky);
+  font-size: 0.83rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 0;
+}
+
+.replay-exit-btn:hover {
+  text-decoration: underline;
+}
+
 .practice-header {
   display: flex;
   justify-content: space-between;

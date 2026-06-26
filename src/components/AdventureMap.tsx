@@ -5,6 +5,7 @@ interface AdventureMapProps {
   stages: StageDefinition[]
   currentStageIndex: number
   onStartCurrentLocation: () => void
+  onReplayLocation: (stageIndex: number) => void
   text: Pick<
     GameText,
     | 'adventureMapTitle'
@@ -14,6 +15,7 @@ interface AdventureMapProps {
     | 'currentLocation'
     | 'lockedLocation'
     | 'startLocationButton'
+    | 'replayLocationButton'
     | 'journeyLocations'
   >
 }
@@ -32,7 +34,7 @@ function stageStatus(index: number, currentStageIndex: number) {
   return 'locked'
 }
 
-export function AdventureMap({ stages, currentStageIndex, onStartCurrentLocation, text }: AdventureMapProps) {
+export function AdventureMap({ stages, currentStageIndex, onStartCurrentLocation, onReplayLocation, text }: AdventureMapProps) {
   return (
     <section className="panel adventure-map" aria-label={text.adventureMapTitle}>
       <div className="adventure-map-header">
@@ -54,6 +56,7 @@ export function AdventureMap({ stages, currentStageIndex, onStartCurrentLocation
           const column = row % 2 === 0 ? inRow + 1 : 3 - inRow
           const status = stageStatus(index, currentStageIndex)
           const canStart = status === 'active'
+          const canReplay = status === 'done'
           const icon = LOCATION_ICONS[index] ?? '📍'
           const locationText = text.journeyLocations[stage.id]
           const locationTitle = locationText?.title ?? stage.title
@@ -81,6 +84,15 @@ export function AdventureMap({ stages, currentStageIndex, onStartCurrentLocation
                   onClick={onStartCurrentLocation}
                 >
                   {text.startLocationButton}
+                </button>
+              )}
+              {canReplay && (
+                <button
+                  type="button"
+                  className="small-btn map-replay-btn"
+                  onClick={() => onReplayLocation(index)}
+                >
+                  {text.replayLocationButton}
                 </button>
               )}
             </article>

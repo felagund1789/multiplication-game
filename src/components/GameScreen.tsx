@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { GameText, RewardsText } from '../i18n/translations'
 import type { AnswerFeedback, Badge, BadgeType, Question, StageDefinition } from '../types/game'
+import { createQuestionForStage } from '../services/questionService'
 import { AdventureMap } from './AdventureMap'
 
 interface GameScreenProps {
@@ -33,10 +34,14 @@ export function GameScreen({
   onBackToMenu,
 }: GameScreenProps) {
   const [viewMode, setViewMode] = useState<'map' | 'quiz'>('map')
+  const [replayStageIndex, setReplayStageIndex] = useState<number | null>(null)
+  const [replayQuestion, setReplayQuestion] = useState<Question | null>(null)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [feedback, setFeedback] = useState<AnswerFeedback | null>(null)
   const [earnedBadges, setEarnedBadges] = useState<string[]>([])
   const hasSubmitted = feedback !== null
+  const isReplayMode = replayStageIndex !== null
+  const activeQuestion = (isReplayMode && replayQuestion) ? replayQuestion : question
 
   useEffect(() => {
     setSelectedAnswer(null)
@@ -63,11 +68,45 @@ export function GameScreen({
   }, [feedback?.stageAdvanced, onNextQuestion])
 
   const handleStartFromMap = () => {
+    setReplayStageIndex(null)
+    setReplayQuestion(null)
     setViewMode('quiz')
+  }
+
+  const handleReplayLocation = (stageIndex: number) => {
+    const stage = stages[stageIndex]
+    setReplayStageIndex(stageIndex)
+    setReplayQuestion(createQuestionForStage(stage))
+    setSelectedAnswer(null)
+    setFeedback(null)
+    setViewMode('quiz')
+  }
+
+  const handleExitReplay = () => {
+    setReplayStageIndex(null)
+    setReplayQuestion(null)
+    setSelectedAnswer(null)
+    setFeedback(null)
+    setViewMode('map')
   }
 
   const handleSubmit = () => {
     if (selectedAnswer === null || hasSubmitted) {
+      return
+    }
+
+    if (isReplayMode && replayQuestion) {
+      const isCorrect = selectedAnswer === replayQuestion.correctAnswer
+      setFeedback({
+        isCorrect,
+        selectedAnswer,
+        correctAnswer: replayQuestion.correctAnswer,
+        correctAnswerLabel: replayQuestion.correctAnswerLabel,
+        pointsAwarded: 0,
+        streakBonus: 0,
+        stageAdvanced: false,
+        newBadgeIds: [],
+      })
       return
     }
 
@@ -91,7 +130,7 @@ export function GameScreen({
       className += ' selected-final'
     }
 
-    if (hasSubmitted && optionValue === question.correctAnswer) {
+    if (hasSubmitted && optionValue === activeQuestion.correctAnswer) {
       className += ' correct'
     }
 
@@ -127,14 +166,23 @@ export function GameScreen({
           stages={stages}
           currentStageIndex={currentStageIndex}
           onStartCurrentLocation={handleStartFromMap}
+          onReplayLocation={handleReplayLocation}
           text={text}
         />
       ) : (
         <section className="panel question-panel" aria-live="polite">
-          <h2>{question.prompt}</h2>
+          {isReplayMode && (
+            <div className="replay-mode-banner">
+              <span>{text.replayModeLabel}</span>
+              <button type="button" className="replay-exit-btn" onClick={handleExitReplay}>
+                {text.adventureMapTitle} &rarr;
+              </button>
+            </div>
+          )}
+          <h2>{activeQuestion.prompt}</h2>
 
           <div className="answers-grid">
-            {question.options.map((option) => (
+            {activeQuestion.options.map((option) => (
               <button
                 key={option.value}
                 type="button"
@@ -165,6 +213,19 @@ export function GameScreen({
               <button type="button" className="small-btn action-btn" disabled>
                 {text.returningToMap}
               </button>
+            ) : isReplayMode ? (
+              <button
+                type="button"
+                className="small-btn action-btn"
+                onClick={() => {
+                  const stage = stages[replayStageIndex!]
+                  setReplayQuestion(createQuestionForStage(stage))
+                  setSelectedAnswer(null)
+                  setFeedback(null)
+                }}
+              >
+                {text.nextQuestion}
+              </button>
             ) : (
               <button type="button" className="small-btn action-btn" onClick={onNextQuestion}>
                 {text.nextQuestion}
@@ -177,11 +238,11 @@ export function GameScreen({
               {feedback.isCorrect
                 ? text.correctFeedback(feedback.pointsAwarded + feedback.streakBonus)
                 : text.incorrectFeedback(
-                    feedback.correctAnswerLabel === 'TRUE'
+                    activeQuestion.correctAnswerLabel === 'TRUE'
                       ? text.trueLabel
-                      : feedback.correctAnswerLabel === 'FALSE'
+                      : activeQuestion.correctAnswerLabel === 'FALSE'
                         ? text.falseLabel
-                        : feedback.correctAnswerLabel,
+                        : activeQuestion.correctAnswerLabel,
                   )}
             </p>
           )}
