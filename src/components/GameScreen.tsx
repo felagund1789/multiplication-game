@@ -32,6 +32,7 @@ export function GameScreen({
   onNextQuestion,
   onBackToMenu,
 }: GameScreenProps) {
+  const [viewMode, setViewMode] = useState<'map' | 'quiz'>('map')
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [feedback, setFeedback] = useState<AnswerFeedback | null>(null)
   const [earnedBadges, setEarnedBadges] = useState<string[]>([])
@@ -49,6 +50,21 @@ export function GameScreen({
       return () => clearTimeout(timer)
     }
   }, [earnedBadges])
+
+  useEffect(() => {
+    if (feedback?.stageAdvanced) {
+      const timer = setTimeout(() => {
+        onNextQuestion()
+        setViewMode('map')
+      }, 1100)
+
+      return () => clearTimeout(timer)
+    }
+  }, [feedback?.stageAdvanced, onNextQuestion])
+
+  const handleStartFromMap = () => {
+    setViewMode('quiz')
+  }
 
   const handleSubmit = () => {
     if (selectedAnswer === null || hasSubmitted) {
@@ -106,55 +122,71 @@ export function GameScreen({
         </button>
       </header>
 
-      <AdventureMap stages={stages} currentStageIndex={currentStageIndex} text={text} />
+      {viewMode === 'map' ? (
+        <AdventureMap
+          stages={stages}
+          currentStageIndex={currentStageIndex}
+          onStartCurrentLocation={handleStartFromMap}
+          text={text}
+        />
+      ) : (
+        <section className="panel question-panel" aria-live="polite">
+          <h2>{question.prompt}</h2>
 
-      <section className="panel question-panel" aria-live="polite">
-        <h2>{question.prompt}</h2>
+          <div className="answers-grid">
+            {question.options.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                className={answerButtonClassName(option.value)}
+                onClick={() => setSelectedAnswer(option.value)}
+                disabled={hasSubmitted}
+              >
+                {option.label === 'TRUE'
+                  ? text.trueLabel
+                  : option.label === 'FALSE'
+                    ? text.falseLabel
+                    : option.label}
+              </button>
+            ))}
+          </div>
 
-        <div className="answers-grid">
-          {question.options.map((option) => (
-            <button
-              key={option.value}
-              type="button"
-              className={answerButtonClassName(option.value)}
-              onClick={() => setSelectedAnswer(option.value)}
-              disabled={hasSubmitted}
-            >
-              {option.label === 'TRUE'
-                ? text.trueLabel
-                : option.label === 'FALSE'
-                  ? text.falseLabel
-                  : option.label}
-            </button>
-          ))}
-        </div>
+          <div className="question-actions">
+            {!hasSubmitted ? (
+              <button
+                type="button"
+                className="small-btn action-btn"
+                disabled={selectedAnswer === null}
+                onClick={handleSubmit}
+              >
+                {text.submitAnswer}
+              </button>
+            ) : feedback?.stageAdvanced ? (
+              <button type="button" className="small-btn action-btn" disabled>
+                {text.returningToMap}
+              </button>
+            ) : (
+              <button type="button" className="small-btn action-btn" onClick={onNextQuestion}>
+                {text.nextQuestion}
+              </button>
+            )}
+          </div>
 
-        <div className="question-actions">
-          {!hasSubmitted ? (
-            <button type="button" className="small-btn action-btn" disabled={selectedAnswer === null} onClick={handleSubmit}>
-              {text.submitAnswer}
-            </button>
-          ) : (
-            <button type="button" className="small-btn action-btn" onClick={onNextQuestion}>
-              {text.nextQuestion}
-            </button>
+          {feedback && (
+            <p className={`feedback ${feedback.isCorrect ? 'ok' : 'bad'}`}>
+              {feedback.isCorrect
+                ? text.correctFeedback(feedback.pointsAwarded + feedback.streakBonus)
+                : text.incorrectFeedback(
+                    feedback.correctAnswerLabel === 'TRUE'
+                      ? text.trueLabel
+                      : feedback.correctAnswerLabel === 'FALSE'
+                        ? text.falseLabel
+                        : feedback.correctAnswerLabel,
+                  )}
+            </p>
           )}
-        </div>
-
-        {feedback && (
-          <p className={`feedback ${feedback.isCorrect ? 'ok' : 'bad'}`}>
-            {feedback.isCorrect
-              ? text.correctFeedback(feedback.pointsAwarded + feedback.streakBonus)
-              : text.incorrectFeedback(
-                  feedback.correctAnswerLabel === 'TRUE'
-                    ? text.trueLabel
-                    : feedback.correctAnswerLabel === 'FALSE'
-                      ? text.falseLabel
-                      : feedback.correctAnswerLabel,
-                )}
-          </p>
-        )}
-      </section>
+        </section>
+      )}
 
       {earnedBadges.length > 0 && (
         <section className="panel badges-toast">

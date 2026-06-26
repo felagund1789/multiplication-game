@@ -4,9 +4,17 @@ import type { StageDefinition } from '../types/game'
 interface AdventureMapProps {
   stages: StageDefinition[]
   currentStageIndex: number
+  onStartCurrentLocation: () => void
   text: Pick<
     GameText,
-    'adventureMapTitle' | 'adventureMapHint' | 'completedLocation' | 'currentLocation' | 'lockedLocation'
+    | 'adventureMapTitle'
+    | 'adventureMapHint'
+    | 'adventureMapSelectPrompt'
+    | 'completedLocation'
+    | 'currentLocation'
+    | 'lockedLocation'
+    | 'startLocationButton'
+    | 'journeyLocations'
   >
 }
 
@@ -24,12 +32,13 @@ function stageStatus(index: number, currentStageIndex: number) {
   return 'locked'
 }
 
-export function AdventureMap({ stages, currentStageIndex, text }: AdventureMapProps) {
+export function AdventureMap({ stages, currentStageIndex, onStartCurrentLocation, text }: AdventureMapProps) {
   return (
     <section className="panel adventure-map" aria-label={text.adventureMapTitle}>
       <div className="adventure-map-header">
         <h2>{text.adventureMapTitle}</h2>
         <p className="path-meta">{text.adventureMapHint}</p>
+        <p className="adventure-map-select-prompt">{text.adventureMapSelectPrompt}</p>
       </div>
 
       <div className="adventure-map-legend" aria-hidden="true">
@@ -44,14 +53,18 @@ export function AdventureMap({ stages, currentStageIndex, text }: AdventureMapPr
           const inRow = index % 3
           const column = row % 2 === 0 ? inRow + 1 : 3 - inRow
           const status = stageStatus(index, currentStageIndex)
+          const canStart = status === 'active'
           const icon = LOCATION_ICONS[index] ?? '📍'
+          const locationText = text.journeyLocations[stage.id]
+          const locationTitle = locationText?.title ?? stage.title
+          const locationSubtitle = locationText?.subtitle ?? stage.description
 
           return (
             <article
               key={stage.id}
               className={`map-node ${status}`}
               style={{ gridColumn: column }}
-              aria-label={`${stage.title} ${status}`}
+              aria-label={`${locationTitle} ${status}`}
             >
               <div className="map-node-top">
                 <span className="map-node-icon" aria-hidden="true">
@@ -59,8 +72,17 @@ export function AdventureMap({ stages, currentStageIndex, text }: AdventureMapPr
                 </span>
                 <span className="map-node-index">{index + 1}</span>
               </div>
-              <p className="map-node-title">{stage.title}</p>
-              <p className="map-node-subtitle">{stage.description}</p>
+              <p className="map-node-title">{locationTitle}</p>
+              <p className="map-node-subtitle">{locationSubtitle}</p>
+              {canStart && (
+                <button
+                  type="button"
+                  className="small-btn map-start-btn"
+                  onClick={onStartCurrentLocation}
+                >
+                  {text.startLocationButton}
+                </button>
+              )}
             </article>
           )
         })}

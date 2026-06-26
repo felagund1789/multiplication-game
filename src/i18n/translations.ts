@@ -20,9 +20,19 @@ export interface GameText {
   mainMenu: string
   adventureMapTitle: string
   adventureMapHint: string
+  adventureMapSelectPrompt: string
   completedLocation: string
   currentLocation: string
   lockedLocation: string
+  startLocationButton: string
+  returningToMap: string
+  journeyLocations: Record<
+    string,
+    {
+      title: string
+      subtitle: string
+    }
+  >
   submitAnswer: string
   nextQuestion: string
   trueLabel: string
@@ -94,9 +104,50 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       mainMenu: 'Main Menu',
       adventureMapTitle: 'Adventure Map',
       adventureMapHint: 'Travel the route and unlock new multiplication lands.',
+      adventureMapSelectPrompt: 'Select your current location to begin the quiz.',
       completedLocation: 'Cleared',
       currentLocation: 'Current',
       lockedLocation: 'Locked',
+      startLocationButton: 'Start Challenge',
+      returningToMap: 'Location completed. Returning to the map...',
+      journeyLocations: {
+        'stage-1-standard': {
+          title: 'Whispering Forest',
+          subtitle: 'Warm up with tables 1, 10 and 5.',
+        },
+        'stage-2-standard': {
+          title: 'Twin Peaks Camp',
+          subtitle: 'Climb through tables 2, 4 and 8.',
+        },
+        'stage-3-standard': {
+          title: 'River of Sparks',
+          subtitle: 'Navigate the 3 and 6 table currents.',
+        },
+        'stage-4-standard': {
+          title: 'Sunset Dunes',
+          subtitle: 'Master the 9 and 7 table sands.',
+        },
+        'stage-5-missing': {
+          title: 'Puzzle Gate',
+          subtitle: 'Missing-number riddles for 1, 10 and 5.',
+        },
+        'stage-6-missing': {
+          title: 'Crystal Bridge',
+          subtitle: 'Missing-number trials for 2, 4 and 8.',
+        },
+        'stage-7-missing': {
+          title: 'Volcano Trials',
+          subtitle: 'Missing-number heat for 3 and 6.',
+        },
+        'stage-8-missing': {
+          title: 'Frozen Ridge',
+          subtitle: 'Missing-number winds for 9 and 7.',
+        },
+        'stage-9-all-mixed': {
+          title: 'Crown Citadel',
+          subtitle: 'All tables, all formats, final journey.',
+        },
+      },
       submitAnswer: 'Submit Answer',
       nextQuestion: 'Next Question',
       trueLabel: 'True',
@@ -174,9 +225,50 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       mainMenu: 'Κεντρικό Μενού',
       adventureMapTitle: 'Χάρτης Περιπέτειας',
       adventureMapHint: 'Προχώρα στη διαδρομή και ξεκλείδωσε νέες περιοχές πολλαπλασιασμού.',
+      adventureMapSelectPrompt: 'Επίλεξε την τρέχουσα τοποθεσία για να ξεκινήσεις το κουίζ.',
       completedLocation: 'Ολοκληρώθηκε',
       currentLocation: 'Τρέχον',
       lockedLocation: 'Κλειδωμένο',
+      startLocationButton: 'Έναρξη Πρόκλησης',
+      returningToMap: 'Η τοποθεσία ολοκληρώθηκε. Επιστροφή στον χάρτη...',
+      journeyLocations: {
+        'stage-1-standard': {
+          title: 'Ψιθυριστό Δάσος',
+          subtitle: 'Ξεκίνα με τις προπαίδειες 1, 10 και 5.',
+        },
+        'stage-2-standard': {
+          title: 'Κατασκήνωση Δίδυμων Κορυφών',
+          subtitle: 'Ανέβα με τις προπαίδειες 2, 4 και 8.',
+        },
+        'stage-3-standard': {
+          title: 'Ποτάμι Σπίθας',
+          subtitle: 'Διέσχισε τα ρεύματα των 3 και 6.',
+        },
+        'stage-4-standard': {
+          title: 'Αμμόλοφοι Ηλιοβασιλέματος',
+          subtitle: 'Κατάκτησε τις προπαίδειες 9 και 7.',
+        },
+        'stage-5-missing': {
+          title: 'Πύλη Γρίφων',
+          subtitle: 'Γρίφοι με κενά για 1, 10 και 5.',
+        },
+        'stage-6-missing': {
+          title: 'Κρυστάλλινη Γέφυρα',
+          subtitle: 'Δοκιμασίες με κενά για 2, 4 και 8.',
+        },
+        'stage-7-missing': {
+          title: 'Δοκιμασίες Ηφαιστείου',
+          subtitle: 'Καυτές ερωτήσεις με κενά για 3 και 6.',
+        },
+        'stage-8-missing': {
+          title: 'Παγωμένη Ράχη',
+          subtitle: 'Παγωμένοι γρίφοι με κενά για 9 και 7.',
+        },
+        'stage-9-all-mixed': {
+          title: 'Ακρόπολη του Στέμματος',
+          subtitle: 'Όλες οι προπαίδειες και μορφές, η τελική διαδρομή.',
+        },
+      },
       submitAnswer: 'Υποβολή Απάντησης',
       nextQuestion: 'Επόμενη Ερώτηση',
       trueLabel: 'Σωστό',

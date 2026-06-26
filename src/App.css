@@ -264,6 +264,13 @@ h2 {
   margin-bottom: 0.4rem;
 }
 
+.adventure-map-select-prompt {
+  margin-top: 0.45rem;
+  font-size: 0.84rem;
+  color: #3f4f7d;
+  font-weight: 700;
+}
+
 .path-meta {
   font-size: 0.82rem;
   color: var(--soft-ink);
@@ -382,6 +389,14 @@ h2 {
   font-size: 0.72rem;
   color: var(--soft-ink);
   line-height: 1.25;
+}
+
+.map-start-btn {
+  margin-top: 0.55rem;
+  width: 100%;
+  font-size: 0.88rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 10px;
 }
 
 .practice-header {
