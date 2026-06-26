@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { STAGES } from '../data/stages'
 import { createPracticeQuestion, createQuestionForStage, stagePoints } from './questionService'
+import type { QuestionFormat } from '../types/game'
 
 function isUnique(values: string[]): boolean {
   return new Set(values).size === values.length
@@ -28,7 +29,7 @@ describe('questionService', () => {
   it('creates which-equals questions with multiplication-expression options', () => {
     const stage = {
       ...STAGES[0],
-      allowedFormats: ['whichEquals'] as const,
+      allowedFormats: ['whichEquals'] as QuestionFormat[],
     }
 
     for (let i = 0; i < 20; i += 1) {
@@ -45,7 +46,7 @@ describe('questionService', () => {
   it('creates true-false questions with boolean options', () => {
     const stage = {
       ...STAGES[0],
-      allowedFormats: ['trueFalse'] as const,
+      allowedFormats: ['trueFalse'] as QuestionFormat[],
     }
 
     for (let i = 0; i < 20; i += 1) {
