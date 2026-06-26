@@ -69,6 +69,30 @@ function App() {
     )
   }
 
+  if (screen === 'practice') {
+    return (
+      <>
+        <div className="language-switcher" aria-label={text.languageLabel}>
+          <button
+            type="button"
+            className={`language-btn ${language === 'en' ? 'active' : ''}`}
+            onClick={() => setLanguage('en')}
+          >
+            {text.english}
+          </button>
+          <button
+            type="button"
+            className={`language-btn ${language === 'el' ? 'active' : ''}`}
+            onClick={() => setLanguage('el')}
+          >
+            {text.greek}
+          </button>
+        </div>
+        <PracticeMode text={text.practice} onBackToMenu={() => setScreen('menu')} />
+      </>
+    )
+  }
+
   if (screen === 'collection') {
     return (
       <>
