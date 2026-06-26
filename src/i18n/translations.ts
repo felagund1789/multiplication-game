@@ -8,6 +8,7 @@ export interface MenuText {
   continueSavedGame: string
   startNewGame: string
   practiceMode: string
+  collection: string
 }
 
 export interface GameText {
@@ -36,6 +37,13 @@ export interface PracticeText {
   campaignHint: string
 }
 
+export interface CollectionText {
+  title: string
+  earned: string
+  locked: string
+  backToMenu: string
+}
+
 export interface LanguageText {
   languageLabel: string
   english: string
@@ -43,6 +51,7 @@ export interface LanguageText {
   menu: MenuText
   game: GameText
   practice: PracticeText
+  collection: CollectionText
 }
 
 export const TRANSLATIONS: Record<Language, LanguageText> = {
@@ -58,6 +67,7 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       continueSavedGame: 'Continue Saved Game',
       startNewGame: 'Start New Game',
       practiceMode: 'Practice Mode',
+      collection: 'My Badges',
     },
     game: {
       score: 'Score',
@@ -84,6 +94,12 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
         `Keep trying! The correct answer was ${correctAnswer}.`,
       campaignHint: 'Practice does not affect your campaign progress.',
     },
+    collection: {
+      title: 'Badge Collection',
+      earned: 'Earned',
+      locked: 'Locked',
+      backToMenu: 'Main Menu',
+    },
   },
   el: {
     languageLabel: 'Γλώσσα',
@@ -97,6 +113,7 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       continueSavedGame: 'Συνέχεια',
       startNewGame: 'Νέο Παιχνίδι',
       practiceMode: 'Εξάσκηση',
+      collection: 'Τα Αυτοκόλλητά Μου',
     },
     game: {
       score: 'Σκορ',
@@ -123,6 +140,12 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       incorrectFeedback: (correctAnswer: string) =>
         `Συνέχισε την προσπάθεια! Η σωστή απάντηση ήταν ${correctAnswer}.`,
       campaignHint: 'Η εξάσκηση δεν επηρεάζει την πρόοδο του βασικού παιχνιδιού.',
+    },
+    collection: {
+      title: 'Συλλογή Αυτοκόλλητων',
+      earned: 'Στη συλλογή σου',
+      locked: 'Κλειδωμένο',
+      backToMenu: 'Κεντρικό Μενού',
     },
   },
 }

@@ -6,9 +6,10 @@ interface MainMenuProps {
   onContinue: () => void
   onNewGame: () => void
   onPractice: () => void
+  onCollection: () => void
 }
 
-export function MainMenu({ canContinue, text, onContinue, onNewGame, onPractice }: MainMenuProps) {
+export function MainMenu({ canContinue, text, onContinue, onNewGame, onPractice, onCollection }: MainMenuProps) {
   return (
     <main className="screen menu-screen">
       <section className="panel hero-panel">
@@ -26,6 +27,9 @@ export function MainMenu({ canContinue, text, onContinue, onNewGame, onPractice 
         </button>
         <button type="button" className="big-btn" onClick={onPractice}>
           {text.practiceMode}
+        </button>
+        <button type="button" className="big-btn" onClick={onCollection}>
+          {text.collection}
         </button>
       </section>
     </main>

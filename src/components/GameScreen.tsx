@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { GameText } from '../i18n/translations'
 import type { AnswerFeedback, Question } from '../types/game'
+import { BADGE_DEFINITIONS } from '../services/rewardsService'
 
 interface GameScreenProps {
   question: Question
@@ -25,12 +26,21 @@ export function GameScreen({
 }: GameScreenProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [feedback, setFeedback] = useState<AnswerFeedback | null>(null)
+  const [earnedBadges, setEarnedBadges] = useState<string[]>([])
   const hasSubmitted = feedback !== null
 
   useEffect(() => {
     setSelectedAnswer(null)
     setFeedback(null)
+    setEarnedBadges([])
   }, [question])
+
+  useEffect(() => {
+    if (earnedBadges.length > 0) {
+      const timer = setTimeout(() => setEarnedBadges([]), 4000)
+      return () => clearTimeout(timer)
+    }
+  }, [earnedBadges])
 
   const handleSubmit = () => {
     if (selectedAnswer === null || hasSubmitted) {
@@ -39,6 +49,11 @@ export function GameScreen({
 
     const result = onAnswer(selectedAnswer)
     setFeedback(result)
+    
+    // Capture newly earned badges
+    if (result.newBadgeIds && result.newBadgeIds.length > 0) {
+      setEarnedBadges(result.newBadgeIds)
+    }
   }
 
   const answerButtonClassName = (optionValue: string) => {
@@ -131,6 +146,24 @@ export function GameScreen({
         )}
       </section>
 
+      {earnedBadges.length > 0 && (
+        <section className="panel badges-toast">
+          <h3>🎉 New Badges!</h3>
+          <div className="badges-toast-list">
+            {earnedBadges.map((badgeId) => {
+              const badge = Object.values(BADGE_DEFINITIONS).find((b) => b.id === badgeId)
+              if (!badge) return null
+              
+              return (
+                <div key={badgeId} className="badge-toast-item">
+                  <span className="badge-toast-emoji">{badge.emoji}</span>
+                  <span className="badge-toast-name">{badge.name}</span>
+                </div>
+              )
+            })}
+          </div>
+        </section>
+      )}
     </main>
   )
 }

@@ -47,6 +47,24 @@ export interface GameProgress {
   currentStreak: number
   longestStreak: number
   stageProgress: Record<string, StageProgress>
+  collectedBadges: string[]
+}
+
+export type BadgeType = 
+  | 'stageComplete'
+  | 'streak3'
+  | 'streak5'
+  | 'streak10'
+  | 'perfectStage'
+  | 'allStagesComplete'
+
+export interface Badge {
+  id: string
+  type: BadgeType
+  emoji: string
+  name: string
+  description: string
+  unlockedAt?: number
 }
 
 export interface AnswerFeedback {
@@ -57,4 +75,5 @@ export interface AnswerFeedback {
   pointsAwarded: number
   streakBonus: number
   stageAdvanced: boolean
+  newBadgeIds: string[]
 }

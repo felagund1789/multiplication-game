@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react'
 import { GameScreen } from './components/GameScreen'
 import { MainMenu } from './components/MainMenu'
 import { PracticeMode } from './components/PracticeMode'
+import { CollectionScreen } from './components/CollectionScreen'
 import { TRANSLATIONS, type Language } from './i18n/translations'
 import { useMultiplicationGame } from './hooks/useMultiplicationGame'
 import './App.css'
 
-type Screen = 'menu' | 'game' | 'practice'
+type Screen = 'menu' | 'game' | 'practice' | 'collection'
 const LANGUAGE_STORAGE_KEY = 'multiplication-game-language'
 
 function loadStoredLanguage(): Language {
@@ -60,12 +61,13 @@ function App() {
           onContinue={() => setScreen('game')}
           onNewGame={handleStartNewGame}
           onPractice={() => setScreen('practice')}
+          onCollection={() => setScreen('collection')}
         />
       </>
     )
   }
 
-  if (screen === 'practice') {
+  if (screen === 'collection') {
     return (
       <>
         <div className="language-switcher" aria-label={text.languageLabel}>
@@ -84,10 +86,16 @@ function App() {
             {text.greek}
           </button>
         </div>
-        <PracticeMode text={text.practice} onBackToMenu={() => setScreen('menu')} />
+        <CollectionScreen
+          text={text.collection}
+          collectedBadgeIds={progress.collectedBadges}
+          onBackToMenu={() => setScreen('menu')}
+        />
       </>
     )
   }
+
+  
 
   return (
     <>

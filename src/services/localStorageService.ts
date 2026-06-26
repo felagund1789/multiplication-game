@@ -1,6 +1,6 @@
 import type { GameProgress } from '../types/game'
 
-const STORAGE_KEY = 'multiplication-game-save-v1'
+const STORAGE_KEY = 'multiplication-game-save-v2'
 
 export function loadGameProgress(): GameProgress | null {
   const rawValue = localStorage.getItem(STORAGE_KEY)

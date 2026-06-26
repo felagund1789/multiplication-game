@@ -3,6 +3,7 @@ import { STAGES } from '../data/stages'
 import { loadGameProgress, saveGameProgress } from '../services/localStorageService'
 import { evaluateStageThreshold } from '../services/progressionService'
 import { createQuestionForStage, stagePoints } from '../services/questionService'
+import { determineBadgesToAward } from '../services/rewardsService'
 import type { AnswerFeedback, GameProgress, Question, StageDefinition, StageProgress } from '../types/game'
 
 const STREAK_BONUS_EVERY = 3
@@ -14,6 +15,7 @@ function createInitialProgress(): GameProgress {
     currentStreak: 0,
     longestStreak: 0,
     stageProgress: {},
+    collectedBadges: [],
   }
 }
 
@@ -57,12 +59,42 @@ export function useMultiplicationGame() {
       progress.currentStageIndex < STAGES.length - 1,
     )
     const stageAdvanced = thresholdResult.shouldAdvance
+    const stageWasPerfect =
+      isCorrect &&
+      updatedStageProgress.answered >= currentStage.minimumAnswers &&
+      updatedStageProgress.correct === updatedStageProgress.answered
 
     if (stageAdvanced) {
       nextStageIndex += 1
     } else if (thresholdResult.shouldReset) {
       nextStageProgress = { answered: 0, correct: 0 }
     }
+
+    const newBadges = determineBadgesToAward(
+      progress.collectedBadges,
+      nextStreak,
+      progress.longestStreak,
+      stageAdvanced,
+      stageWasPerfect,
+      nextStageIndex,
+    )
+    const updatedCollectedBadges = [...progress.collectedBadges]
+    newBadges.forEach((badgeType) => {
+      const badgeId = badgeType === 'stageComplete'
+        ? 'stage-complete'
+        : badgeType === 'streak3'
+          ? 'streak-3'
+          : badgeType === 'streak5'
+            ? 'streak-5'
+            : badgeType === 'streak10'
+              ? 'streak-10'
+              : badgeType === 'perfectStage'
+                ? 'perfect-stage'
+                : 'all-stages'
+      if (!updatedCollectedBadges.includes(badgeId)) {
+        updatedCollectedBadges.push(badgeId)
+      }
+    })
 
     setProgress((previous) => ({
       ...previous,
@@ -74,6 +106,7 @@ export function useMultiplicationGame() {
         ...previous.stageProgress,
         [currentStage.id]: nextStageProgress,
       },
+      collectedBadges: updatedCollectedBadges,
     }))
 
     const nextStage = STAGES[nextStageIndex] ?? currentStage
@@ -87,6 +120,21 @@ export function useMultiplicationGame() {
       pointsAwarded,
       streakBonus,
       stageAdvanced,
+      newBadgeIds: newBadges.length > 0
+        ? newBadges.map((badgeType) =>
+            badgeType === 'stageComplete'
+              ? 'stage-complete'
+              : badgeType === 'streak3'
+                ? 'streak-3'
+                : badgeType === 'streak5'
+                  ? 'streak-5'
+                  : badgeType === 'streak10'
+                    ? 'streak-10'
+                    : badgeType === 'perfectStage'
+                      ? 'perfect-stage'
+                      : 'all-stages',
+          )
+        : [],
     }
   }
 
