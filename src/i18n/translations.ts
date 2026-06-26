@@ -17,8 +17,10 @@ export interface GameText {
   mainMenu: string
   submitAnswer: string
   nextQuestion: string
+  trueLabel: string
+  falseLabel: string
   correctFeedback: (points: number) => string
-  incorrectFeedback: (correctAnswer: number) => string
+  incorrectFeedback: (correctAnswer: string) => string
 }
 
 export interface PracticeText {
@@ -30,7 +32,7 @@ export interface PracticeText {
   submitAnswer: string
   nextQuestion: string
   correctFeedback: string
-  incorrectFeedback: (correctAnswer: number) => string
+  incorrectFeedback: (correctAnswer: string) => string
   campaignHint: string
 }
 
@@ -64,8 +66,10 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       mainMenu: 'Main Menu',
       submitAnswer: 'Submit Answer',
       nextQuestion: 'Next Question',
+      trueLabel: 'True',
+      falseLabel: 'False',
       correctFeedback: (points: number) => `Great job! +${points} points`,
-      incorrectFeedback: (correctAnswer: number) => `Not this time. Correct answer: ${correctAnswer}`,
+      incorrectFeedback: (correctAnswer: string) => `Not this time. Correct answer: ${correctAnswer}`,
     },
     practice: {
       eyebrow: 'Practice Mode',
@@ -76,7 +80,7 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       submitAnswer: 'Submit Answer',
       nextQuestion: 'Next Question',
       correctFeedback: 'Nice! You got it right.',
-      incorrectFeedback: (correctAnswer: number) =>
+      incorrectFeedback: (correctAnswer: string) =>
         `Keep trying! The correct answer was ${correctAnswer}.`,
       campaignHint: 'Practice does not affect your campaign progress.',
     },
@@ -101,8 +105,10 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       mainMenu: 'Κεντρικό Μενού',
       submitAnswer: 'Υποβολή Απάντησης',
       nextQuestion: 'Επόμενη Ερώτηση',
+      trueLabel: 'Σωστό',
+      falseLabel: 'Λάθος',
       correctFeedback: (points: number) => `Μπράβο! +${points} πόντοι`,
-      incorrectFeedback: (correctAnswer: number) =>
+      incorrectFeedback: (correctAnswer: string) =>
         `Δυστυχώς απάντησες λάθος. Η σωστή απάντηση ήταν ${correctAnswer}`,
     },
     practice: {
@@ -114,7 +120,7 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       submitAnswer: 'Υποβολή Απάντησης',
       nextQuestion: 'Επόμενη Ερώτηση',
       correctFeedback: 'Μπράβο! Σωστή απάντηση.',
-      incorrectFeedback: (correctAnswer: number) =>
+      incorrectFeedback: (correctAnswer: string) =>
         `Συνέχισε την προσπάθεια! Η σωστή απάντηση ήταν ${correctAnswer}.`,
       campaignHint: 'Η εξάσκηση δεν επηρεάζει την πρόοδο του βασικού παιχνιδιού.',
     },

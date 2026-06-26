@@ -2,40 +2,59 @@ import { describe, expect, it } from 'vitest'
 import { STAGES } from '../data/stages'
 import { createPracticeQuestion, createQuestionForStage, stagePoints } from './questionService'
 
-function isUnique(values: number[]): boolean {
+function isUnique(values: string[]): boolean {
   return new Set(values).size === values.length
 }
 
 describe('questionService', () => {
-  it('creates valid options with one correct answer for standard stages', () => {
+  it('creates valid options with one correct answer for mixed stage formats', () => {
     const stage = STAGES[0]
 
     for (let i = 0; i < 20; i += 1) {
       const question = createQuestionForStage(stage)
 
-      expect(question.format).toBe('standard')
+      expect(stage.allowedFormats).toContain(question.format)
       expect(stage.tables).toContain(question.factors.left)
       expect(question.factors.right).toBeGreaterThanOrEqual(1)
       expect(question.factors.right).toBeLessThanOrEqual(10)
-      expect(question.options).toHaveLength(3)
-      expect(isUnique(question.options)).toBe(true)
-      expect(question.options).toContain(question.correctAnswer)
-      expect(question.correctAnswer).toBe(question.factors.left * question.factors.right)
+      expect(question.options).toHaveLength(question.format === 'trueFalse' ? 2 : 3)
+
+      const optionValues = question.options.map((option) => option.value)
+      expect(isUnique(optionValues)).toBe(true)
+      expect(optionValues).toContain(question.correctAnswer)
     }
   })
 
-  it('uses missing-number formats for missing-format stages', () => {
-    const stage = STAGES[4]
+  it('creates which-equals questions with multiplication-expression options', () => {
+    const stage = {
+      ...STAGES[0],
+      allowedFormats: ['whichEquals'] as const,
+    }
 
-    for (let i = 0; i < 30; i += 1) {
+    for (let i = 0; i < 20; i += 1) {
       const question = createQuestionForStage(stage)
 
-      expect(['missingLeft', 'missingRight']).toContain(question.format)
-      expect(stage.tables).toContain(question.factors.left)
+      expect(question.format).toBe('whichEquals')
+      expect(question.prompt).toContain('=')
       expect(question.options).toHaveLength(3)
-      expect(isUnique(question.options)).toBe(true)
-      expect(question.options).toContain(question.correctAnswer)
-      expect(question.correctAnswer).toBeGreaterThan(0)
+      expect(question.options.every((option) => option.label.includes('×'))).toBe(true)
+      expect(question.options.map((option) => option.value)).toContain(question.correctAnswer)
+    }
+  })
+
+  it('creates true-false questions with boolean options', () => {
+    const stage = {
+      ...STAGES[0],
+      allowedFormats: ['trueFalse'] as const,
+    }
+
+    for (let i = 0; i < 20; i += 1) {
+      const question = createQuestionForStage(stage)
+
+      expect(question.format).toBe('trueFalse')
+      expect(question.options).toHaveLength(2)
+      expect(question.options.map((option) => option.value)).toEqual(['true', 'false'])
+      expect(['true', 'false']).toContain(question.correctAnswer)
     }
   })
 
@@ -49,6 +68,7 @@ describe('questionService', () => {
       expect(selectedTables).toContain(question.factors.left)
       expect(question.factors.right).toBeGreaterThanOrEqual(1)
       expect(question.factors.right).toBeLessThanOrEqual(10)
+      expect(question.options).toHaveLength(3)
     }
   })
 
@@ -56,8 +76,10 @@ describe('questionService', () => {
     const earlyStandard = stagePoints(0, 'standard')
     const lateStandard = stagePoints(8, 'standard')
     const missingFormat = stagePoints(4, 'missingLeft')
+    const whichEqualsFormat = stagePoints(4, 'whichEquals')
 
     expect(lateStandard).toBeGreaterThan(earlyStandard)
     expect(missingFormat).toBeGreaterThan(stagePoints(4, 'standard'))
+    expect(whichEqualsFormat).toBeGreaterThan(stagePoints(4, 'standard'))
   })
 })

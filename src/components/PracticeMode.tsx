@@ -12,7 +12,7 @@ interface PracticeModeProps {
 export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
   const [selectedTables, setSelectedTables] = useState<number[]>([2, 3, 4])
   const [question, setQuestion] = useState<Question>(() => createPracticeQuestion([2, 3, 4]))
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [feedback, setFeedback] = useState<string>('')
 
@@ -46,7 +46,7 @@ export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
     setFeedback(
       isCorrect
         ? text.correctFeedback
-        : text.incorrectFeedback(question.correctAnswer),
+        : text.incorrectFeedback(question.correctAnswerLabel),
     )
     setIsSubmitted(true)
   }
@@ -55,22 +55,22 @@ export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
     refreshQuestion(selectedTables)
   }
 
-  const answerButtonClassName = (option: number) => {
+  const answerButtonClassName = (optionValue: string) => {
     let className = 'answer-btn'
 
-    if (!isSubmitted && selectedAnswer === option) {
+    if (!isSubmitted && selectedAnswer === optionValue) {
       className += ' selected-pending'
     }
 
-    if (isSubmitted && selectedAnswer === option) {
+    if (isSubmitted && selectedAnswer === optionValue) {
       className += ' selected-final'
     }
 
-    if (isSubmitted && option === question.correctAnswer) {
+    if (isSubmitted && optionValue === question.correctAnswer) {
       className += ' correct'
     }
 
-    if (isSubmitted && selectedAnswer === option && option !== question.correctAnswer) {
+    if (isSubmitted && selectedAnswer === optionValue && optionValue !== question.correctAnswer) {
       className += ' wrong'
     }
 
@@ -116,13 +116,13 @@ export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
         <div className="answers-grid">
           {question.options.map((option) => (
             <button
-              key={option}
+              key={option.value}
               type="button"
-              className={answerButtonClassName(option)}
-              onClick={() => setSelectedAnswer(option)}
+              className={answerButtonClassName(option.value)}
+              onClick={() => setSelectedAnswer(option.value)}
               disabled={isSubmitted}
             >
-              {option}
+              {option.label}
             </button>
           ))}
         </div>

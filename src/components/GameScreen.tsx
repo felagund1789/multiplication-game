@@ -8,7 +8,7 @@ interface GameScreenProps {
   currentStreak: number
   longestStreak: number
   text: GameText
-  onAnswer: (answer: number) => AnswerFeedback
+  onAnswer: (answer: string) => AnswerFeedback
   onNextQuestion: () => void
   onBackToMenu: () => void
 }
@@ -23,7 +23,7 @@ export function GameScreen({
   onNextQuestion,
   onBackToMenu,
 }: GameScreenProps) {
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null)
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [feedback, setFeedback] = useState<AnswerFeedback | null>(null)
   const hasSubmitted = feedback !== null
 
@@ -41,22 +41,22 @@ export function GameScreen({
     setFeedback(result)
   }
 
-  const answerButtonClassName = (option: number) => {
+  const answerButtonClassName = (optionValue: string) => {
     let className = 'answer-btn'
 
-    if (!hasSubmitted && selectedAnswer === option) {
+    if (!hasSubmitted && selectedAnswer === optionValue) {
       className += ' selected-pending'
     }
 
-    if (hasSubmitted && feedback && feedback.selectedAnswer === option) {
+    if (hasSubmitted && feedback && feedback.selectedAnswer === optionValue) {
       className += ' selected-final'
     }
 
-    if (hasSubmitted && option === question.correctAnswer) {
+    if (hasSubmitted && optionValue === question.correctAnswer) {
       className += ' correct'
     }
 
-    if (hasSubmitted && feedback && !feedback.isCorrect && option === feedback.selectedAnswer) {
+    if (hasSubmitted && feedback && !feedback.isCorrect && optionValue === feedback.selectedAnswer) {
       className += ' wrong'
     }
 
@@ -89,13 +89,17 @@ export function GameScreen({
         <div className="answers-grid">
           {question.options.map((option) => (
             <button
-              key={option}
+              key={option.value}
               type="button"
-              className={answerButtonClassName(option)}
-              onClick={() => setSelectedAnswer(option)}
+              className={answerButtonClassName(option.value)}
+              onClick={() => setSelectedAnswer(option.value)}
               disabled={hasSubmitted}
             >
-              {option}
+              {option.label === 'TRUE'
+                ? text.trueLabel
+                : option.label === 'FALSE'
+                  ? text.falseLabel
+                  : option.label}
             </button>
           ))}
         </div>
@@ -116,7 +120,13 @@ export function GameScreen({
           <p className={`feedback ${feedback.isCorrect ? 'ok' : 'bad'}`}>
             {feedback.isCorrect
               ? text.correctFeedback(feedback.pointsAwarded + feedback.streakBonus)
-              : text.incorrectFeedback(feedback.correctAnswer)}
+              : text.incorrectFeedback(
+                  feedback.correctAnswerLabel === 'TRUE'
+                    ? text.trueLabel
+                    : feedback.correctAnswerLabel === 'FALSE'
+                      ? text.falseLabel
+                      : feedback.correctAnswerLabel,
+                )}
           </p>
         )}
       </section>

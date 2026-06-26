@@ -1,4 +1,9 @@
-export type QuestionFormat = 'standard' | 'missingLeft' | 'missingRight'
+export type QuestionFormat =
+  | 'standard'
+  | 'missingLeft'
+  | 'missingRight'
+  | 'whichEquals'
+  | 'trueFalse'
 
 export type StageKind = 'table' | 'missingLeft' | 'missingRight' | 'mixed'
 
@@ -15,14 +20,20 @@ export interface StageDefinition {
 
 export interface Question {
   prompt: string
-  correctAnswer: number
-  options: number[]
+  correctAnswer: string
+  correctAnswerLabel: string
+  options: QuestionOption[]
   format: QuestionFormat
   factors: {
     left: number
     right: number
   }
   product: number
+}
+
+export interface QuestionOption {
+  value: string
+  label: string
 }
 
 export interface StageProgress {
@@ -40,8 +51,9 @@ export interface GameProgress {
 
 export interface AnswerFeedback {
   isCorrect: boolean
-  selectedAnswer: number
-  correctAnswer: number
+  selectedAnswer: string
+  correctAnswer: string
+  correctAnswerLabel: string
   pointsAwarded: number
   streakBonus: number
   stageAdvanced: boolean

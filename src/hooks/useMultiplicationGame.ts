@@ -33,7 +33,7 @@ export function useMultiplicationGame() {
     saveGameProgress(progress)
   }, [progress])
 
-  const answerQuestion = (selectedAnswer: number): AnswerFeedback => {
+  const answerQuestion = (selectedAnswer: string): AnswerFeedback => {
     const isCorrect = selectedAnswer === question.correctAnswer
     const currentStageProgress = withDefaultStageProgress(progress.stageProgress[currentStage.id])
 
@@ -83,6 +83,7 @@ export function useMultiplicationGame() {
       isCorrect,
       selectedAnswer,
       correctAnswer: question.correctAnswer,
+      correctAnswerLabel: question.correctAnswerLabel,
       pointsAwarded,
       streakBonus,
       stageAdvanced,

@@ -14,7 +14,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Tables 1, 10 and 5.',
     kind: 'table',
     tables: [1, 10, 5],
-    allowedFormats: ['standard'],
+    allowedFormats: ['standard', 'missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
@@ -23,7 +23,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Tables 2, 4 and 8.',
     kind: 'table',
     tables: [2, 4, 8],
-    allowedFormats: ['standard'],
+    allowedFormats: ['standard', 'missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
@@ -32,7 +32,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Tables 3 and 6.',
     kind: 'table',
     tables: [3, 6],
-    allowedFormats: ['standard'],
+    allowedFormats: ['standard', 'missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
@@ -41,7 +41,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Tables 9 and 7.',
     kind: 'table',
     tables: [9, 7],
-    allowedFormats: ['standard'],
+    allowedFormats: ['standard', 'missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
@@ -50,7 +50,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Stage 1 tables in missing-number format.',
     kind: 'mixed',
     tables: [1, 10, 5],
-    allowedFormats: ['missingLeft', 'missingRight'],
+    allowedFormats: ['missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
@@ -59,7 +59,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Stage 2 tables in missing-number format.',
     kind: 'mixed',
     tables: [2, 4, 8],
-    allowedFormats: ['missingLeft', 'missingRight'],
+    allowedFormats: ['missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
@@ -68,7 +68,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Stage 3 tables in missing-number format.',
     kind: 'mixed',
     tables: [3, 6],
-    allowedFormats: ['missingLeft', 'missingRight'],
+    allowedFormats: ['missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
@@ -77,7 +77,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Stage 4 tables in missing-number format.',
     kind: 'mixed',
     tables: [9, 7],
-    allowedFormats: ['missingLeft', 'missingRight'],
+    allowedFormats: ['missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
@@ -86,7 +86,7 @@ export const STAGES: StageDefinition[] = [
     description: 'Play with all question formats mixed together.',
     kind: 'mixed',
     tables: [...TABLE_STAGE_ORDER],
-    allowedFormats: ['standard', 'missingLeft', 'missingRight'],
+    allowedFormats: ['standard', 'missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
 ]

@@ -1,4 +1,4 @@
-import type { StageDefinition, Question, QuestionFormat } from '../types/game'
+import type { Question, QuestionFormat, StageDefinition } from '../types/game'
 import { TABLE_STAGE_ORDER } from '../data/stages'
 
 const PRACTICE_MULTIPLIER_MAX = 10
@@ -90,15 +90,79 @@ function buildQuestion(format: QuestionFormat, left: number, right: number): Que
     format === 'missingLeft' ? left : format === 'missingRight' ? right : product
 
   const distractors = createDistractors(left, right, correctAnswer)
-  const options = shuffle([correctAnswer, ...distractors])
+  const options = shuffle([correctAnswer, ...distractors]).map((value) => ({
+    value: value.toString(),
+    label: value.toString(),
+  }))
 
   return {
     prompt: buildPrompt(format, left, right, product),
-    correctAnswer,
+    correctAnswer: correctAnswer.toString(),
+    correctAnswerLabel: correctAnswer.toString(),
     options,
     format,
     factors: { left, right },
     product,
+  }
+}
+
+function buildWhichEqualsQuestion(stageTables: number[]): Question {
+  const left = pickRandom(stageTables)
+  const right = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+  const product = left * right
+
+  const variants = new Set<string>()
+  variants.add(`${left}x${right}`)
+  variants.add(`${left}x${Math.max(1, right - 1)}`)
+  variants.add(`${left}x${Math.min(PRACTICE_MULTIPLIER_MAX, right + 1)}`)
+
+  while (variants.size < 3) {
+    const candidateLeft = pickRandom(stageTables)
+    const candidateRight = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+    variants.add(`${candidateLeft}x${candidateRight}`)
+  }
+
+  const options = shuffle([...variants]).slice(0, 3).map((value) => {
+    const [l, r] = value.split('x').map(Number)
+    return {
+      value,
+      label: `${l} × ${r}`,
+    }
+  })
+
+  const correctAnswer = `${left}x${right}`
+
+  return {
+    prompt: `? = ${product}`,
+    correctAnswer,
+    correctAnswerLabel: `${left} × ${right}`,
+    options,
+    format: 'whichEquals',
+    factors: { left, right },
+    product,
+  }
+}
+
+function buildTrueFalseQuestion(stageTables: number[]): Question {
+  const left = pickRandom(stageTables)
+  const right = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+  const actualProduct = left * right
+  const isTrueStatement = randomInt(0, 1) === 1
+  const fakeProduct = pickRandom(createDistractors(left, right, actualProduct))
+  const shownProduct = isTrueStatement ? actualProduct : fakeProduct
+  const correctAnswer = isTrueStatement ? 'true' : 'false'
+
+  return {
+    prompt: `${left} × ${right} = ${shownProduct}`,
+    correctAnswer,
+    correctAnswerLabel: isTrueStatement ? 'TRUE' : 'FALSE',
+    options: [
+      { value: 'true', label: 'TRUE' },
+      { value: 'false', label: 'FALSE' },
+    ],
+    format: 'trueFalse',
+    factors: { left, right },
+    product: actualProduct,
   }
 }
 
@@ -127,6 +191,14 @@ export function createQuestionForStage(stage: StageDefinition): Question {
   const right = randomInt(1, PRACTICE_MULTIPLIER_MAX)
   const format = pickRandom(stageFormats)
 
+  if (format === 'whichEquals') {
+    return buildWhichEqualsQuestion(stageTables)
+  }
+
+  if (format === 'trueFalse') {
+    return buildTrueFalseQuestion(stageTables)
+  }
+
   return buildQuestion(format, left, right)
 }
 
@@ -147,7 +219,13 @@ export function stageCompletionAccuracy(answered: number, correct: number): numb
 export function stagePoints(stageIndex: number, format: QuestionFormat): number {
   const stageMultiplier = 1 + stageIndex * 0.12
   const formatMultiplier =
-    format === 'standard' ? 1 : format === 'missingLeft' || format === 'missingRight' ? 1.35 : 1
+    format === 'standard'
+      ? 1
+      : format === 'missingLeft' || format === 'missingRight'
+        ? 1.35
+        : format === 'whichEquals'
+          ? 1.28
+          : 1.2
 
   return Math.round(10 * stageMultiplier * formatMultiplier)
 }
