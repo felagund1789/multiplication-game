@@ -70,6 +70,7 @@ export interface RewardBadgeText {
 
 export interface RewardsText {
   toastTitle: string
+  toastClose: string
   badges: Record<BadgeType, RewardBadgeText>
 }
 
@@ -180,6 +181,7 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
     },
     rewards: {
       toastTitle: 'New Badges!',
+      toastClose: 'Close',
       badges: {
         stageComplete: {
           name: 'Stage Master',
@@ -304,6 +306,7 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
     },
     rewards: {
       toastTitle: 'Νέα Αυτοκόλλητα!',
+      toastClose: 'Κλείσιμο',
       badges: {
         stageComplete: {
           name: 'Δάσκαλος Σταδίου',

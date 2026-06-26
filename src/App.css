@@ -466,6 +466,59 @@ h2 {
   text-decoration: underline;
 }
 
+.badges-toast-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(18, 24, 48, 0.48);
+  backdrop-filter: blur(4px);
+}
+
+.badges-toast {
+  width: min(560px, 100%);
+  max-height: min(84svh, 760px);
+  overflow: auto;
+  animation: feedbackEnter 300ms ease;
+  background: linear-gradient(135deg, #fff8ef 0%, #fffaf0 100%);
+  border-color: var(--gold);
+  padding: 1.2rem;
+}
+
+.badges-toast-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.badges-toast h3 {
+  margin: 0;
+  font-size: var(--text-size-md);
+  color: var(--ink);
+}
+
+.badge-toast-close {
+  width: 2.2rem;
+  height: 2.2rem;
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(242, 99, 77, 0.12);
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.badge-toast-close:hover {
+  background: rgba(242, 99, 77, 0.2);
+}
+
 .practice-header {
   display: flex;
   justify-content: space-between;
@@ -661,21 +714,6 @@ h2 {
   letter-spacing: 0.5px;
 }
 
-/* Badge Toast Notification */
-.badges-toast {
-  animation: feedbackEnter 300ms ease;
-  background: linear-gradient(135deg, #fff8ef 0%, #fffaf0 100%);
-  border-color: var(--gold);
-  padding: 1.2rem;
-}
-
-.badges-toast h3 {
-  margin: 0 0 1rem 0;
-  text-align: center;
-  font-size: 1.2rem;
-  color: var(--ink);
-}
-
 .badges-toast-list {
   display: flex;
   flex-wrap: wrap;
@@ -704,6 +742,13 @@ h2 {
   font-weight: 700;
   color: var(--ink);
   text-align: center;
+}
+
+.badge-toast-dismiss {
+  display: block;
+  min-width: 140px;
+  margin: 1.2rem auto 0;
+  font-size: var(--text-size-base);
 }
 
 @media (max-width: 760px) {

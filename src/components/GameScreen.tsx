@@ -39,6 +39,8 @@ export function GameScreen({
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
   const [feedback, setFeedback] = useState<AnswerFeedback | null>(null)
   const [earnedBadges, setEarnedBadges] = useState<string[]>([])
+  const [isBadgePopupOpen, setIsBadgePopupOpen] = useState(false)
+  const [pendingMapReturn, setPendingMapReturn] = useState(false)
   const hasSubmitted = feedback !== null
   const isReplayMode = replayStageIndex !== null
   const activeQuestion = (isReplayMode && replayQuestion) ? replayQuestion : question
@@ -47,17 +49,18 @@ export function GameScreen({
     setSelectedAnswer(null)
     setFeedback(null)
     setEarnedBadges([])
+    setIsBadgePopupOpen(false)
+    setPendingMapReturn(false)
   }, [question])
 
   useEffect(() => {
-    if (earnedBadges.length > 0) {
-      const timer = setTimeout(() => setEarnedBadges([]), 4000)
-      return () => clearTimeout(timer)
-    }
-  }, [earnedBadges])
-
-  useEffect(() => {
     if (feedback?.stageAdvanced) {
+      if (earnedBadges.length > 0) {
+        setPendingMapReturn(true)
+        setIsBadgePopupOpen(true)
+        return
+      }
+
       const timer = setTimeout(() => {
         onNextQuestion()
         setViewMode('map')
@@ -65,7 +68,7 @@ export function GameScreen({
 
       return () => clearTimeout(timer)
     }
-  }, [feedback?.stageAdvanced, onNextQuestion])
+  }, [earnedBadges.length, feedback?.stageAdvanced, onNextQuestion])
 
   const handleStartFromMap = () => {
     setReplayStageIndex(null)
@@ -90,6 +93,17 @@ export function GameScreen({
     setViewMode('map')
   }
 
+  const handleDismissBadgePopup = () => {
+    setIsBadgePopupOpen(false)
+    setEarnedBadges([])
+
+    if (pendingMapReturn) {
+      setPendingMapReturn(false)
+      onNextQuestion()
+      setViewMode('map')
+    }
+  }
+
   const handleSubmit = () => {
     if (selectedAnswer === null || hasSubmitted) {
       return
@@ -112,10 +126,9 @@ export function GameScreen({
 
     const result = onAnswer(selectedAnswer)
     setFeedback(result)
-    
-    // Capture newly earned badges
     if (result.newBadgeIds && result.newBadgeIds.length > 0) {
       setEarnedBadges(result.newBadgeIds)
+      setIsBadgePopupOpen(true)
     }
   }
 
@@ -249,23 +262,38 @@ export function GameScreen({
         </section>
       )}
 
-      {earnedBadges.length > 0 && (
-        <section className="panel badges-toast">
-          <h3>{rewardsText.toastTitle}</h3>
-          <div className="badges-toast-list">
-            {earnedBadges.map((badgeId) => {
-              const badge = Object.values(badgeDefinitions).find((b) => b.id === badgeId)
-              if (!badge) return null
-              
-              return (
-                <div key={badgeId} className="badge-toast-item">
-                  <span className="badge-toast-emoji">{badge.emoji}</span>
-                  <span className="badge-toast-name">{badge.name}</span>
-                </div>
-              )
-            })}
-          </div>
-        </section>
+      {isBadgePopupOpen && earnedBadges.length > 0 && (
+        <div className="badges-toast-backdrop" role="presentation">
+          <section
+            className="panel badges-toast"
+            role="dialog"
+            aria-modal="true"
+            aria-label={rewardsText.toastTitle}
+          >
+            <div className="badges-toast-header">
+              <h3>{rewardsText.toastTitle}</h3>
+              <button type="button" className="badge-toast-close" onClick={handleDismissBadgePopup}>
+                X
+              </button>
+            </div>
+            <div className="badges-toast-list">
+              {earnedBadges.map((badgeId) => {
+                const badge = Object.values(badgeDefinitions).find((b) => b.id === badgeId)
+                if (!badge) return null
+
+                return (
+                  <div key={badgeId} className="badge-toast-item">
+                    <span className="badge-toast-emoji">{badge.emoji}</span>
+                    <span className="badge-toast-name">{badge.name}</span>
+                  </div>
+                )
+              })}
+            </div>
+            <button type="button" className="small-btn badge-toast-dismiss" onClick={handleDismissBadgePopup}>
+              {rewardsText.toastClose}
+            </button>
+          </section>
+        </div>
       )}
     </main>
   )
