@@ -38,9 +38,9 @@ export function AdventureMap({ stages, currentStageIndex, onStartCurrentLocation
   return (
     <section className="panel adventure-map" aria-label={text.adventureMapTitle}>
       <div className="adventure-map-header">
-        <h2>{text.adventureMapTitle}</h2>
-        <p className="path-meta">{text.adventureMapHint}</p>
-        <p className="adventure-map-select-prompt">{text.adventureMapSelectPrompt}</p>
+        <h2 className="text-size-lg">{text.adventureMapTitle}</h2>
+        <p className="path-meta text-size-base">{text.adventureMapHint}</p>
+        <p className="adventure-map-select-prompt text-size-base">{text.adventureMapSelectPrompt}</p>
       </div>
 
       <div className="adventure-map-legend" aria-hidden="true">
@@ -75,8 +75,8 @@ export function AdventureMap({ stages, currentStageIndex, onStartCurrentLocation
                 </span>
                 <span className="map-node-index">{index + 1}</span>
               </div>
-              <p className="map-node-title">{locationTitle}</p>
-              <p className="map-node-subtitle">{locationSubtitle}</p>
+              <p className="map-node-title text-size-md">{locationTitle}</p>
+              <p className="map-node-subtitle text-size-base">{locationSubtitle}</p>
               {canStart && (
                 <button
                   type="button"

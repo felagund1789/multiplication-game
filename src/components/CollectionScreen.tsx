@@ -17,8 +17,8 @@ export function CollectionScreen({ text, badgeDefinitions, collectedBadgeIds, on
     <main className="screen collection-screen">
       <header className="panel collection-header">
         <div>
-          <h1>{text.title}</h1>
-          <p className="subtitle">
+          <h1 className="text-size-lg">{text.title}</h1>
+          <p className="subtitle text-size-base">
             {text.earned}: {earnedCount} / {totalBadges}
           </p>
         </div>
@@ -35,9 +35,9 @@ export function CollectionScreen({ text, badgeDefinitions, collectedBadgeIds, on
             return (
               <article key={badge.id} className={`badge-card ${isEarned ? 'earned' : 'locked'}`}>
                 <div className="badge-emoji">{badge.emoji}</div>
-                <p className="badge-name">{badge.name}</p>
-                <p className="badge-description">{badge.description}</p>
-                {!isEarned && <p className="badge-locked-label">{text.locked}</p>}
+                <p className="badge-name text-size-md">{badge.name}</p>
+                <p className="badge-description text-size-base">{badge.description}</p>
+                {!isEarned && <p className="badge-locked-label text-size-base">{text.locked}</p>}
               </article>
             )
           })}
