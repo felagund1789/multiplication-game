@@ -7,21 +7,35 @@ describe('determineBadgesToAward', () => {
       [],
       0,
       true, // stageJustCompleted
+      'stage-1-standard',
       false,
       0,
     )
     expect(badges).toContain('stageComplete')
   })
 
-  it('should award streak badges for reaching streak milestones', () => {
-    const badges3 = determineBadgesToAward([], 3, false, false, 0)
-    expect(badges3).toContain('streak3')
+  it('should award the stage-specific badge for the completed stage', () => {
+    const badges = determineBadgesToAward(
+      [],
+      0,
+      true,
+      'stage-3-standard',
+      false,
+      0,
+    )
 
-    const badges5 = determineBadgesToAward([], 5, false, false, 0)
+    expect(badges).toContain('stage3RiverOfSparks')
+  })
+
+  it('should award streak badges for reaching streak milestones', () => {
+    const badges5 = determineBadgesToAward([], 5, false, null, false, 0)
     expect(badges5).toContain('streak5')
 
-    const badges10 = determineBadgesToAward([], 10, false, false, 0)
-    expect(badges10).toContain('streak10')
+    const badges15 = determineBadgesToAward([], 15, false, null, false, 0)
+    expect(badges15).toContain('streak15')
+
+    const badges25 = determineBadgesToAward([], 25, false, null, false, 0)
+    expect(badges25).toContain('streak25')
   })
 
   it('should award perfectStage badge for 100% accuracy stage completion', () => {
@@ -29,6 +43,7 @@ describe('determineBadgesToAward', () => {
       [],
       0,
       true, // stageJustCompleted
+      'stage-2-standard',
       true, // stageWasPerfect
       1,
     )
@@ -40,6 +55,7 @@ describe('determineBadgesToAward', () => {
       [],
       0,
       false,
+      null,
       false,
       9, // totalStagesCompleted = STAGES.length
     )
@@ -51,6 +67,7 @@ describe('determineBadgesToAward', () => {
       ['stage-complete'],
       0,
       true,
+      'stage-1-standard',
       false,
       1,
     )
@@ -62,6 +79,7 @@ describe('determineBadgesToAward', () => {
       [],
       5, // reaches streak5
       true, // stageJustCompleted
+      'stage-1-standard',
       true, // stageWasPerfect
       1,
     )

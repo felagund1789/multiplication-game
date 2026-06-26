@@ -51,11 +51,20 @@ export interface GameProgress {
 }
 
 export type BadgeType = 
-  | 'stageComplete'
-  | 'streak3'
   | 'streak5'
-  | 'streak10'
+  | 'streak15'
+  | 'streak25'
+  | 'stageComplete'
   | 'perfectStage'
+  | 'stage1WhisperingForest'
+  | 'stage2TwinPeaksCamp'
+  | 'stage3RiverOfSparks'
+  | 'stage4SunsetDunes'
+  | 'stage5PuzzleGate'
+  | 'stage6CrystalBridge'
+  | 'stage7VolcanoTrials'
+  | 'stage8FrozenRidge'
+  | 'stage9CrownCitadel'
   | 'allStagesComplete'
 
 export interface Badge {

@@ -5,12 +5,13 @@
 ### 1. Badge System Architecture
 ? Created BadgeType enum with 6 badge categories:
    - **stageComplete**: Awarded for completing any stage
-   - **streak3/5/10**: Awarded for reaching 3, 5, and 10-question streaks
+   - **streak5/15/25**: Awarded for reaching 5, 15, and 25-question streaks
    - **perfectStage**: Awarded for 100% accuracy on a stage
    - **allStagesComplete**: Awarded for completing all 9 stages
 
 ### 2. Badge Definitions & Logic
-? Created ewardsService.ts with:
+? Created 
+ewardsService.ts with:
    - BADGE_DEFINITIONS: Complete badge metadata (emoji, name, description)
    - determineBadgesToAward(): Logic to evaluate when badges should be awarded
    - Prevents duplicate awards (checks if badge ID already in collected list)
@@ -52,7 +53,7 @@ ewBadgeIds: string[] to surface newly earned badges to UI
    - Passes language-aware text
 
 ? Updated MainMenu.tsx:
-   - Added "My Badges" / "?a S?µ??a ???" button
+   - Added "My Badges" / "?a S?ï¿½??a ???" button
    - Routes to collection screen
 
 ### 7. Localization

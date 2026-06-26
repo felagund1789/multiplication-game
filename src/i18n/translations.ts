@@ -193,17 +193,53 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           name: 'Stage Master',
           description: 'Complete any stage.',
         },
-        streak3: {
-          name: 'Hot Streak',
-          description: 'Reach a 3-question streak.',
+        stage1WhisperingForest: {
+          name: 'Whispering Trailblazer',
+          description: 'Complete Whispering Forest.',
+        },
+        stage2TwinPeaksCamp: {
+          name: 'Twin Peaks Pathfinder',
+          description: 'Complete Twin Peaks Camp.',
+        },
+        stage3RiverOfSparks: {
+          name: 'Spark Surfer',
+          description: 'Complete River of Sparks.',
+        },
+        stage4SunsetDunes: {
+          name: 'Dune Navigator',
+          description: 'Complete Sunset Dunes.',
+        },
+        stage5PuzzleGate: {
+          name: 'Gate Solver',
+          description: 'Complete Puzzle Gate.',
+        },
+        stage6CrystalBridge: {
+          name: 'Bridge Keeper',
+          description: 'Complete Crystal Bridge.',
+        },
+        stage7VolcanoTrials: {
+          name: 'Volcano Victor',
+          description: 'Complete Volcano Trials.',
+        },
+        stage8FrozenRidge: {
+          name: 'Ridge Conqueror',
+          description: 'Complete Frozen Ridge.',
+        },
+        stage9CrownCitadel: {
+          name: 'Crown Champion',
+          description: 'Complete Crown Citadel.',
         },
         streak5: {
-          name: 'Burning Hot',
+          name: 'Hot Streak',
           description: 'Reach a 5-question streak.',
         },
-        streak10: {
+        streak15: {
+          name: 'Burning Hot',
+          description: 'Reach a 15-question streak.',
+        },
+        streak25: {
           name: 'Unstoppable',
-          description: 'Reach a 10-question streak.',
+          description: 'Reach a 25-question streak.',
         },
         perfectStage: {
           name: 'Flawless',
@@ -321,17 +357,53 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           name: 'Δάσκαλος Σταδίου',
           description: 'Ολοκλήρωσε οποιοδήποτε στάδιο.',
         },
-        streak3: {
-          name: 'Καυτό Σερί',
-          description: 'Φτάσε σε σερί 3 σωστών απαντήσεων.',
+        stage1WhisperingForest: {
+          name: 'Πρωτοπόρος του Ψιθυριστού Δάσους',
+          description: 'Ολοκλήρωσε το Ψιθυριστό Δάσος.',
+        },
+        stage2TwinPeaksCamp: {
+          name: 'Οδηγός των Δίδυμων Κορυφών',
+          description: 'Ολοκλήρωσε την Κατασκήνωση Δίδυμων Κορυφών.',
+        },
+        stage3RiverOfSparks: {
+          name: 'Ταξιδιώτης της Σπίθας',
+          description: 'Ολοκλήρωσε το Ποτάμι Σπίθας.',
+        },
+        stage4SunsetDunes: {
+          name: 'Κατακτητής των Αμμόλοφων',
+          description: 'Ολοκλήρωσε τους Αμμόλοφους Ηλιοβασιλέματος.',
+        },
+        stage5PuzzleGate: {
+          name: 'Λύτης της Πύλης Γρίφων',
+          description: 'Ολοκλήρωσε την Πύλη Γρίφων.',
+        },
+        stage6CrystalBridge: {
+          name: 'Φύλακας της Κρυστάλλινης Γέφυρας',
+          description: 'Ολοκλήρωσε την Κρυστάλλινη Γέφυρα.',
+        },
+        stage7VolcanoTrials: {
+          name: 'Νικητής του Ηφαιστείου',
+          description: 'Ολοκλήρωσε τις Δοκιμασίες Ηφαιστείου.',
+        },
+        stage8FrozenRidge: {
+          name: 'Κατακτητής της Παγωμένης Ράχης',
+          description: 'Ολοκλήρωσε την Παγωμένη Ράχη.',
+        },
+        stage9CrownCitadel: {
+          name: 'Πρωταθλητής του Στέμματος',
+          description: 'Ολοκλήρωσε την Ακρόπολη του Στέμματος.',
         },
         streak5: {
-          name: 'Πολύ Καυτό',
+          name: 'Καυτό Σερί',
           description: 'Φτάσε σε σερί 5 σωστών απαντήσεων.',
         },
-        streak10: {
+        streak15: {
+          name: 'Πολύ Καυτό',
+          description: 'Φτάσε σε σερί 15 σωστών απαντήσεων.',
+        },
+        streak25: {
           name: 'Ασταμάτητος',
-          description: 'Φτάσε σε σερί 10 σωστών απαντήσεων.',
+          description: 'Φτάσε σε σερί 25 σωστών απαντήσεων.',
         },
         perfectStage: {
           name: 'Αψεγάδιαστος',

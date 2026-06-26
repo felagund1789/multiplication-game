@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useState } from 'react'
 import { STAGES } from '../data/stages'
 import { loadGameProgress, saveGameProgress } from '../services/localStorageService'
+import { isStageComplete } from '../services/progressionService'
 import { evaluateStageThreshold } from '../services/progressionService'
 import { createQuestionForStage, stagePoints } from '../services/questionService'
-import { determineBadgesToAward } from '../services/rewardsService'
+import { badgeTypeToId, determineBadgesToAward } from '../services/rewardsService'
 import type { AnswerFeedback, GameProgress, Question, StageDefinition, StageProgress } from '../types/game'
 
 const STREAK_BONUS_EVERY = 3
@@ -53,12 +54,14 @@ export function useMultiplicationGame() {
 
     let nextStageIndex = progress.currentStageIndex
     let nextStageProgress = updatedStageProgress
+    const canAdvanceToNextStage = progress.currentStageIndex < STAGES.length - 1
     const thresholdResult = evaluateStageThreshold(
       currentStage,
       updatedStageProgress,
-      progress.currentStageIndex < STAGES.length - 1,
+      canAdvanceToNextStage,
     )
     const stageAdvanced = thresholdResult.shouldAdvance
+    const stageCompleted = isStageComplete(currentStage, updatedStageProgress)
     const stageWasPerfect =
       isCorrect &&
       updatedStageProgress.answered >= currentStage.minimumAnswers &&
@@ -70,26 +73,23 @@ export function useMultiplicationGame() {
       nextStageProgress = { answered: 0, correct: 0 }
     }
 
+    const totalStagesCompleted = stageCompleted
+      ? stageAdvanced
+        ? nextStageIndex
+        : progress.currentStageIndex + 1
+      : progress.currentStageIndex
+
     const newBadges = determineBadgesToAward(
       progress.collectedBadges,
       nextStreak,
-      stageAdvanced,
+      stageCompleted,
+      stageCompleted ? currentStage.id : null,
       stageWasPerfect,
-      nextStageIndex,
+      totalStagesCompleted,
     )
     const updatedCollectedBadges = [...progress.collectedBadges]
     newBadges.forEach((badgeType) => {
-      const badgeId = badgeType === 'stageComplete'
-        ? 'stage-complete'
-        : badgeType === 'streak3'
-          ? 'streak-3'
-          : badgeType === 'streak5'
-            ? 'streak-5'
-            : badgeType === 'streak10'
-              ? 'streak-10'
-              : badgeType === 'perfectStage'
-                ? 'perfect-stage'
-                : 'all-stages'
+      const badgeId = badgeTypeToId(badgeType)
       if (!updatedCollectedBadges.includes(badgeId)) {
         updatedCollectedBadges.push(badgeId)
       }
@@ -120,19 +120,7 @@ export function useMultiplicationGame() {
       streakBonus,
       stageAdvanced,
       newBadgeIds: newBadges.length > 0
-        ? newBadges.map((badgeType) =>
-            badgeType === 'stageComplete'
-              ? 'stage-complete'
-              : badgeType === 'streak3'
-                ? 'streak-3'
-                : badgeType === 'streak5'
-                  ? 'streak-5'
-                  : badgeType === 'streak10'
-                    ? 'streak-10'
-                    : badgeType === 'perfectStage'
-                      ? 'perfect-stage'
-                      : 'all-stages',
-          )
+        ? newBadges.map((badgeType) => badgeTypeToId(badgeType))
         : [],
     }
   }
