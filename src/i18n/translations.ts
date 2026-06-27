@@ -147,24 +147,24 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           subtitle: 'Single-table sprint with table 2.',
         },
         'stage-5-table': {
-          title: 'Triad Cliffs',
-          subtitle: 'Single-table sprint with table 3.',
-        },
-        'stage-6-table': {
           title: 'Quadrant Grove',
           subtitle: 'Single-table sprint with table 4.',
         },
+        'stage-6-table': {
+          title: 'Octa Outpost',
+          subtitle: 'Single-table sprint with table 8.',
+        },
         'stage-7-table': {
+          title: 'Triad Cliffs',
+          subtitle: 'Single-table sprint with table 3.',
+        },
+        'stage-8-table': {
           title: 'Hexa Harbor',
           subtitle: 'Single-table sprint with table 6.',
         },
-        'stage-8-table': {
+        'stage-9-table': {
           title: 'Seventh Summit',
           subtitle: 'Single-table sprint with table 7.',
-        },
-        'stage-9-table': {
-          title: 'Octa Outpost',
-          subtitle: 'Single-table sprint with table 8.',
         },
         'stage-10-table': {
           title: 'Ninth Horizon',
@@ -225,63 +225,63 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           name: 'Stage Master',
           description: 'Complete any stage.',
         },
-        stage1WhisperingForest: {
+        stage1Complete: {
           name: 'Sprout Field Emblem',
           description: 'Complete Sprout Field (Stage 1).',
         },
-        stage2TwinPeaksCamp: {
+        stage2Complete: {
           name: 'Tenfold Terrace Emblem',
           description: 'Complete Tenfold Terrace (Stage 2).',
         },
-        stage3RiverOfSparks: {
+        stage3Complete: {
           name: 'Fiveforge Trail Emblem',
           description: 'Complete Fiveforge Trail (Stage 3).',
         },
-        stage4SunsetDunes: {
+        stage4Complete: {
           name: 'Twin Current Emblem',
           description: 'Complete Twin Current (Stage 4).',
         },
-        stage5PuzzleGate: {
-          name: 'Triad Cliffs Emblem',
-          description: 'Complete Triad Cliffs (Stage 5).',
-        },
-        stage6CrystalBridge: {
+        stage5Complete: {
           name: 'Quadrant Grove Emblem',
-          description: 'Complete Quadrant Grove (Stage 6).',
+          description: 'Complete Quadrant Grove (Stage 5).',
         },
-        stage7VolcanoTrials: {
-          name: 'Hexa Harbor Emblem',
-          description: 'Complete Hexa Harbor (Stage 7).',
-        },
-        stage8FrozenRidge: {
-          name: 'Seventh Summit Emblem',
-          description: 'Complete Seventh Summit (Stage 8).',
-        },
-        stage9CrownCitadel: {
+        stage6Complete: {
           name: 'Octa Outpost Emblem',
-          description: 'Complete Octa Outpost (Stage 9).',
+          description: 'Complete Octa Outpost (Stage 6).',
         },
-        stage10NinthHorizon: {
+        stage7Complete: {
+          name: 'Triad Cliffs Emblem',
+          description: 'Complete Triad Cliffs (Stage 7).',
+        },
+        stage8Complete: {
+          name: 'Hexa Harbor Emblem',
+          description: 'Complete Hexa Harbor (Stage 8).',
+        },
+        stage9Complete: {
+          name: 'Seventh Summit Emblem',
+          description: 'Complete Seventh Summit (Stage 9).',
+        },
+        stage10Complete: {
           name: 'Ninth Horizon Emblem',
           description: 'Complete Ninth Horizon (Stage 10).',
         },
-        stage11PuzzleGate: {
+        stage11Complete: {
           name: 'Puzzle Gate Emblem',
           description: 'Complete Puzzle Gate (Stage 11).',
         },
-        stage12CrystalBridge: {
+        stage12Complete: {
           name: 'Crystal Bridge Emblem',
           description: 'Complete Crystal Bridge (Stage 12).',
         },
-        stage13VolcanoTrials: {
+        stage13Complete: {
           name: 'Volcano Trials Emblem',
           description: 'Complete Volcano Trials (Stage 13).',
         },
-        stage14FrozenRidge: {
+        stage14Complete: {
           name: 'Frozen Ridge Emblem',
           description: 'Complete Frozen Ridge (Stage 14).',
         },
-        stage15CrownCitadel: {
+        stage15Complete: {
           name: 'Crown Citadel Emblem',
           description: 'Complete Crown Citadel (Stage 15).',
         },
@@ -362,24 +362,24 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           subtitle: 'Πρόκληση μίας προπαίδειας με το 2.',
         },
         'stage-5-table': {
-          title: 'Τριπλά Βράχια',
-          subtitle: 'Πρόκληση μίας προπαίδειας με το 3.',
-        },
-        'stage-6-table': {
           title: 'Τέταρτο Άλσος',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 4.',
         },
+        'stage-6-table': {
+          title: 'Οκτάγωνο Φρούριο',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 8.',
+        },
         'stage-7-table': {
+          title: 'Τριπλά Βράχια',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 3.',
+        },
+        'stage-8-table': {
           title: 'Έξαπλό Λιμάνι',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 6.',
         },
-        'stage-8-table': {
+        'stage-9-table': {
           title: 'Επτά Κορυφές',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 7.',
-        },
-        'stage-9-table': {
-          title: 'Οκτάγωνο Φρούριο',
-          subtitle: 'Πρόκληση μίας προπαίδειας με το 8.',
         },
         'stage-10-table': {
           title: 'Ένατος Ορίζοντας',
@@ -441,63 +441,63 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           name: 'Τοπ Κατακτητής',
           description: 'Ολοκλήρωσε οποιοδήποτε στάδιο.',
         },
-        stage1WhisperingForest: {
+        stage1Complete: {
           name: 'Έμβλημα Πεδίου Βλαστών',
           description: 'Ολοκλήρωσε το Πεδίο Βλαστών (Στάδιο 1).',
         },
-        stage2TwinPeaksCamp: {
+        stage2Complete: {
           name: 'Έμβλημα Δέκα Αναβαθμίδων',
           description: 'Ολοκλήρωσε τις Δέκα Αναβαθμίδες (Στάδιο 2).',
         },
-        stage3RiverOfSparks: {
+        stage3Complete: {
           name: 'Έμβλημα Πέντε Μονοπατιών',
           description: 'Ολοκλήρωσε τα Πέντε Μονοπάτια (Στάδιο 3).',
         },
-        stage4SunsetDunes: {
+        stage4Complete: {
           name: 'Έμβλημα Δίδυμων Ρευμάτων',
           description: 'Ολοκλήρωσε τα Δίδυμα Ρεύματα (Στάδιο 4).',
         },
-        stage5PuzzleGate: {
-          name: 'Έμβλημα Τριπλών Βράχων',
-          description: 'Ολοκλήρωσε τα Τριπλά Βράχια (Στάδιο 5).',
-        },
-        stage6CrystalBridge: {
+        stage5Complete: {
           name: 'Έμβλημα Τέταρτου Άλσους',
-          description: 'Ολοκλήρωσε το Τέταρτο Άλσος (Στάδιο 6).',
+          description: 'Ολοκλήρωσε το Τέταρτο Άλσος (Στάδιο 5).',
         },
-        stage7VolcanoTrials: {
-          name: 'Έμβλημα Εξαπλού Λιμανιού',
-          description: 'Ολοκλήρωσε το Εξαπλό Λιμάνι (Στάδιο 7).',
-        },
-        stage8FrozenRidge: {
-          name: 'Έμβλημα Επτά Κορυφών',
-          description: 'Ολοκλήρωσε τις Επτά Κορυφές (Στάδιο 8).',
-        },
-        stage9CrownCitadel: {
+        stage6Complete: {
           name: 'Έμβλημα Οκτάγωνου Φρουρίου',
-          description: 'Ολοκλήρωσε το Οκτάγωνο Φρούριο (Στάδιο 9).',
+          description: 'Ολοκλήρωσε το Οκτάγωνο Φρούριο (Στάδιο 6).',
         },
-        stage10NinthHorizon: {
+        stage7Complete: {
+          name: 'Έμβλημα Τριπλών Βράχων',
+          description: 'Ολοκλήρωσε τα Τριπλά Βράχια (Στάδιο 7).',
+        },
+        stage8Complete: {
+          name: 'Έμβλημα Εξαπλού Λιμανιού',
+          description: 'Ολοκλήρωσε το Εξαπλό Λιμάνι (Στάδιο 8).',
+        },
+        stage9Complete: {
+          name: 'Έμβλημα Επτά Κορυφών',
+          description: 'Ολοκλήρωσε τις Επτά Κορυφές (Στάδιο 9).',
+        },
+        stage10Complete: {
           name: 'Έμβλημα Ένατου Ορίζοντα',
           description: 'Ολοκλήρωσε τον Ένατο Ορίζοντα (Στάδιο 10).',
         },
-        stage11PuzzleGate: {
+        stage11Complete: {
           name: 'Έμβλημα Πύλης Γρίφων',
           description: 'Ολοκλήρωσε την Πύλη Γρίφων (Στάδιο 11).',
         },
-        stage12CrystalBridge: {
+        stage12Complete: {
           name: 'Έμβλημα Κρυστάλλινης Γέφυρας',
           description: 'Ολοκλήρωσε την Κρυστάλλινη Γέφυρα (Στάδιο 12).',
         },
-        stage13VolcanoTrials: {
+        stage13Complete: {
           name: 'Έμβλημα Δοκιμασιών Ηφαιστείου',
           description: 'Ολοκλήρωσε τις Δοκιμασίες Ηφαιστείου (Στάδιο 13).',
         },
-        stage14FrozenRidge: {
+        stage14Complete: {
           name: 'Έμβλημα Παγωμένης Ράχης',
           description: 'Ολοκλήρωσε την Παγωμένη Ράχη (Στάδιο 14).',
         },
-        stage15CrownCitadel: {
+        stage15Complete: {
           name: 'Έμβλημα Ακρόπολης του Στέμματος',
           description: 'Ολοκλήρωσε την Ακρόπολη του Στέμματος (Στάδιο 15).',
         },
