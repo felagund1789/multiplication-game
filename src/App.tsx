@@ -35,6 +35,14 @@ function App() {
   }, [language])
 
   const handleStartNewGame = () => {
+    const shouldStartNewGame = window.confirm(
+      `${text.menu.newGameConfirmTitle}\n\n${text.menu.newGameConfirmMessage}`,
+    )
+
+    if (!shouldStartNewGame) {
+      return
+    }
+
     startNewGame()
     setScreen('game')
   }

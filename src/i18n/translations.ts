@@ -9,6 +9,8 @@ export interface MenuText {
   actionsAriaLabel: string
   continueSavedGame: string
   startNewGame: string
+  newGameConfirmTitle: string
+  newGameConfirmMessage: string
   practiceMode: string
   collection: string
 }
@@ -104,6 +106,8 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       actionsAriaLabel: 'Main menu actions',
       continueSavedGame: 'Continue Saved Game',
       startNewGame: 'Start New Game',
+      newGameConfirmTitle: 'Start a new game?',
+      newGameConfirmMessage: 'All saved progress and earned badges will be lost.',
       practiceMode: 'Practice Mode',
       collection: 'My Badges',
     },
@@ -327,6 +331,8 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       actionsAriaLabel: 'Ενέργειες κεντρικού μενού',
       continueSavedGame: 'Συνέχεια',
       startNewGame: 'Νέο Παιχνίδι',
+      newGameConfirmTitle: 'Να ξεκινήσει νέο παιχνίδι;',
+      newGameConfirmMessage: 'Όλη η αποθηκευμένη πρόοδος και τα μετάλλια θα χαθούν.',
       practiceMode: 'Εξάσκηση',
       collection: 'Τα Μετάλλιά Μου',
     },
