@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import type { GameText, RewardsText } from '../i18n/translations'
-import type { AnswerFeedback, Badge, BadgeType, Question, StageDefinition } from '../types/game'
+import type { AnswerFeedback, Badge, BadgeType, Question, StageDefinition, StageProgress } from '../types/game'
 import { createQuestionForStage } from '../services/questionService'
 import { AdventureMap } from './AdventureMap'
 import { NotificationPopup } from './NotificationPopup'
@@ -12,6 +12,7 @@ interface GameScreenProps {
   longestStreak: number
   stages: StageDefinition[]
   currentStageIndex: number
+  stageProgress: Record<string, StageProgress>
   text: GameText
   rewardsText: RewardsText
   badgeDefinitions: Record<BadgeType, Badge>
@@ -27,6 +28,7 @@ export function GameScreen({
   longestStreak,
   stages,
   currentStageIndex,
+  stageProgress,
   text,
   rewardsText,
   badgeDefinitions,
@@ -167,6 +169,7 @@ export function GameScreen({
         <AdventureMap
           stages={stages}
           currentStageIndex={currentStageIndex}
+          stageProgress={stageProgress}
           onStartCurrentLocation={handleStartFromMap}
           onReplayLocation={handleReplayLocation}
           text={text}

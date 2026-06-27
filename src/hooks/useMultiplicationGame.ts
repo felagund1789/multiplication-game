@@ -62,6 +62,10 @@ export function useMultiplicationGame() {
     )
     const stageAdvanced = thresholdResult.shouldAdvance
     const stageCompleted = isStageComplete(currentStage, updatedStageProgress)
+    const completedForFirstTime =
+      stageCompleted && currentStageProgress.answered < currentStage.minimumAnswers
+    const shouldReturnToMapAfterCompletion =
+      stageAdvanced || (!canAdvanceToNextStage && completedForFirstTime)
     const stageWasPerfect =
       isCorrect &&
       updatedStageProgress.answered >= currentStage.minimumAnswers &&
@@ -118,7 +122,7 @@ export function useMultiplicationGame() {
       correctAnswerLabel: question.correctAnswerLabel,
       pointsAwarded,
       streakBonus,
-      stageAdvanced,
+      stageAdvanced: shouldReturnToMapAfterCompletion,
       newBadgeIds: newBadges.length > 0
         ? newBadges.map((badgeType) => badgeTypeToId(badgeType))
         : [],

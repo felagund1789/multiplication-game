@@ -1,9 +1,11 @@
 import type { GameText } from '../i18n/translations'
-import type { StageDefinition } from '../types/game'
+import type { StageDefinition, StageProgress } from '../types/game'
+import { isStageComplete } from '../services/progressionService'
 
 interface AdventureMapProps {
   stages: StageDefinition[]
   currentStageIndex: number
+  stageProgress: Record<string, StageProgress>
   onStartCurrentLocation: () => void
   onReplayLocation: (stageIndex: number) => void
   text: Pick<
@@ -22,7 +24,16 @@ interface AdventureMapProps {
 
 const LOCATION_ICONS = ['🌲', '🏕️', '🏞️', '🏜️', '🧩', '🗿', '🌋', '🏔️', '👑'] as const
 
-function stageStatus(index: number, currentStageIndex: number) {
+function stageStatus(
+  stage: StageDefinition,
+  index: number,
+  currentStageIndex: number,
+  stageProgress: Record<string, StageProgress>,
+) {
+  if (isStageComplete(stage, stageProgress[stage.id])) {
+    return 'done'
+  }
+
   if (index < currentStageIndex) {
     return 'done'
   }
@@ -34,7 +45,7 @@ function stageStatus(index: number, currentStageIndex: number) {
   return 'locked'
 }
 
-export function AdventureMap({ stages, currentStageIndex, onStartCurrentLocation, onReplayLocation, text }: AdventureMapProps) {
+export function AdventureMap({ stages, currentStageIndex, stageProgress, onStartCurrentLocation, onReplayLocation, text }: AdventureMapProps) {
   return (
     <section className="panel adventure-map" aria-label={text.adventureMapTitle}>
       <div className="adventure-map-header">
@@ -54,7 +65,7 @@ export function AdventureMap({ stages, currentStageIndex, onStartCurrentLocation
           const row = Math.floor(index / 3)
           const inRow = index % 3
           const column = row % 2 === 0 ? inRow + 1 : 3 - inRow
-          const status = stageStatus(index, currentStageIndex)
+          const status = stageStatus(stage, index, currentStageIndex, stageProgress)
           const canStart = status === 'active'
           const canReplay = status === 'done'
           const icon = LOCATION_ICONS[index] ?? '📍'

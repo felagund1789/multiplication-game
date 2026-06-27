@@ -81,6 +81,7 @@ function App() {
           longestStreak={progress.longestStreak}
           stages={stages}
           currentStageIndex={progress.currentStageIndex}
+          stageProgress={progress.stageProgress}
           text={text.game}
           rewardsText={text.rewards}
           badgeDefinitions={badgeDefinitions}
