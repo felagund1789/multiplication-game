@@ -17,6 +17,7 @@ interface AdventureMapProps {
     | 'currentLocation'
     | 'lockedLocation'
     | 'startLocationButton'
+    | 'continueLocationButton'
     | 'replayLocationButton'
     | 'journeyLocations'
   >
@@ -68,6 +69,7 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
           const status = stageStatus(stage, index, currentStageIndex, stageProgress)
           const canStart = status === 'active'
           const canReplay = status === 'done'
+          const hasAnyAnswered = (stageProgress[stage.id]?.answered ?? 0) > 0
           const icon = LOCATION_ICONS[index] ?? '📍'
           const locationText = text.journeyLocations[stage.id]
           const locationTitle = locationText?.title ?? stage.title
@@ -94,7 +96,7 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
                   className="small-btn map-start-btn"
                   onClick={onStartCurrentLocation}
                 >
-                  {text.startLocationButton}
+                  {hasAnyAnswered ? text.continueLocationButton : text.startLocationButton}
                 </button>
               )}
               {canReplay && (

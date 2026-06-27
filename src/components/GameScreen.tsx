@@ -50,6 +50,11 @@ export function GameScreen({
   const hasSubmitted = feedback !== null
   const isReplayMode = replayStageIndex !== null
   const activeQuestion = (isReplayMode && replayQuestion) ? replayQuestion : question
+  const activeStageIndex = isReplayMode ? replayStageIndex! : currentStageIndex
+  const activeStage = stages[activeStageIndex]
+  const activeStageProgress = stageProgress[activeStage.id] ?? { answered: 0, correct: 0 }
+  const activeJourneyLocation = text.journeyLocations[activeStage.id]
+  const activeStageName = activeJourneyLocation?.title ?? activeStage.title
 
   useEffect(() => {
     setSelectedAnswer(null)
@@ -184,6 +189,13 @@ export function GameScreen({
               </button>
             </div>
           )}
+          <div className="stage-goal text-size-md">
+            <p>
+              {text.stageLabel}: {activeStageName} - {" "}
+              {text.answeredLabel}: {activeStageProgress.answered} - {" "}
+              {text.correctLabel}: {activeStageProgress.correct}
+            </p>
+          </div>
           <h2>{activeQuestion.prompt}</h2>
 
           <div className="answers-grid">

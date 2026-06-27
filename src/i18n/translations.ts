@@ -28,9 +28,13 @@ export interface GameText {
   currentLocation: string
   lockedLocation: string
   startLocationButton: string
+  continueLocationButton: string
   replayLocationButton: string
   replayModeLabel: string
   returningToMap: string
+  stageLabel: string
+  answeredLabel: string
+  correctLabel: string
   journeyLocations: Record<
     string,
     {
@@ -118,9 +122,13 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       currentLocation: 'Current',
       lockedLocation: 'Locked',
       startLocationButton: 'Start Challenge',
+      continueLocationButton: 'Continue',
       replayLocationButton: 'Replay',
       replayModeLabel: 'Replay mode — this won\'t affect your progress.',
       returningToMap: 'Location completed. Returning to the map...',
+      stageLabel: 'Stage',
+      answeredLabel: 'Answered',
+      correctLabel: 'Correct',
       journeyLocations: {
         'stage-1-standard': {
           title: 'Whispering Forest',
@@ -281,9 +289,13 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       currentLocation: 'Τρέχον',
       lockedLocation: 'Κλειδωμένο',
       startLocationButton: 'Έναρξη Πρόκλησης',
+      continueLocationButton: 'Συνέχεια',
       replayLocationButton: 'Επανάληψη',
       replayModeLabel: 'Λειτουργία επανάληψης — δεν επηρεάζει την πρόοδό σου.',
       returningToMap: 'Η τοποθεσία ολοκληρώθηκε. Επιστροφή στον χάρτη...',
+      stageLabel: 'Στάδιο',
+      answeredLabel: 'Απαντημένες',
+      correctLabel: 'Σωστές',
       journeyLocations: {
         'stage-1-standard': {
           title: 'Ψιθυριστό Δάσος',
