@@ -23,7 +23,7 @@ interface AdventureMapProps {
   >
 }
 
-const LOCATION_ICONS = ['🌱', '🔟', '✋', '🌊', '🪨', '🌿', '⚓', '🏔️', '🏰', '🌅', '🧩', '🌈', '🌉', '🌋', '🧊', '👑'] as const
+const LOCATION_ICONS = ['🌱', '🔟', '✋', '🌊', '🌿', '🏰', '🪨', '⚓', '🏔️', '🌅', '🧩', '🌈', '🌉', '🌋', '🧊', '👑'] as const
 
 function stageStatus(
   stage: StageDefinition,
