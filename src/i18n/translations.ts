@@ -130,41 +130,65 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       answeredLabel: 'Answered',
       correctLabel: 'Correct',
       journeyLocations: {
-        'stage-1-standard': {
-          title: 'Whispering Forest',
-          subtitle: 'Warm up with tables 1, 10 and 5.',
+        'stage-1-table': {
+          title: 'Sprout Field',
+          subtitle: 'Single-table sprint with table 1.',
         },
-        'stage-2-standard': {
-          title: 'Twin Peaks Camp',
-          subtitle: 'Climb through tables 2, 4 and 8.',
+        'stage-2-table': {
+          title: 'Tenfold Terrace',
+          subtitle: 'Single-table sprint with table 10.',
         },
-        'stage-3-standard': {
-          title: 'River of Sparks',
-          subtitle: 'Navigate the 3 and 6 table currents.',
+        'stage-3-table': {
+          title: 'Fiveforge Trail',
+          subtitle: 'Single-table sprint with table 5.',
         },
-        'stage-4-standard': {
-          title: 'Sunset Dunes',
-          subtitle: 'Master the 9 and 7 table sands.',
+        'stage-4-table': {
+          title: 'Twin Current',
+          subtitle: 'Single-table sprint with table 2.',
         },
-        'stage-5-missing': {
+        'stage-5-table': {
+          title: 'Triad Cliffs',
+          subtitle: 'Single-table sprint with table 3.',
+        },
+        'stage-6-table': {
+          title: 'Quadrant Grove',
+          subtitle: 'Single-table sprint with table 4.',
+        },
+        'stage-7-table': {
+          title: 'Hexa Harbor',
+          subtitle: 'Single-table sprint with table 6.',
+        },
+        'stage-8-table': {
+          title: 'Seventh Summit',
+          subtitle: 'Single-table sprint with table 7.',
+        },
+        'stage-9-table': {
+          title: 'Octa Outpost',
+          subtitle: 'Single-table sprint with table 8.',
+        },
+        'stage-10-table': {
+          title: 'Ninth Horizon',
+          subtitle: 'Single-table sprint with table 9.',
+        },
+        'stage-11-mixed-foundations': {
           title: 'Puzzle Gate',
-          subtitle: 'Missing-number riddles for 1, 10 and 5.',
+          subtitle: 'Mixed puzzle formats for 1, 10 and 5.',
         },
-        'stage-6-missing': {
+        'stage-12-mixed-builders': {
           title: 'Crystal Bridge',
-          subtitle: 'Missing-number trials for 2, 4 and 8.',
+          subtitle: 'Mixed puzzle formats for 2, 4 and 8.',
         },
-        'stage-7-missing': {
+        'stage-13-mixed-duos': {
           title: 'Volcano Trials',
-          subtitle: 'Missing-number heat for 3 and 6.',
+          subtitle: 'Mixed puzzle formats for 3 and 6.',
         },
-        'stage-8-missing': {
+        'stage-14-mixed-masters': {
           title: 'Frozen Ridge',
-          subtitle: 'Missing-number winds for 9 and 7.',
+          subtitle: 'Mixed puzzle formats for 9 and 7.',
         },
-        'stage-9-all-mixed': {
+        'stage-15-grand-final': {
           title: 'Crown Citadel',
-          subtitle: 'All tables, all formats, final journey.',
+          subtitle: 'Final mixed challenge for 2, 3, 4, 6, 7, 8 and 9.',
         },
       },
       submitAnswer: 'Submit Answer',
@@ -202,40 +226,64 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           description: 'Complete any stage.',
         },
         stage1WhisperingForest: {
-          name: 'Whispering Trailblazer',
-          description: 'Complete Whispering Forest.',
+          name: 'Sprout Field Emblem',
+          description: 'Complete Sprout Field (Stage 1).',
         },
         stage2TwinPeaksCamp: {
-          name: 'Twin Peaks Pathfinder',
-          description: 'Complete Twin Peaks Camp.',
+          name: 'Tenfold Terrace Emblem',
+          description: 'Complete Tenfold Terrace (Stage 2).',
         },
         stage3RiverOfSparks: {
-          name: 'Spark Surfer',
-          description: 'Complete River of Sparks.',
+          name: 'Fiveforge Trail Emblem',
+          description: 'Complete Fiveforge Trail (Stage 3).',
         },
         stage4SunsetDunes: {
-          name: 'Dune Navigator',
-          description: 'Complete Sunset Dunes.',
+          name: 'Twin Current Emblem',
+          description: 'Complete Twin Current (Stage 4).',
         },
         stage5PuzzleGate: {
-          name: 'Gate Solver',
-          description: 'Complete Puzzle Gate.',
+          name: 'Triad Cliffs Emblem',
+          description: 'Complete Triad Cliffs (Stage 5).',
         },
         stage6CrystalBridge: {
-          name: 'Bridge Keeper',
-          description: 'Complete Crystal Bridge.',
+          name: 'Quadrant Grove Emblem',
+          description: 'Complete Quadrant Grove (Stage 6).',
         },
         stage7VolcanoTrials: {
-          name: 'Volcano Victor',
-          description: 'Complete Volcano Trials.',
+          name: 'Hexa Harbor Emblem',
+          description: 'Complete Hexa Harbor (Stage 7).',
         },
         stage8FrozenRidge: {
-          name: 'Ridge Conqueror',
-          description: 'Complete Frozen Ridge.',
+          name: 'Seventh Summit Emblem',
+          description: 'Complete Seventh Summit (Stage 8).',
         },
         stage9CrownCitadel: {
-          name: 'Crown Champion',
-          description: 'Complete Crown Citadel.',
+          name: 'Octa Outpost Emblem',
+          description: 'Complete Octa Outpost (Stage 9).',
+        },
+        stage10NinthHorizon: {
+          name: 'Ninth Horizon Emblem',
+          description: 'Complete Ninth Horizon (Stage 10).',
+        },
+        stage11PuzzleGate: {
+          name: 'Puzzle Gate Emblem',
+          description: 'Complete Puzzle Gate (Stage 11).',
+        },
+        stage12CrystalBridge: {
+          name: 'Crystal Bridge Emblem',
+          description: 'Complete Crystal Bridge (Stage 12).',
+        },
+        stage13VolcanoTrials: {
+          name: 'Volcano Trials Emblem',
+          description: 'Complete Volcano Trials (Stage 13).',
+        },
+        stage14FrozenRidge: {
+          name: 'Frozen Ridge Emblem',
+          description: 'Complete Frozen Ridge (Stage 14).',
+        },
+        stage15CrownCitadel: {
+          name: 'Crown Citadel Emblem',
+          description: 'Complete Crown Citadel (Stage 15).',
         },
         streak5: {
           name: 'Hot Streak',
@@ -297,41 +345,65 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       answeredLabel: 'Απαντημένες',
       correctLabel: 'Σωστές',
       journeyLocations: {
-        'stage-1-standard': {
-          title: 'Ψιθυριστό Δάσος',
-          subtitle: 'Ξεκίνα με τις προπαίδειες 1, 10 και 5.',
+        'stage-1-table': {
+          title: 'Πεδίο Βλαστών',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 1.',
         },
-        'stage-2-standard': {
-          title: 'Κατασκήνωση Δίδυμων Κορυφών',
-          subtitle: 'Ανέβα με τις προπαίδειες 2, 4 και 8.',
+        'stage-2-table': {
+          title: 'Δέκα Αναβαθμίδες',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 10.',
         },
-        'stage-3-standard': {
-          title: 'Ποτάμι Σπίθας',
-          subtitle: 'Διέσχισε τα ρεύματα των 3 και 6.',
+        'stage-3-table': {
+          title: 'Πέντε Μονοπάτια',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 5.',
         },
-        'stage-4-standard': {
-          title: 'Αμμόλοφοι Ηλιοβασιλέματος',
-          subtitle: 'Κατάκτησε τις προπαίδειες 9 και 7.',
+        'stage-4-table': {
+          title: 'Δίδυμα Ρεύματα',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 2.',
         },
-        'stage-5-missing': {
+        'stage-5-table': {
+          title: 'Τριπλά Βράχια',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 3.',
+        },
+        'stage-6-table': {
+          title: 'Τέταρτο Άλσος',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 4.',
+        },
+        'stage-7-table': {
+          title: 'Έξαπλό Λιμάνι',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 6.',
+        },
+        'stage-8-table': {
+          title: 'Επτά Κορυφές',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 7.',
+        },
+        'stage-9-table': {
+          title: 'Οκτάγωνο Φρούριο',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 8.',
+        },
+        'stage-10-table': {
+          title: 'Ένατος Ορίζοντας',
+          subtitle: 'Πρόκληση μίας προπαίδειας με το 9.',
+        },
+        'stage-11-mixed-foundations': {
           title: 'Πύλη Γρίφων',
-          subtitle: 'Γρίφοι με κενά για 1, 10 και 5.',
+          subtitle: 'Μικτές μορφές ερωτήσεων για 1, 10 και 5.',
         },
-        'stage-6-missing': {
+        'stage-12-mixed-builders': {
           title: 'Κρυστάλλινη Γέφυρα',
-          subtitle: 'Δοκιμασίες με κενά για 2, 4 και 8.',
+          subtitle: 'Μικτές μορφές ερωτήσεων για 2, 4 και 8.',
         },
-        'stage-7-missing': {
+        'stage-13-mixed-duos': {
           title: 'Δοκιμασίες Ηφαιστείου',
-          subtitle: 'Καυτές ερωτήσεις με κενά για 3 και 6.',
+          subtitle: 'Μικτές μορφές ερωτήσεων για 3 και 6.',
         },
-        'stage-8-missing': {
+        'stage-14-mixed-masters': {
           title: 'Παγωμένη Ράχη',
-          subtitle: 'Παγωμένοι γρίφοι με κενά για 9 και 7.',
+          subtitle: 'Μικτές μορφές ερωτήσεων για 9 και 7.',
         },
-        'stage-9-all-mixed': {
+        'stage-15-grand-final': {
           title: 'Ακρόπολη του Στέμματος',
-          subtitle: 'Όλες οι προπαίδειες και μορφές, η τελική διαδρομή.',
+          subtitle: 'Τελική μικτή πρόκληση για 2, 3, 4, 6, 7, 8 και 9.',
         },
       },
       submitAnswer: 'Υποβολή Απάντησης',
@@ -370,40 +442,64 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           description: 'Ολοκλήρωσε οποιοδήποτε στάδιο.',
         },
         stage1WhisperingForest: {
-          name: 'Πρωτοπόρος του Ψιθυριστού Δάσους',
-          description: 'Ολοκλήρωσε το Ψιθυριστό Δάσος.',
+          name: 'Έμβλημα Πεδίου Βλαστών',
+          description: 'Ολοκλήρωσε το Πεδίο Βλαστών (Στάδιο 1).',
         },
         stage2TwinPeaksCamp: {
-          name: 'Οδηγός των Δίδυμων Κορυφών',
-          description: 'Ολοκλήρωσε την Κατασκήνωση Δίδυμων Κορυφών.',
+          name: 'Έμβλημα Δέκα Αναβαθμίδων',
+          description: 'Ολοκλήρωσε τις Δέκα Αναβαθμίδες (Στάδιο 2).',
         },
         stage3RiverOfSparks: {
-          name: 'Ταξιδιώτης της Σπίθας',
-          description: 'Ολοκλήρωσε το Ποτάμι Σπίθας.',
+          name: 'Έμβλημα Πέντε Μονοπατιών',
+          description: 'Ολοκλήρωσε τα Πέντε Μονοπάτια (Στάδιο 3).',
         },
         stage4SunsetDunes: {
-          name: 'Κατακτητής των Αμμόλοφων',
-          description: 'Ολοκλήρωσε τους Αμμόλοφους Ηλιοβασιλέματος.',
+          name: 'Έμβλημα Δίδυμων Ρευμάτων',
+          description: 'Ολοκλήρωσε τα Δίδυμα Ρεύματα (Στάδιο 4).',
         },
         stage5PuzzleGate: {
-          name: 'Λύτης της Πύλης Γρίφων',
-          description: 'Ολοκλήρωσε την Πύλη Γρίφων.',
+          name: 'Έμβλημα Τριπλών Βράχων',
+          description: 'Ολοκλήρωσε τα Τριπλά Βράχια (Στάδιο 5).',
         },
         stage6CrystalBridge: {
-          name: 'Φύλακας της Κρυστάλλινης Γέφυρας',
-          description: 'Ολοκλήρωσε την Κρυστάλλινη Γέφυρα.',
+          name: 'Έμβλημα Τέταρτου Άλσους',
+          description: 'Ολοκλήρωσε το Τέταρτο Άλσος (Στάδιο 6).',
         },
         stage7VolcanoTrials: {
-          name: 'Νικητής του Ηφαιστείου',
-          description: 'Ολοκλήρωσε τις Δοκιμασίες Ηφαιστείου.',
+          name: 'Έμβλημα Εξαπλού Λιμανιού',
+          description: 'Ολοκλήρωσε το Εξαπλό Λιμάνι (Στάδιο 7).',
         },
         stage8FrozenRidge: {
-          name: 'Κατακτητής της Παγωμένης Ράχης',
-          description: 'Ολοκλήρωσε την Παγωμένη Ράχη.',
+          name: 'Έμβλημα Επτά Κορυφών',
+          description: 'Ολοκλήρωσε τις Επτά Κορυφές (Στάδιο 8).',
         },
         stage9CrownCitadel: {
-          name: 'Πρωταθλητής του Στέμματος',
-          description: 'Ολοκλήρωσε την Ακρόπολη του Στέμματος.',
+          name: 'Έμβλημα Οκτάγωνου Φρουρίου',
+          description: 'Ολοκλήρωσε το Οκτάγωνο Φρούριο (Στάδιο 9).',
+        },
+        stage10NinthHorizon: {
+          name: 'Έμβλημα Ένατου Ορίζοντα',
+          description: 'Ολοκλήρωσε τον Ένατο Ορίζοντα (Στάδιο 10).',
+        },
+        stage11PuzzleGate: {
+          name: 'Έμβλημα Πύλης Γρίφων',
+          description: 'Ολοκλήρωσε την Πύλη Γρίφων (Στάδιο 11).',
+        },
+        stage12CrystalBridge: {
+          name: 'Έμβλημα Κρυστάλλινης Γέφυρας',
+          description: 'Ολοκλήρωσε την Κρυστάλλινη Γέφυρα (Στάδιο 12).',
+        },
+        stage13VolcanoTrials: {
+          name: 'Έμβλημα Δοκιμασιών Ηφαιστείου',
+          description: 'Ολοκλήρωσε τις Δοκιμασίες Ηφαιστείου (Στάδιο 13).',
+        },
+        stage14FrozenRidge: {
+          name: 'Έμβλημα Παγωμένης Ράχης',
+          description: 'Ολοκλήρωσε την Παγωμένη Ράχη (Στάδιο 14).',
+        },
+        stage15CrownCitadel: {
+          name: 'Έμβλημα Ακρόπολης του Στέμματος',
+          description: 'Ολοκλήρωσε την Ακρόπολη του Στέμματος (Στάδιο 15).',
         },
         streak5: {
           name: '5-Σερί',

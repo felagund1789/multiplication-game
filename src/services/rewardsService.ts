@@ -11,37 +11,37 @@ const BADGE_BASES: Record<BadgeType, Pick<Badge, 'id' | 'type' | 'emoji'>> = {
   stage1WhisperingForest: {
     id: 'stage-1-forest-badge',
     type: 'stage1WhisperingForest',
-    emoji: '🌲',
+    emoji: '🌱',
   },
   stage2TwinPeaksCamp: {
     id: 'stage-2-peaks-badge',
     type: 'stage2TwinPeaksCamp',
-    emoji: '🏕️',
+    emoji: '🔟',
   },
   stage3RiverOfSparks: {
     id: 'stage-3-river-badge',
     type: 'stage3RiverOfSparks',
-    emoji: '🏞️',
+    emoji: '✋',
   },
   stage4SunsetDunes: {
     id: 'stage-4-dunes-badge',
     type: 'stage4SunsetDunes',
-    emoji: '🏜️',
+    emoji: '🌊',
   },
   stage5PuzzleGate: {
     id: 'stage-5-puzzle-badge',
     type: 'stage5PuzzleGate',
-    emoji: '🧩',
+    emoji: '🪨',
   },
   stage6CrystalBridge: {
     id: 'stage-6-crystal-badge',
     type: 'stage6CrystalBridge',
-    emoji: '🗿',
+    emoji: '🌿',
   },
   stage7VolcanoTrials: {
     id: 'stage-7-volcano-badge',
     type: 'stage7VolcanoTrials',
-    emoji: '🌋',
+    emoji: '⚓',
   },
   stage8FrozenRidge: {
     id: 'stage-8-frozen-badge',
@@ -51,6 +51,36 @@ const BADGE_BASES: Record<BadgeType, Pick<Badge, 'id' | 'type' | 'emoji'>> = {
   stage9CrownCitadel: {
     id: 'stage-9-crown-badge',
     type: 'stage9CrownCitadel',
+    emoji: '🏰',
+  },
+  stage10NinthHorizon: {
+    id: 'stage-10-horizon-badge',
+    type: 'stage10NinthHorizon',
+    emoji: '🌅',
+  },
+  stage11PuzzleGate: {
+    id: 'stage-11-puzzle-badge',
+    type: 'stage11PuzzleGate',
+    emoji: '🧩',
+  },
+  stage12CrystalBridge: {
+    id: 'stage-12-crystal-badge',
+    type: 'stage12CrystalBridge',
+    emoji: '🌉',
+  },
+  stage13VolcanoTrials: {
+    id: 'stage-13-volcano-badge',
+    type: 'stage13VolcanoTrials',
+    emoji: '🌋',
+  },
+  stage14FrozenRidge: {
+    id: 'stage-14-frozen-badge',
+    type: 'stage14FrozenRidge',
+    emoji: '🧊',
+  },
+  stage15CrownCitadel: {
+    id: 'stage-15-crown-badge',
+    type: 'stage15CrownCitadel',
     emoji: '👑',
   },
   streak5: {
@@ -81,15 +111,21 @@ const BADGE_BASES: Record<BadgeType, Pick<Badge, 'id' | 'type' | 'emoji'>> = {
 }
 
 const STAGE_COMPLETION_BADGE_BY_STAGE_ID: Record<string, BadgeType> = {
-  'stage-1-standard': 'stage1WhisperingForest',
-  'stage-2-standard': 'stage2TwinPeaksCamp',
-  'stage-3-standard': 'stage3RiverOfSparks',
-  'stage-4-standard': 'stage4SunsetDunes',
-  'stage-5-missing': 'stage5PuzzleGate',
-  'stage-6-missing': 'stage6CrystalBridge',
-  'stage-7-missing': 'stage7VolcanoTrials',
-  'stage-8-missing': 'stage8FrozenRidge',
-  'stage-9-all-mixed': 'stage9CrownCitadel',
+  'stage-1-table': 'stage1WhisperingForest',
+  'stage-2-table': 'stage2TwinPeaksCamp',
+  'stage-3-table': 'stage3RiverOfSparks',
+  'stage-4-table': 'stage4SunsetDunes',
+  'stage-5-table': 'stage5PuzzleGate',
+  'stage-6-table': 'stage6CrystalBridge',
+  'stage-7-table': 'stage7VolcanoTrials',
+  'stage-8-table': 'stage8FrozenRidge',
+  'stage-9-table': 'stage9CrownCitadel',
+  'stage-10-table': 'stage10NinthHorizon',
+  'stage-11-mixed-foundations': 'stage11PuzzleGate',
+  'stage-12-mixed-builders': 'stage12CrystalBridge',
+  'stage-13-mixed-duos': 'stage13VolcanoTrials',
+  'stage-14-mixed-masters': 'stage14FrozenRidge',
+  'stage-15-grand-final': 'stage15CrownCitadel',
 }
 
 export function badgeTypeToId(type: BadgeType): string {
@@ -167,6 +203,36 @@ export function buildBadgeDefinitions(rewardsText: RewardsText): Record<BadgeTyp
       ...BADGE_BASES.stage9CrownCitadel,
       name: rewardsText.badges.stage9CrownCitadel.name,
       description: rewardsText.badges.stage9CrownCitadel.description,
+    },
+    stage10NinthHorizon: {
+      ...BADGE_BASES.stage10NinthHorizon,
+      name: rewardsText.badges.stage10NinthHorizon.name,
+      description: rewardsText.badges.stage10NinthHorizon.description,
+    },
+    stage11PuzzleGate: {
+      ...BADGE_BASES.stage11PuzzleGate,
+      name: rewardsText.badges.stage11PuzzleGate.name,
+      description: rewardsText.badges.stage11PuzzleGate.description,
+    },
+    stage12CrystalBridge: {
+      ...BADGE_BASES.stage12CrystalBridge,
+      name: rewardsText.badges.stage12CrystalBridge.name,
+      description: rewardsText.badges.stage12CrystalBridge.description,
+    },
+    stage13VolcanoTrials: {
+      ...BADGE_BASES.stage13VolcanoTrials,
+      name: rewardsText.badges.stage13VolcanoTrials.name,
+      description: rewardsText.badges.stage13VolcanoTrials.description,
+    },
+    stage14FrozenRidge: {
+      ...BADGE_BASES.stage14FrozenRidge,
+      name: rewardsText.badges.stage14FrozenRidge.name,
+      description: rewardsText.badges.stage14FrozenRidge.description,
+    },
+    stage15CrownCitadel: {
+      ...BADGE_BASES.stage15CrownCitadel,
+      name: rewardsText.badges.stage15CrownCitadel.name,
+      description: rewardsText.badges.stage15CrownCitadel.description,
     },
     allStagesComplete: {
       ...BADGE_BASES.allStagesComplete,

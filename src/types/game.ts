@@ -65,6 +65,12 @@ export type BadgeType =
   | 'stage7VolcanoTrials'
   | 'stage8FrozenRidge'
   | 'stage9CrownCitadel'
+  | 'stage10NinthHorizon'
+  | 'stage11PuzzleGate'
+  | 'stage12CrystalBridge'
+  | 'stage13VolcanoTrials'
+  | 'stage14FrozenRidge'
+  | 'stage15CrownCitadel'
   | 'allStagesComplete'
 
 export interface Badge {

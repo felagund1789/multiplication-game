@@ -42,12 +42,12 @@ describe('useMultiplicationGame final-stage completion', () => {
 
   it('marks final stage as complete once threshold is met', () => {
     const finalStagePreCompleteState = {
-      currentStageIndex: 8,
+      currentStageIndex: 14,
       score: 0,
       currentStreak: 0,
       longestStreak: 0,
       stageProgress: {
-        'stage-9-all-mixed': { answered: 9, correct: 7 },
+        'stage-15-grand-final': { answered: 9, correct: 7 },
       },
       collectedBadges: [],
     }
@@ -76,7 +76,7 @@ describe('useMultiplicationGame final-stage completion', () => {
     expect(feedback!.stageAdvanced).toBe(true)
 
     const updated = apiRef!
-    expect(updated.progress.currentStageIndex).toBe(8)
-    expect(updated.progress.stageProgress['stage-9-all-mixed']).toEqual({ answered: 10, correct: 8 })
+    expect(updated.progress.currentStageIndex).toBe(14)
+    expect(updated.progress.stageProgress['stage-15-grand-final']).toEqual({ answered: 10, correct: 8 })
   })
 })

@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { determineBadgesToAward } from './rewardsService'
+import { STAGES } from '../data/stages'
 
 describe('determineBadgesToAward', () => {
   it('should award stageComplete badge when stage is just completed', () => {
@@ -7,7 +8,7 @@ describe('determineBadgesToAward', () => {
       [],
       0,
       true, // stageJustCompleted
-      'stage-1-standard',
+      'stage-1-table',
       false,
       0,
     )
@@ -19,12 +20,25 @@ describe('determineBadgesToAward', () => {
       [],
       0,
       true,
-      'stage-3-standard',
+      'stage-3-table',
       false,
       0,
     )
 
     expect(badges).toContain('stage3RiverOfSparks')
+  })
+
+  it('should award the final-stage specific badge for stage 15 completion', () => {
+    const badges = determineBadgesToAward(
+      [],
+      0,
+      true,
+      'stage-15-grand-final',
+      false,
+      0,
+    )
+
+    expect(badges).toContain('stage15CrownCitadel')
   })
 
   it('should award streak badges for reaching streak milestones', () => {
@@ -43,21 +57,21 @@ describe('determineBadgesToAward', () => {
       [],
       0,
       true, // stageJustCompleted
-      'stage-2-standard',
+      'stage-2-table',
       true, // stageWasPerfect
       1,
     )
     expect(badges).toContain('perfectStage')
   })
 
-  it('should award allStagesComplete badge when all 9 stages are completed', () => {
+  it('should award allStagesComplete badge when all stages are completed', () => {
     const badges = determineBadgesToAward(
       [],
       0,
       false,
       null,
       false,
-      9, // totalStagesCompleted = STAGES.length
+      STAGES.length,
     )
     expect(badges).toContain('allStagesComplete')
   })
@@ -67,7 +81,7 @@ describe('determineBadgesToAward', () => {
       ['stage-complete'],
       0,
       true,
-      'stage-1-standard',
+      'stage-1-table',
       false,
       1,
     )
@@ -79,7 +93,7 @@ describe('determineBadgesToAward', () => {
       [],
       5, // reaches streak5
       true, // stageJustCompleted
-      'stage-1-standard',
+      'stage-1-table',
       true, // stageWasPerfect
       1,
     )
