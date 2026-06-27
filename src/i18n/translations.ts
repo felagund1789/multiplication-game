@@ -130,63 +130,67 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       answeredLabel: 'Answered',
       correctLabel: 'Correct',
       journeyLocations: {
-        'stage-1-table': {
+        'stage-1': {
           title: 'Sprout Field',
           subtitle: 'Single-table sprint with table 1.',
         },
-        'stage-2-table': {
+        'stage-2': {
           title: 'Tenfold Terrace',
           subtitle: 'Single-table sprint with table 10.',
         },
-        'stage-3-table': {
+        'stage-3': {
           title: 'Fiveforge Trail',
           subtitle: 'Single-table sprint with table 5.',
         },
-        'stage-4-table': {
+        'stage-4': {
           title: 'Twin Current',
           subtitle: 'Single-table sprint with table 2.',
         },
-        'stage-5-table': {
+        'stage-5': {
           title: 'Quadrant Grove',
           subtitle: 'Single-table sprint with table 4.',
         },
-        'stage-6-table': {
+        'stage-6': {
           title: 'Octa Outpost',
           subtitle: 'Single-table sprint with table 8.',
         },
-        'stage-7-table': {
+        'stage-7': {
           title: 'Triad Cliffs',
           subtitle: 'Single-table sprint with table 3.',
         },
-        'stage-8-table': {
+        'stage-8': {
           title: 'Hexa Harbor',
           subtitle: 'Single-table sprint with table 6.',
         },
-        'stage-9-table': {
+        'stage-9': {
           title: 'Seventh Summit',
           subtitle: 'Single-table sprint with table 7.',
         },
-        'stage-10-table': {
+        'stage-10': {
           title: 'Ninth Horizon',
           subtitle: 'Single-table sprint with table 9.',
         },
-        'stage-11-mixed-foundations': {
+        'stage-11': {
           title: 'Puzzle Gate',
-          subtitle: 'Mixed puzzle formats for 1, 10 and 5.',
+          subtitle: 'Mixed puzzle formats for 1 and 10.',
         },
-        'stage-12-mixed-builders': {
+        'stage-12': {
+          title: 'Sapphire Waterfalls',
+          subtitle: 'Mixed puzzle formats for 5 and 2.',
+        },
+        'stage-13': {
           title: 'Crystal Bridge',
-          subtitle: 'Mixed puzzle formats for 2, 4 and 8.',
+          subtitle: 'Mixed puzzle formats for 4 and 8.',
         },
-        'stage-13-mixed-duos': {
+        'stage-14': {
           title: 'Volcano Trials',
           subtitle: 'Mixed puzzle formats for 3 and 6.',
         },
-        'stage-14-mixed-masters': {
+        'stage-15': {
           title: 'Frozen Ridge',
           subtitle: 'Mixed puzzle formats for 9 and 7.',
         },
-        'stage-15-grand-final': {
+        'stage-16': {
           title: 'Crown Citadel',
           subtitle: 'Final mixed challenge for 2, 3, 4, 6, 7, 8 and 9.',
         },
@@ -270,20 +274,24 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           description: 'Complete Puzzle Gate (Stage 11).',
         },
         stage12Complete: {
-          name: 'Crystal Bridge Emblem',
-          description: 'Complete Crystal Bridge (Stage 12).',
+          name: 'Sapphire Waterfalls Emblem',
+          description: 'Complete Sapphire Waterfalls (Stage 12).',
         },
         stage13Complete: {
-          name: 'Volcano Trials Emblem',
-          description: 'Complete Volcano Trials (Stage 13).',
+          name: 'Crystal Bridge Emblem',
+          description: 'Complete Crystal Bridge (Stage 13).',
         },
         stage14Complete: {
-          name: 'Frozen Ridge Emblem',
-          description: 'Complete Frozen Ridge (Stage 14).',
+          name: 'Volcano Trials Emblem',
+          description: 'Complete Volcano Trials (Stage 14).',
         },
         stage15Complete: {
+          name: 'Frozen Ridge Emblem',
+          description: 'Complete Frozen Ridge (Stage 15).',
+        },
+        stage16Complete: {
           name: 'Crown Citadel Emblem',
-          description: 'Complete Crown Citadel (Stage 15).',
+          description: 'Complete Crown Citadel (Stage 16).',
         },
         streak5: {
           name: 'Hot Streak',
@@ -345,63 +353,67 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       answeredLabel: 'Απαντημένες',
       correctLabel: 'Σωστές',
       journeyLocations: {
-        'stage-1-table': {
+        'stage-1': {
           title: 'Πεδίο Βλαστών',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 1.',
         },
-        'stage-2-table': {
+        'stage-2': {
           title: 'Δέκα Αναβαθμίδες',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 10.',
         },
-        'stage-3-table': {
+        'stage-3': {
           title: 'Πέντε Μονοπάτια',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 5.',
         },
-        'stage-4-table': {
+        'stage-4': {
           title: 'Δίδυμα Ρεύματα',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 2.',
         },
-        'stage-5-table': {
+        'stage-5': {
           title: 'Τέταρτο Άλσος',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 4.',
         },
-        'stage-6-table': {
+        'stage-6': {
           title: 'Οκτάγωνο Φρούριο',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 8.',
         },
-        'stage-7-table': {
+        'stage-7': {
           title: 'Τριπλά Βράχια',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 3.',
         },
-        'stage-8-table': {
+        'stage-8': {
           title: 'Έξαπλό Λιμάνι',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 6.',
         },
-        'stage-9-table': {
+        'stage-9': {
           title: 'Επτά Κορυφές',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 7.',
         },
-        'stage-10-table': {
+        'stage-10': {
           title: 'Ένατος Ορίζοντας',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 9.',
         },
-        'stage-11-mixed-foundations': {
+        'stage-11': {
           title: 'Πύλη Γρίφων',
-          subtitle: 'Μικτές μορφές ερωτήσεων για 1, 10 και 5.',
+          subtitle: 'Μικτές μορφές ερωτήσεων για 1 και 10.',
         },
-        'stage-12-mixed-builders': {
+        'stage-12': {
+          title: 'Ζαφειρένιοι Καταρράκτες',
+          subtitle: 'Μικτές μορφές ερωτήσεων για 5 και 2.',
+        },
+        'stage-13': {
           title: 'Κρυστάλλινη Γέφυρα',
-          subtitle: 'Μικτές μορφές ερωτήσεων για 2, 4 και 8.',
+          subtitle: 'Μικτές μορφές ερωτήσεων για 4 και 8.',
         },
-        'stage-13-mixed-duos': {
+        'stage-14': {
           title: 'Δοκιμασίες Ηφαιστείου',
           subtitle: 'Μικτές μορφές ερωτήσεων για 3 και 6.',
         },
-        'stage-14-mixed-masters': {
+        'stage-15': {
           title: 'Παγωμένη Ράχη',
           subtitle: 'Μικτές μορφές ερωτήσεων για 9 και 7.',
         },
-        'stage-15-grand-final': {
+        'stage-16': {
           title: 'Ακρόπολη του Στέμματος',
           subtitle: 'Τελική μικτή πρόκληση για 2, 3, 4, 6, 7, 8 και 9.',
         },
@@ -486,20 +498,24 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           description: 'Ολοκλήρωσε την Πύλη Γρίφων (Στάδιο 11).',
         },
         stage12Complete: {
-          name: 'Έμβλημα Κρυστάλλινης Γέφυρας',
-          description: 'Ολοκλήρωσε την Κρυστάλλινη Γέφυρα (Στάδιο 12).',
+          name: 'Έμβλημα Ζαφειρένιων Καταρρακτών',
+          description: 'Ολοκλήρωσε τους Ζαφειρένιους Καταρράκτες (Στάδιο 12).',
         },
         stage13Complete: {
-          name: 'Έμβλημα Δοκιμασιών Ηφαιστείου',
-          description: 'Ολοκλήρωσε τις Δοκιμασίες Ηφαιστείου (Στάδιο 13).',
+          name: 'Έμβλημα Κρυστάλλινης Γέφυρας',
+          description: 'Ολοκλήρωσε την Κρυστάλλινη Γέφυρα (Στάδιο 13).',
         },
         stage14Complete: {
-          name: 'Έμβλημα Παγωμένης Ράχης',
-          description: 'Ολοκλήρωσε την Παγωμένη Ράχη (Στάδιο 14).',
+          name: 'Έμβλημα Δοκιμασιών Ηφαιστείου',
+          description: 'Ολοκλήρωσε τις Δοκιμασίες Ηφαιστείου (Στάδιο 14).',
         },
         stage15Complete: {
+          name: 'Έμβλημα Παγωμένης Ράχης',
+          description: 'Ολοκλήρωσε την Παγωμένη Ράχη (Στάδιο 15).',
+        },
+        stage16Complete: {
           name: 'Έμβλημα Ακρόπολης του Στέμματος',
-          description: 'Ολοκλήρωσε την Ακρόπολη του Στέμματος (Στάδιο 15).',
+          description: 'Ολοκλήρωσε την Ακρόπολη του Στέμματος (Στάδιο 16).',
         },
         streak5: {
           name: '5-Σερί',

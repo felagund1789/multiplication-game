@@ -64,23 +64,28 @@ const BADGE_BASES: Record<BadgeType, Pick<Badge, 'id' | 'type' | 'emoji'>> = {
     emoji: '🧩',
   },
   stage12Complete: {
-    id: 'stage-12-crystal-badge',
+    id: 'stage-12-saphire-badge',
     type: 'stage12Complete',
-    emoji: '🌉',
+    emoji: '🌈',
   },
   stage13Complete: {
-    id: 'stage-13-volcano-badge',
+    id: 'stage-13-crystal-badge',
     type: 'stage13Complete',
-    emoji: '🌋',
+    emoji: '🌉',
   },
   stage14Complete: {
-    id: 'stage-14-frozen-badge',
+    id: 'stage-14-volcano-badge',
     type: 'stage14Complete',
-    emoji: '🧊',
+    emoji: '🌋',
   },
   stage15Complete: {
-    id: 'stage-15-crown-badge',
+    id: 'stage-15-frozen-badge',
     type: 'stage15Complete',
+    emoji: '🧊',
+  },
+  stage16Complete: {
+    id: 'stage-16-crown-badge',
+    type: 'stage16Complete',
     emoji: '👑',
   },
   streak5: {
@@ -111,21 +116,22 @@ const BADGE_BASES: Record<BadgeType, Pick<Badge, 'id' | 'type' | 'emoji'>> = {
 }
 
 const STAGE_COMPLETION_BADGE_BY_STAGE_ID: Record<string, BadgeType> = {
-  'stage-1-table': 'stage1Complete',
-  'stage-2-table': 'stage2Complete',
-  'stage-3-table': 'stage3Complete',
-  'stage-4-table': 'stage4Complete',
-  'stage-5-table': 'stage5Complete',
-  'stage-6-table': 'stage6Complete',
-  'stage-7-table': 'stage7Complete',
-  'stage-8-table': 'stage8Complete',
-  'stage-9-table': 'stage9Complete',
-  'stage-10-table': 'stage10Complete',
-  'stage-11-mixed-foundations': 'stage11Complete',
-  'stage-12-mixed-builders': 'stage12Complete',
-  'stage-13-mixed-duos': 'stage13Complete',
-  'stage-14-mixed-masters': 'stage14Complete',
-  'stage-15-grand-final': 'stage15Complete',
+  'stage-1': 'stage1Complete',
+  'stage-2': 'stage2Complete',
+  'stage-3': 'stage3Complete',
+  'stage-4': 'stage4Complete',
+  'stage-5': 'stage5Complete',
+  'stage-6': 'stage6Complete',
+  'stage-7': 'stage7Complete',
+  'stage-8': 'stage8Complete',
+  'stage-9': 'stage9Complete',
+  'stage-10': 'stage10Complete',
+  'stage-11': 'stage11Complete',
+  'stage-12': 'stage12Complete',
+  'stage-13': 'stage13Complete',
+  'stage-14': 'stage14Complete',
+  'stage-15': 'stage15Complete',
+  'stage-16': 'stage16Complete',
 }
 
 export function badgeTypeToId(type: BadgeType): string {
@@ -233,6 +239,11 @@ export function buildBadgeDefinitions(rewardsText: RewardsText): Record<BadgeTyp
       ...BADGE_BASES.stage15Complete,
       name: rewardsText.badges.stage15Complete.name,
       description: rewardsText.badges.stage15Complete.description,
+    },
+    stage16Complete: {
+      ...BADGE_BASES.stage16Complete,
+      name: rewardsText.badges.stage16Complete.name,
+      description: rewardsText.badges.stage16Complete.description,
     },
     allStagesComplete: {
       ...BADGE_BASES.allStagesComplete,

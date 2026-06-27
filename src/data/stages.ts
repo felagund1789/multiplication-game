@@ -9,7 +9,7 @@ const BASE_REQUIREMENTS = {
 
 export const STAGES: StageDefinition[] = [
   {
-    id: 'stage-1-table',
+    id: 'stage-1',
     title: 'Stage 1',
     description: 'Table 1 challenge.',
     kind: 'table',
@@ -18,7 +18,7 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-2-table',
+    id: 'stage-2',
     title: 'Stage 2',
     description: 'Table 10 challenge.',
     kind: 'table',
@@ -27,7 +27,7 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-3-table',
+    id: 'stage-3',
     title: 'Stage 3',
     description: 'Table 5 challenge.',
     kind: 'table',
@@ -36,7 +36,7 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-4-table',
+    id: 'stage-4',
     title: 'Stage 4',
     description: 'Table 2 challenge.',
     kind: 'table',
@@ -45,7 +45,7 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-5-table',
+    id: 'stage-5',
     title: 'Stage 5',
     description: 'Table 3 challenge.',
     kind: 'table',
@@ -54,7 +54,7 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-6-table',
+    id: 'stage-6',
     title: 'Stage 6',
     description: 'Table 4 challenge.',
     kind: 'table',
@@ -63,7 +63,7 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-7-table',
+    id: 'stage-7',
     title: 'Stage 7',
     description: 'Table 6 challenge.',
     kind: 'table',
@@ -72,7 +72,7 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-8-table',
+    id: 'stage-8',
     title: 'Stage 8',
     description: 'Table 7 challenge.',
     kind: 'table',
@@ -81,7 +81,7 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-9-table',
+    id: 'stage-9',
     title: 'Stage 9',
     description: 'Table 8 challenge.',
     kind: 'table',
@@ -90,7 +90,7 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-10-table',
+    id: 'stage-10',
     title: 'Stage 10',
     description: 'Table 9 challenge.',
     kind: 'table',
@@ -99,26 +99,35 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-11-mixed-foundations',
+    id: 'stage-11',
     title: 'Stage 11',
-    description: 'Mixed puzzle formats for tables 1, 10 and 5.',
+    description: 'Mixed puzzle formats for tables 1 and 10.',
     kind: 'mixed',
-    tables: [1, 10, 5],
+    tables: [1, 10],
     allowedFormats: ['missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-12-mixed-builders',
+    id: 'stage-12',
     title: 'Stage 12',
-    description: 'Mixed puzzle formats for tables 2, 4 and 8.',
+    description: 'Mixed puzzle formats for tables 5 and 2.',
     kind: 'mixed',
-    tables: [2, 4, 8],
+    tables: [5, 2],
     allowedFormats: ['missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-13-mixed-duos',
+    id: 'stage-13',
     title: 'Stage 13',
+    description: 'Mixed puzzle formats for tables 4 and 8.',
+    kind: 'mixed',
+    tables: [4, 8],
+    allowedFormats: ['missingLeft', 'missingRight', 'whichEquals', 'trueFalse'],
+    ...BASE_REQUIREMENTS,
+  },
+  {
+    id: 'stage-14',
+    title: 'Stage 14',
     description: 'Mixed puzzle formats for tables 3 and 6.',
     kind: 'mixed',
     tables: [3, 6],
@@ -126,8 +135,8 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-14-mixed-masters',
-    title: 'Stage 14',
+    id: 'stage-15',
+    title: 'Stage 15',
     description: 'Mixed puzzle formats for tables 9 and 7.',
     kind: 'mixed',
     tables: [9, 7],
@@ -135,8 +144,8 @@ export const STAGES: StageDefinition[] = [
     ...BASE_REQUIREMENTS,
   },
   {
-    id: 'stage-15-grand-final',
-    title: 'Stage 15',
+    id: 'stage-16',
+    title: 'Stage 16',
     description: 'Final mixed challenge with tables 2, 3, 4, 6, 7, 8 and 9.',
     kind: 'mixed',
     tables: [2, 3, 4, 6, 7, 8, 9],

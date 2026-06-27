@@ -71,6 +71,7 @@ export type BadgeType =
   | 'stage13Complete'
   | 'stage14Complete'
   | 'stage15Complete'
+  | 'stage16Complete'
   | 'allStagesComplete'
 
 export interface Badge {
