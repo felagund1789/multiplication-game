@@ -8,7 +8,7 @@ describe('determineBadgesToAward', () => {
       [],
       0,
       true, // stageJustCompleted
-      'stage-1-table',
+      'stage-1',
       false,
       0,
     )
@@ -20,12 +20,12 @@ describe('determineBadgesToAward', () => {
       [],
       0,
       true,
-      'stage-3-table',
+      'stage-3',
       false,
       0,
     )
 
-    expect(badges).toContain('stage3RiverOfSparks')
+    expect(badges).toContain('stage3Complete')
   })
 
   it('should award the final-stage specific badge for stage 15 completion', () => {
@@ -33,12 +33,12 @@ describe('determineBadgesToAward', () => {
       [],
       0,
       true,
-      'stage-15-grand-final',
+      'stage-15',
       false,
       0,
     )
 
-    expect(badges).toContain('stage15CrownCitadel')
+    expect(badges).toContain('stage15Complete')
   })
 
   it('should award streak badges for reaching streak milestones', () => {
@@ -57,7 +57,7 @@ describe('determineBadgesToAward', () => {
       [],
       0,
       true, // stageJustCompleted
-      'stage-2-table',
+      'stage-2',
       true, // stageWasPerfect
       1,
     )
@@ -81,7 +81,7 @@ describe('determineBadgesToAward', () => {
       ['stage-complete'],
       0,
       true,
-      'stage-1-table',
+      'stage-1',
       false,
       1,
     )
@@ -93,7 +93,7 @@ describe('determineBadgesToAward', () => {
       [],
       5, // reaches streak5
       true, // stageJustCompleted
-      'stage-1-table',
+      'stage-1',
       true, // stageWasPerfect
       1,
     )
