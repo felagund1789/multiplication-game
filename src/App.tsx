@@ -25,6 +25,7 @@ function loadStoredLanguage(): Language {
 function App() {
   const [screen, setScreen] = useState<Screen>('menu')
   const [language, setLanguage] = useState<Language>(() => loadStoredLanguage())
+  const [isNewGameDialogOpen, setIsNewGameDialogOpen] = useState(false)
   const { stages, progress, question, answerQuestion, goToNextQuestion, startNewGame, hasSavedGame } =
     useMultiplicationGame()
   const text = TRANSLATIONS[language]
@@ -35,16 +36,17 @@ function App() {
   }, [language])
 
   const handleStartNewGame = () => {
-    const shouldStartNewGame = window.confirm(
-      `${text.menu.newGameConfirmTitle}\n\n${text.menu.newGameConfirmMessage}`,
-    )
+    setIsNewGameDialogOpen(true)
+  }
 
-    if (!shouldStartNewGame) {
-      return
-    }
-
+  const handleConfirmNewGame = () => {
+    setIsNewGameDialogOpen(false)
     startNewGame()
     setScreen('game')
+  }
+
+  const handleCancelNewGame = () => {
+    setIsNewGameDialogOpen(false)
   }
 
   return (
@@ -66,6 +68,36 @@ function App() {
           onPractice={() => setScreen('practice')}
           onCollection={() => setScreen('collection')}
         />
+      )}
+
+      {screen === 'menu' && isNewGameDialogOpen && (
+        <div
+          className="confirmation-backdrop"
+          role="presentation"
+          onClick={handleCancelNewGame}
+        >
+          <section
+            className="panel confirmation-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="new-game-dialog-title"
+            aria-describedby="new-game-dialog-message"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <h2 id="new-game-dialog-title">{text.menu.newGameConfirmTitle}</h2>
+            <p id="new-game-dialog-message" className="confirmation-message">
+              {text.menu.newGameConfirmMessage}
+            </p>
+            <div className="confirmation-actions">
+              <button type="button" className="big-btn" onClick={handleConfirmNewGame}>
+                {text.menu.newGameConfirmAction}
+              </button>
+              <button type="button" className="big-btn secondary" onClick={handleCancelNewGame}>
+                {text.menu.newGameCancelAction}
+              </button>
+            </div>
+          </section>
+        </div>
       )}
 
       {screen === 'practice' && (

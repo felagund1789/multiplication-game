@@ -11,6 +11,8 @@ export interface MenuText {
   startNewGame: string
   newGameConfirmTitle: string
   newGameConfirmMessage: string
+  newGameConfirmAction: string
+  newGameCancelAction: string
   practiceMode: string
   collection: string
 }
@@ -108,6 +110,8 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       startNewGame: 'Start New Game',
       newGameConfirmTitle: 'Start a new game?',
       newGameConfirmMessage: 'All saved progress and earned badges will be lost.',
+      newGameConfirmAction: 'Start New Game',
+      newGameCancelAction: 'Keep Progress',
       practiceMode: 'Practice Mode',
       collection: 'My Badges',
     },
@@ -333,6 +337,8 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       startNewGame: 'Νέο Παιχνίδι',
       newGameConfirmTitle: 'Να ξεκινήσει νέο παιχνίδι;',
       newGameConfirmMessage: 'Όλη η αποθηκευμένη πρόοδος και τα μετάλλια θα χαθούν.',
+      newGameConfirmAction: 'Νέο Παιχνίδι',
+      newGameCancelAction: 'Διατήρηση Προόδου',
       practiceMode: 'Εξάσκηση',
       collection: 'Τα Μετάλλιά Μου',
     },
