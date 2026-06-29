@@ -48,7 +48,7 @@ function stageStatus(
 
 export function AdventureMap({ stages, currentStageIndex, stageProgress, onStartCurrentLocation, onReplayLocation, text }: AdventureMapProps) {
   return (
-    <section className="panel adventure-map" aria-label={text.adventureMapTitle}>
+    <section className="panel adventure-map nes-container" aria-label={text.adventureMapTitle}>
       <div className="adventure-map-header">
         <h2 className="text-size-lg">{text.adventureMapTitle}</h2>
         <p className="path-meta text-size-base">{text.adventureMapHint}</p>
@@ -56,9 +56,9 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
       </div>
 
       <div className="adventure-map-legend" aria-hidden="true">
-        <span className="legend-chip done">{text.completedLocation}</span>
-        <span className="legend-chip active">{text.currentLocation}</span>
-        <span className="legend-chip locked">{text.lockedLocation}</span>
+        <span className="legend-chip done nes-text is-success">{text.completedLocation}</span>
+        <span className="legend-chip active nes-text is-warning">{text.currentLocation}</span>
+        <span className="legend-chip locked nes-text is-disabled">{text.lockedLocation}</span>
       </div>
 
       <div className="adventure-map-grid">
@@ -78,7 +78,7 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
           return (
             <article
               key={stage.id}
-              className={`map-node ${status}`}
+              className={`map-node nes-container ${status}`}
               style={{ gridColumn: column }}
               aria-label={`${locationTitle} ${status}`}
             >
@@ -93,7 +93,7 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
               {canStart && (
                 <button
                   type="button"
-                  className="small-btn map-start-btn"
+                  className="nes-btn is-success map-start-btn"
                   onClick={onStartCurrentLocation}
                 >
                   {hasAnyAnswered ? text.continueLocationButton : text.startLocationButton}
@@ -102,7 +102,7 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
               {canReplay && (
                 <button
                   type="button"
-                  className="small-btn map-replay-btn"
+                  className="nes-btn is-primary map-replay-btn"
                   onClick={() => onReplayLocation(index)}
                 >
                   {text.replayLocationButton}

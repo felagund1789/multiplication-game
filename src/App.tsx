@@ -77,7 +77,7 @@ function App() {
           onClick={handleCancelNewGame}
         >
           <section
-            className="panel confirmation-modal"
+            className="panel confirmation-modal nes-container"
             role="dialog"
             aria-modal="true"
             aria-labelledby="new-game-dialog-title"
@@ -89,10 +89,10 @@ function App() {
               {text.menu.newGameConfirmMessage}
             </p>
             <div className="confirmation-actions">
-              <button type="button" className="big-btn" onClick={handleConfirmNewGame}>
+              <button type="button" className="nes-btn is-error" onClick={handleConfirmNewGame}>
                 {text.menu.newGameConfirmAction}
               </button>
-              <button type="button" className="big-btn secondary" onClick={handleCancelNewGame}>
+              <button type="button" className="nes-btn is-success" onClick={handleCancelNewGame}>
                 {text.menu.newGameCancelAction}
               </button>
             </div>

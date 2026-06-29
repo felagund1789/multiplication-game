@@ -15,25 +15,25 @@ export function CollectionScreen({ text, badgeDefinitions, collectedBadgeIds, on
 
   return (
     <main className="screen collection-screen">
-      <header className="panel collection-header">
+      <header className="panel collection-header nes-container">
         <div>
           <h1 className="text-size-lg">{text.title}</h1>
           <p className="subtitle text-size-base">
             {text.earned}: {earnedCount} / {totalBadges}
           </p>
         </div>
-        <button type="button" className="small-btn" onClick={onBackToMenu}>
+        <button type="button" className="nes-btn is-warning" onClick={onBackToMenu}>
           {text.backToMenu}
         </button>
       </header>
 
-      <section className="panel badges-grid-section">
+      <section className="panel badges-grid-section nes-container">
         <div className="badges-grid">
           {allBadges.map((badge) => {
             const isEarned = collectedBadgeIds.includes(badge.id)
 
             return (
-              <article key={badge.id} className={`badge-card ${isEarned ? 'earned' : 'locked'}`}>
+              <article key={badge.id} className={`badge-card nes-container ${isEarned ? 'earned' : 'locked'}`}>
                 <div className="badge-emoji">{badge.emoji}</div>
                 <p className="badge-name text-size-md">{badge.name}</p>
                 <p className="badge-description text-size-base">{badge.description}</p>

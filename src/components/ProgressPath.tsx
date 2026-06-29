@@ -7,7 +7,7 @@ interface ProgressPathProps {
 
 export function ProgressPath({ stages, currentStageIndex }: ProgressPathProps) {
   return (
-    <section className="panel progress-path" aria-label="Progression path">
+    <section className="panel progress-path nes-container" aria-label="Progression path">
       <h2>Learning Path</h2>
       <div className="path-grid">
         {stages.map((stage, index) => {

@@ -1,3 +1,5 @@
+@import './nes.css';
+
 * {
   box-sizing: border-box;
 }
@@ -10,13 +12,29 @@ body,
 
 body {
   margin: 0;
-  font-family: 'Trebuchet MS', 'Verdana', sans-serif;
-  background: radial-gradient(circle at 20% 15%, #ffe8a8 0%, #ffbd66 34%, #ff7f4f 100%);
-  color: #1f2340;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
+html,
+body,
+button,
+input,
+textarea,
+select,
+option,
+label,
+pre,
+code,
+kbd,
+samp {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+}
+
+body {
+  font-size: 1rem;
+}
+
 button {
-  font-family: inherit;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
 }

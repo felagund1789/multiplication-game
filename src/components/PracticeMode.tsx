@@ -56,7 +56,7 @@ export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
   }
 
   const answerButtonClassName = (optionValue: string) => {
-    let className = 'answer-btn'
+    let className = 'nes-btn is-primary answer-btn'
 
     if (!isSubmitted && selectedAnswer === optionValue) {
       className += ' selected-pending'
@@ -84,34 +84,34 @@ export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
 
   return (
     <main className="screen practice-screen">
-      <header className="panel practice-header">
+      <header className="panel practice-header nes-container">
         <div>
           <p className="eyebrow">{text.eyebrow}</p>
           <h1>{text.title}</h1>
           <p className="subtitle">{text.selectedLabel}: {sortedSelected.join(', ')}</p>
         </div>
-        <button type="button" className="small-btn" onClick={onBackToMenu}>
+        <button type="button" className="nes-btn is-warning" onClick={onBackToMenu}>
           {text.mainMenu}
         </button>
       </header>
 
-      <section className="panel table-selector">
+      <section className="panel table-selector nes-container">
         {TABLE_STAGE_ORDER.map((table) => (
           <button
             key={table}
             type="button"
-            className={`chip ${selectedTables.includes(table) ? 'on' : ''}`}
+            className={`nes-btn chip ${selectedTables.includes(table) ? 'is-success' : ''}`}
             onClick={() => toggleTable(table)}
           >
             {table}
           </button>
         ))}
-        <button type="button" className="small-btn" onClick={handleSelectionDone}>
+        <button type="button" className="nes-btn is-primary" onClick={handleSelectionDone}>
           {text.applySelection}
         </button>
       </section>
 
-      <section className="panel question-panel" aria-live="polite">
+      <section className="panel question-panel nes-container" aria-live="polite">
         <h2>{question.prompt}</h2>
         <div className="answers-grid">
           {question.options.map((option) => (
@@ -129,11 +129,11 @@ export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
 
         <div className="question-actions">
           {!isSubmitted ? (
-            <button type="button" className="small-btn action-btn" disabled={selectedAnswer === null} onClick={handleSubmit}>
+            <button type="button" className="nes-btn is-primary action-btn" disabled={selectedAnswer === null} onClick={handleSubmit}>
               {text.submitAnswer}
             </button>
           ) : (
-            <button type="button" className="small-btn action-btn" onClick={handleNextQuestion}>
+            <button type="button" className="nes-btn is-success action-btn" onClick={handleNextQuestion}>
               {text.nextQuestion}
             </button>
           )}

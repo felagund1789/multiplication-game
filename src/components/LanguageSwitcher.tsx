@@ -19,14 +19,14 @@ export function LanguageSwitcher({
     <div className="language-switcher" aria-label={label}>
       <button
         type="button"
-        className={`language-btn ${language === 'en' ? 'active' : ''}`}
+        className={`nes-btn language-btn ${language === 'en' ? 'is-primary' : ''}`}
         onClick={() => onChange('en')}
       >
         {englishLabel}
       </button>
       <button
         type="button"
-        className={`language-btn ${language === 'el' ? 'active' : ''}`}
+        className={`nes-btn language-btn ${language === 'el' ? 'is-primary' : ''}`}
         onClick={() => onChange('el')}
       >
         {greekLabel}

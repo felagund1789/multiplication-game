@@ -12,23 +12,23 @@ interface MainMenuProps {
 export function MainMenu({ canContinue, text, onContinue, onNewGame, onPractice, onCollection }: MainMenuProps) {
   return (
     <main className="screen menu-screen">
-      <section className="panel hero-panel">
+      <section className="panel hero-panel nes-container">
         <p className="eyebrow">{text.eyebrow}</p>
         <h1>{text.title}</h1>
         <p className="subtitle">{text.subtitle}</p>
       </section>
 
-      <section className="panel menu-actions" aria-label={text.actionsAriaLabel}>
-        <button type="button" className="big-btn primary" onClick={onContinue} disabled={!canContinue}>
+      <section className="panel menu-actions nes-container" aria-label={text.actionsAriaLabel}>
+        <button type="button" className="nes-btn is-success" onClick={onContinue} disabled={!canContinue}>
           {text.continueSavedGame}
         </button>
-        <button type="button" className="big-btn" onClick={onNewGame}>
+        <button type="button" className="nes-btn is-error" onClick={onNewGame}>
           {text.startNewGame}
         </button>
-        <button type="button" className="big-btn secondary" onClick={onPractice}>
+        <button type="button" className="nes-btn is-primary" onClick={onPractice}>
           {text.practiceMode}
         </button>
-        <button type="button" className="big-btn extra" onClick={onCollection}>
+        <button type="button" className="nes-btn is-warning" onClick={onCollection}>
           {text.collection}
         </button>
       </section>

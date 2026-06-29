@@ -129,7 +129,7 @@ export function GameScreen({
   }
 
   const answerButtonClassName = (optionValue: string) => {
-    let className = 'answer-btn'
+    let className = 'nes-btn is-primary answer-btn'
 
     if (!hasSubmitted && selectedAnswer === optionValue) {
       className += ' selected-pending'
@@ -152,7 +152,7 @@ export function GameScreen({
 
   return (
     <main className="screen game-screen">
-      <header className="panel scoreboard">
+      <header className="panel scoreboard nes-container">
         <div>
           <p className="metric-label">{text.score}</p>
           <p className="metric-value">{score}</p>
@@ -165,7 +165,7 @@ export function GameScreen({
           <p className="metric-label">{text.longest}</p>
           <p className="metric-value">{longestStreak}</p>
         </div>
-        <button type="button" className="small-btn" onClick={onBackToMenu}>
+        <button type="button" className="nes-btn is-warning" onClick={onBackToMenu}>
           {text.mainMenu}
         </button>
       </header>
@@ -180,11 +180,11 @@ export function GameScreen({
           text={text}
         />
       ) : (
-        <section className="panel question-panel" aria-live="polite">
+        <section className="panel question-panel nes-container" aria-live="polite">
           {isReplayMode && (
-            <div className="replay-mode-banner">
+            <div className="replay-mode-banner nes-container">
               <span>{text.replayModeLabel}</span>
-              <button type="button" className="replay-exit-btn" onClick={handleExitReplay}>
+              <button type="button" className="nes-btn is-primary replay-exit-btn" onClick={handleExitReplay}>
                 {text.adventureMapTitle} &rarr;
               </button>
             </div>
@@ -220,20 +220,20 @@ export function GameScreen({
             {!hasSubmitted ? (
               <button
                 type="button"
-                className="small-btn action-btn"
+                className="nes-btn is-primary action-btn"
                 disabled={selectedAnswer === null}
                 onClick={handleSubmit}
               >
                 {text.submitAnswer}
               </button>
             ) : feedback?.stageAdvanced ? (
-              <button type="button" className="small-btn action-btn" disabled>
+              <button type="button" className="nes-btn is-disabled action-btn" disabled>
                 {text.returningToMap}
               </button>
             ) : isReplayMode ? (
               <button
                 type="button"
-                className="small-btn action-btn"
+                className="nes-btn is-success action-btn"
                 onClick={() => {
                   const stage = stages[replayStageIndex!]
                   setReplayQuestion(createQuestionForStage(stage))
@@ -244,7 +244,7 @@ export function GameScreen({
                 {text.nextQuestion}
               </button>
             ) : (
-              <button type="button" className="small-btn action-btn" onClick={onNextQuestion}>
+              <button type="button" className="nes-btn is-success action-btn" onClick={onNextQuestion}>
                 {text.nextQuestion}
               </button>
             )}

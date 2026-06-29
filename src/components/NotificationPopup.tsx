@@ -23,10 +23,10 @@ export function NotificationPopup({
 
   return (
     <div className="notification-backdrop" role="presentation">
-      <section className="panel notification-popup" role="dialog" aria-modal="true" aria-label={title}>
+      <section className="panel notification-popup nes-container" role="dialog" aria-modal="true" aria-label={title}>
         <div className="notification-header">
           <h3 className="text-size-md">{title}</h3>
-          <button type="button" className="notification-close" aria-label={dismissLabel} onClick={onDismiss}>
+          <button type="button" className="nes-btn is-error notification-close" aria-label={dismissLabel} onClick={onDismiss}>
             X
           </button>
         </div>
@@ -35,7 +35,7 @@ export function NotificationPopup({
 
         {children}
 
-        <button type="button" className="small-btn notification-dismiss" onClick={onDismiss}>
+        <button type="button" className="nes-btn is-primary notification-dismiss" onClick={onDismiss}>
           {dismissLabel}
         </button>
       </section>
