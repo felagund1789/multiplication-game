@@ -132,19 +132,19 @@ export function GameScreen({
     let className = 'nes-btn is-primary answer-btn'
 
     if (!hasSubmitted && selectedAnswer === optionValue) {
-      className += ' selected-pending'
+      className = className.replace(' is-primary', '') + ' is-warning selected-pending'
     }
 
     if (hasSubmitted && feedback && feedback.selectedAnswer === optionValue) {
-      className += ' selected-final'
+      className = className.replace(' is-primary', '') + ' is-warning selected-final'
     }
 
     if (hasSubmitted && optionValue === activeQuestion.correctAnswer) {
-      className += ' correct'
+      className = className.replace(' is-warning', '') + ' is-success correct'
     }
 
     if (hasSubmitted && feedback && !feedback.isCorrect && optionValue === feedback.selectedAnswer) {
-      className += ' wrong'
+      className = className.replace(' is-warning', '') + ' is-error wrong'
     }
 
     return className

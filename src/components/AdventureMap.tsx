@@ -55,11 +55,11 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
         <p className="adventure-map-select-prompt text-size-base">{text.adventureMapSelectPrompt}</p>
       </div>
 
-      <div className="adventure-map-legend" aria-hidden="true">
+      {/* <div className="adventure-map-legend" aria-hidden="true">
         <span className="legend-chip done nes-text is-success">{text.completedLocation}</span>
         <span className="legend-chip active nes-text is-warning">{text.currentLocation}</span>
         <span className="legend-chip locked nes-text is-disabled">{text.lockedLocation}</span>
-      </div>
+      </div> */}
 
       <div className="adventure-map-grid">
         {stages.map((stage, index) => {
