@@ -440,6 +440,11 @@ p {
   .confirmation-modal {
     padding: 0.95rem;
   }
+  
+  .replay-mode-banner {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 420px) {
@@ -454,5 +459,10 @@ p {
 
   .badge-emoji {
     font-size: 1.75rem;
+  }
+  
+  .replay-mode-banner {
+    flex-direction: column;
+    align-items: center;
   }
 }

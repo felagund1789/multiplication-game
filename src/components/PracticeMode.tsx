@@ -59,19 +59,19 @@ export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
     let className = 'nes-btn is-primary answer-btn'
 
     if (!isSubmitted && selectedAnswer === optionValue) {
-      className += ' selected-pending'
+      className = className.replace(' is-primary', '') + ' is-warning selected-pending'
     }
 
     if (isSubmitted && selectedAnswer === optionValue) {
-      className += ' selected-final'
+      className = className.replace(' is-primary', '') + ' is-warning selected-final'
     }
 
     if (isSubmitted && optionValue === question.correctAnswer) {
-      className += ' correct'
+      className = className.replace(' is-warning', '') + ' is-success correct'
     }
 
     if (isSubmitted && selectedAnswer === optionValue && optionValue !== question.correctAnswer) {
-      className += ' wrong'
+      className = className.replace(' is-warning', '') + ' is-error wrong'
     }
 
     return className

@@ -107,8 +107,8 @@ function buildQuestion(format: QuestionFormat, left: number, right: number): Que
 }
 
 function buildWhichEqualsQuestion(stageTables: number[]): Question {
-  const left = pickRandom(stageTables)
-  const right = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+  const left = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+  const right = pickRandom(stageTables)
   const product = left * right
 
   const variants = new Set<string>()
@@ -117,8 +117,8 @@ function buildWhichEqualsQuestion(stageTables: number[]): Question {
   variants.add(`${left}x${Math.min(PRACTICE_MULTIPLIER_MAX, right + 1)}`)
 
   while (variants.size < 3) {
-    const candidateLeft = pickRandom(stageTables)
-    const candidateRight = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+    const candidateLeft = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+    const candidateRight = pickRandom(stageTables)
     variants.add(`${candidateLeft}x${candidateRight}`)
   }
 
@@ -144,8 +144,8 @@ function buildWhichEqualsQuestion(stageTables: number[]): Question {
 }
 
 function buildTrueFalseQuestion(stageTables: number[]): Question {
-  const left = pickRandom(stageTables)
-  const right = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+  const left = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+  const right = pickRandom(stageTables)
   const actualProduct = left * right
   const isTrueStatement = randomInt(0, 1) === 1
   const fakeProduct = pickRandom(createDistractors(left, right, actualProduct))
@@ -187,8 +187,8 @@ export function createQuestionForStage(stage: StageDefinition): Question {
         ? ['standard', 'missingLeft', 'missingRight']
         : [formatForStage(stage)]
 
-  const left = pickRandom(stageTables)
-  const right = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+  const left = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+  const right = pickRandom(stageTables)
   const format = pickRandom(stageFormats)
 
   if (format === 'whichEquals') {
@@ -203,8 +203,8 @@ export function createQuestionForStage(stage: StageDefinition): Question {
 }
 
 export function createPracticeQuestion(selectedTables: number[]): Question {
-  const left = pickRandom(selectedTables)
-  const right = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+  const left = randomInt(1, PRACTICE_MULTIPLIER_MAX)
+  const right = pickRandom(selectedTables)
   return buildQuestion('standard', left, right)
 }
 
