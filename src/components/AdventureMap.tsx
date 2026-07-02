@@ -23,7 +23,7 @@ interface AdventureMapProps {
   >
 }
 
-const LOCATION_ICONS = ['🌱', '🔟', '✋', '🌊', '🌿', '🏰', '🪨', '⚓', '🏔️', '🌅', '🧩', '🌈', '🌉', '🌋', '🧊', '👑'] as const
+// const LOCATION_ICONS = ['🌱', '🔟', '✋', '🌊', '🌿', '🏰', '🪨', '⚓', '🏔️', '🌅', '🧩', '🌈', '🌉', '🌋', '🧊', '👑'] as const
 
 function stageStatus(
   stage: StageDefinition,
@@ -70,10 +70,10 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
           const canStart = status === 'active'
           const canReplay = status === 'done'
           const hasAnyAnswered = (stageProgress[stage.id]?.answered ?? 0) > 0
-          const icon = LOCATION_ICONS[index] ?? '📍'
+          // const icon = LOCATION_ICONS[index] ?? '📍'
           const locationText = text.journeyLocations[stage.id]
           const locationTitle = locationText?.title ?? stage.title
-          const locationSubtitle = locationText?.subtitle ?? stage.description
+          // const locationSubtitle = locationText?.subtitle ?? stage.description
 
           return (
             <article
