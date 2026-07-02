@@ -1,7 +1,7 @@
 :root {
-  --text-size-lg: 2rem;
-  --text-size-md: 1.5rem;
-  --text-size-base: 1.25rem;
+  --text-size-lg: 1.5rem;
+  --text-size-md: 1.25rem;
+  --text-size-base: 1rem;
 }
 
 .app-root {
@@ -10,6 +10,27 @@
   align-items: center;
   min-height: 100svh;
   gap: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.app-root--menu {
+  background-image: url('/menu-background.png');
+}
+
+.app-root--game {
+  background-color: #f8d89f;
+  background-image: url('/game-background.png');
+}
+
+.app-root--practice {
+  background-image: url('/menu-background.png');
+}
+
+.app-root--collection {
+  background-color: #f8d89f;
+  background-image: url('/collection-background.png');
 }
 
 .screen {
@@ -174,7 +195,10 @@ p {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem 0.85rem;
+  /* gap: 0.75rem 0.85rem; */
+  border: 10px solid #212529;
+  background-color: #FFDE6A;
+  padding: 1rem;
 }
 
 /* .adventure-map-grid::before {
@@ -195,19 +219,38 @@ p {
 
 .map-node-top {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
+  min-height: 10.25rem;
+  /* background-image: url('/node-background.png'); */
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-.map-node-icon {
-  font-size: 1rem;
+.map-node.done .map-node-icon,
+.map-node.locked .map-node-icon {
+  display: none;
 }
 
 .map-node-index {
-  min-width: 1.5rem;
-  padding: 0.12rem 0.25rem;
-  text-align: center;
+  width: 4rem;
+  height: 4rem;
+  padding: 0.25rem 0.25rem;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
   font-size: var(--text-size-base);
+  font-weight: 700;
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  line-height: 1.25;
+  color: #DCFFFB;
+  background-color: #000000;
+  border: 5px solid #DCFFFB;
+  border-left: 10px dashed #DCFFFB;
 }
 
 .map-node-title {
@@ -222,7 +265,7 @@ p {
 
 .map-start-btn.nes-btn,
 .map-replay-btn.nes-btn {
-  width: 100%;
+  width: 95%;
 }
 
 .replay-mode-banner {
@@ -399,6 +442,13 @@ p {
 }
 
 @media (max-width: 760px) {
+  body {
+    font-size: 0.9rem;
+  }
+  h1 {
+    font-size: 1.25rem;
+  }
+
   .screen {
     padding: 0.8rem;
   }

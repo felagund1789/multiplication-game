@@ -78,18 +78,18 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
           return (
             <article
               key={stage.id}
-              className={`map-node nes-container ${status}`}
+              className={`map-node ${status}`}
               style={{ gridColumn: column }}
               aria-label={`${locationTitle} ${status}`}
             >
               <div className="map-node-top">
                 <span className="map-node-icon" aria-hidden="true">
-                  {icon}
+                  <i className="nes-mario"></i>
                 </span>
                 <span className="map-node-index">{index + 1}</span>
               </div>
-              <p className="map-node-title text-size-md">{locationTitle}</p>
-              <p className="map-node-subtitle text-size-base">{locationSubtitle}</p>
+              {/* <p className="map-node-title text-size-md">{locationTitle}</p>
+              <p className="map-node-subtitle text-size-base">{locationSubtitle}</p> */}
               {canStart && (
                 <button
                   type="button"

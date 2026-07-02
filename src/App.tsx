@@ -50,7 +50,7 @@ function App() {
   }
 
   return (
-    <div className="app-root">
+    <div className={`app-root app-root--${screen}`}>
       <LanguageSwitcher
         language={language}
         label={text.languageLabel}
