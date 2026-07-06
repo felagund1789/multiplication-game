@@ -78,7 +78,7 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
           return (
             <article
               key={stage.id}
-              className={`map-node ${status}`}
+              className={`map-node map-node-${stage.id} ${status}`}
               style={{ gridColumn: column }}
               aria-label={`${locationTitle} ${status}`}
             >
