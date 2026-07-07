@@ -234,10 +234,12 @@ p {
   background-image: url('/road-angle-3.png');
 }
 .map-node.map-node-stage-4 ,
-.map-node.map-node-stage-6,
-.map-node.map-node-stage-10,
 .map-node.map-node-stage-12 {
   background-image: url('/road-vertical-bushes.png');
+}
+.map-node.map-node-stage-6,
+.map-node.map-node-stage-10 {
+  background-image: url('/road-vertical-rocks.png');
 }
 .map-node.map-node-stage-7,
 .map-node.map-node-stage-13 {
@@ -253,6 +255,15 @@ p {
   justify-content: flex-end;
   align-items: center;
   height: 11rem;
+}
+
+.map-node-icon {
+  width: 8rem;
+  height: 8rem;
+  background-image: url('/mario.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .map-node.done .map-node-icon,
@@ -520,7 +531,7 @@ p {
   .map-node.map-node-stage-6,
   .map-node.map-node-stage-9,
   .map-node.map-node-stage-12 {
-    background-image: url('/road-vertical.png');
+    background-image: url('/road-vertical-rocks.png');
   }
  
   .practice-header,
