@@ -66,6 +66,10 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
           const row = Math.floor(index / 3)
           const inRow = index % 3
           const column = row % 2 === 0 ? inRow + 1 : 3 - inRow
+          const isOddRow = row % 2 === 1;
+          const isFirstArticleInRow = column === 1;
+          const isMiddleArticleInRow = column === 2;
+          const isLastArticleInRow = column === 3;
           const status = stageStatus(stage, index, currentStageIndex, stageProgress)
           const canStart = status === 'active'
           const canReplay = status === 'done'
@@ -76,39 +80,55 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
           // const locationSubtitle = locationText?.subtitle ?? stage.description
 
           return (
-            <article
-              key={stage.id}
-              className={`map-node map-node-${stage.id} ${status}`}
-              style={{ gridColumn: column }}
-              aria-label={`${locationTitle} ${status}`}
-            >
-              <div className="map-node-top">
-                <span className="map-node-icon" aria-hidden="true">
-                  {/* <i className="nes-mario"></i> */}
-                </span>
-                <span className="map-node-index">{index + 1}</span>
-              </div>
-              {/* <p className="map-node-title text-size-md">{locationTitle}</p>
-              <p className="map-node-subtitle text-size-base">{locationSubtitle}</p> */}
-              {canStart && (
-                <button
-                  type="button"
-                  className="nes-btn is-success map-start-btn"
-                  onClick={onStartCurrentLocation}
-                >
-                  {hasAnyAnswered ? text.continueLocationButton : text.startLocationButton}
-                </button>
-              )}
-              {canReplay && (
-                <button
-                  type="button"
-                  className="nes-btn is-primary map-replay-btn"
-                  onClick={() => onReplayLocation(index)}
-                >
-                  {text.replayLocationButton}
-                </button>
-              )}
-            </article>
+            <>
+              {isOddRow && isLastArticleInRow && (<>
+                <div key={`spacer-1-${index}`} className="map-spacer map-spacer-rocks" style={{ gridColumn: 1 }} aria-hidden="true"></div>
+                <div key={`spacer-2-${index}`} className="map-spacer map-spacer-bushes" style={{ gridColumn: 2 }} aria-hidden="true"></div>
+              </>)}
+              {isOddRow && isMiddleArticleInRow && (<>
+                <div key={`spacer-1-${index}`} className="map-spacer map-spacer-left-corner" style={{ gridColumn: 1 }} aria-hidden="true"></div>
+              </>)}
+              <article
+                key={stage.id}
+                className={`map-node map-node-${stage.id} ${status}`}
+                style={{ gridColumn: column }}
+                aria-label={`${locationTitle} ${status}`}
+              >
+                <div className="map-node-top">
+                  <span className="map-node-icon" aria-hidden="true">
+                    {/* <i className="nes-mario"></i> */}
+                  </span>
+                  <span className="map-node-index">{index + 1}</span>
+                </div>
+                {/* <p className="map-node-title text-size-md">{locationTitle}</p>
+                <p className="map-node-subtitle text-size-base">{locationSubtitle}</p> */}
+                {canStart && (
+                  <button
+                    type="button"
+                    className="nes-btn is-success map-start-btn"
+                    onClick={onStartCurrentLocation}
+                  >
+                    {hasAnyAnswered ? text.continueLocationButton : text.startLocationButton}
+                  </button>
+                )}
+                {canReplay && (
+                  <button
+                    type="button"
+                    className="nes-btn is-primary map-replay-btn"
+                    onClick={() => onReplayLocation(index)}
+                  >
+                    {text.replayLocationButton}
+                  </button>
+                )}
+              </article>
+              {isOddRow && isMiddleArticleInRow && (<>
+                <div key={`spacer-3-${index}`} className="map-spacer map-spacer-right-corner" style={{ gridColumn: 3 }} aria-hidden="true"></div>
+              </>)}
+              {isOddRow && isFirstArticleInRow && (<>
+                <div key={`spacer-2-${index}`} className="map-spacer map-spacer-rocks" style={{ gridColumn: 2 }} aria-hidden="true"></div>
+                <div key={`spacer-3-${index}`} className="map-spacer map-spacer-bushes" style={{ gridColumn: 3 }} aria-hidden="true"></div>
+              </>)}
+            </>
           )
         })}
       </div>

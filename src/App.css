@@ -219,34 +219,56 @@ p {
   aspect-ratio: 1 / 1;
   display: grid;
   gap: 0.45rem;
-  background-image: url('/road.png');
+  background-image: url('/images/map/road.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.map-spacer {
+  width: min(16rem, 100%);
+  max-height: 16rem;
+  aspect-ratio: 1 / 1;
+  background-image: url('/images/map/rocks.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .map-node.map-node-stage-1 {
-  background-image: url('/road-start.png');
+  background-image: url('/images/map/road-start.png');
 }
 .map-node.map-node-stage-3 ,
 .map-node.map-node-stage-9,
 .map-node.map-node-stage-15 {
-  background-image: url('/road-angle-3.png');
+  background-image: url('/images/map/road-angle-with-bushes.png');
 }
 .map-node.map-node-stage-4 ,
 .map-node.map-node-stage-12 {
-  background-image: url('/road-vertical-bushes.png');
+  background-image: url('/images/map/road-vertical-bushes.png');
 }
 .map-node.map-node-stage-6,
 .map-node.map-node-stage-10 {
-  background-image: url('/road-vertical-rocks.png');
+  background-image: url('/images/map/road-vertical-rocks.png');
 }
 .map-node.map-node-stage-7,
 .map-node.map-node-stage-13 {
-  background-image: url('/road-angle-2.png');
+  background-image: url('/images/map/road-angle-2.png');
 }
 .map-node.map-node-stage-16 {
-  background-image: url('/road-vertical-end.png');
+  background-image: url('/images/map/road-vertical-end.png');
+}
+.map-spacer.map-spacer-rocks {
+  background-image: url('/images/map/rocks.png');
+}
+.map-spacer.map-spacer-bushes {
+  background-image: url('/images/map/bushes.png');
+}
+.map-spacer.map-spacer-right-corner {
+  background-image: url('/images/map/road-angle-with-castle.png');
+}
+.map-spacer.map-spacer-left-corner {
+  background-image: url('/images/map/road-angle-with-moat.png');
 }
 
 .map-node-top {
@@ -260,7 +282,7 @@ p {
 .map-node-icon {
   width: 8rem;
   height: 8rem;
-  background-image: url('/mario.png');
+  background-image: url('/images/mario.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -513,7 +535,7 @@ p {
   }
     
   .map-node.map-node-stage-1 {
-    background-image: url('/road-vertical-start.png');
+    background-image: url('/images/map/road-vertical-start.png');
   }
   .map-node.map-node-stage-2,
   .map-node.map-node-stage-3,
@@ -525,13 +547,16 @@ p {
   .map-node.map-node-stage-13,
   .map-node.map-node-stage-14,
   .map-node.map-node-stage-15 {
-    background-image: url('/road-vertical-bushes.png');
+    background-image: url('/images/map/road-vertical-bushes.png');
   }
   .map-node.map-node-stage-5,
   .map-node.map-node-stage-6,
   .map-node.map-node-stage-9,
   .map-node.map-node-stage-12 {
-    background-image: url('/road-vertical-rocks.png');
+    background-image: url('/images/map/road-vertical-rocks.png');
+  }
+  .map-spacer {
+    background-image: url('/images/map/road-vertical.png') !important;
   }
  
   .practice-header,
