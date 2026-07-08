@@ -103,7 +103,7 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
     greek: 'Greek',
     menu: {
       eyebrow: 'Math Adventure',
-      title: 'Multiplication Quest',
+      title: 'Super Mario Multiplication Game',
       subtitle: 'Build speed, accuracy and confidence with bite-sized challenges.',
       actionsAriaLabel: 'Main menu actions',
       continueSavedGame: 'Continue Saved Game',
@@ -123,7 +123,7 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       stageCompleteTitle: 'Stage Complete!',
       stageCompleteMessage: 'The next location has been unlocked.',
       notificationClose: 'Close',
-      adventureMapTitle: 'Adventure Map',
+      adventureMapTitle: 'Super Mario Land',
       adventureMapHint: 'Travel the route and unlock new multiplication lands.',
       adventureMapSelectPrompt: 'Select your current location to begin the quiz.',
       completedLocation: 'Cleared',
@@ -139,67 +139,67 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       correctLabel: 'Correct',
       journeyLocations: {
         'stage-1': {
-          title: 'Sprout Field',
+          title: 'World 1 - Level 1',
           subtitle: 'Single-table sprint with table 1.',
         },
         'stage-2': {
-          title: 'Tenfold Terrace',
+          title: 'World 1 - Level 2',
           subtitle: 'Single-table sprint with table 10.',
         },
         'stage-3': {
-          title: 'Fiveforge Trail',
+          title: 'World 1 - Level 3',
           subtitle: 'Single-table sprint with table 5.',
         },
         'stage-4': {
-          title: 'Twin Current',
+          title: 'World 1 - Level 4',
           subtitle: 'Single-table sprint with table 2.',
         },
         'stage-5': {
-          title: 'Quadrant Grove',
+          title: 'World 1 - Level 5',
           subtitle: 'Single-table sprint with table 4.',
         },
         'stage-6': {
-          title: 'Octa Outpost',
+          title: 'World 1 - Level 6',
           subtitle: 'Single-table sprint with table 8.',
         },
         'stage-7': {
-          title: 'Triad Cliffs',
+          title: 'World 1 - Level 7',
           subtitle: 'Single-table sprint with table 3.',
         },
         'stage-8': {
-          title: 'Hexa Harbor',
+          title: 'World 1 - Level 8',
           subtitle: 'Single-table sprint with table 6.',
         },
         'stage-9': {
-          title: 'Seventh Summit',
+          title: 'World 2 - Level 1',
           subtitle: 'Single-table sprint with table 7.',
         },
         'stage-10': {
-          title: 'Ninth Horizon',
+          title: 'World 2 - Level 2',
           subtitle: 'Single-table sprint with table 9.',
         },
         'stage-11': {
-          title: 'Puzzle Gate',
+          title: 'World 2 - Level 3',
           subtitle: 'Mixed puzzle formats for 1 and 10.',
         },
         'stage-12': {
-          title: 'Sapphire Waterfalls',
+          title: 'World 2 - Level 4',
           subtitle: 'Mixed puzzle formats for 5 and 2.',
         },
         'stage-13': {
-          title: 'Crystal Bridge',
+          title: 'World 2 - Level 5',
           subtitle: 'Mixed puzzle formats for 4 and 8.',
         },
         'stage-14': {
-          title: 'Volcano Trials',
+          title: 'World 2 - Level 6',
           subtitle: 'Mixed puzzle formats for 3 and 6.',
         },
         'stage-15': {
-          title: 'Frozen Ridge',
+          title: 'World 2 - Level 7',
           subtitle: 'Mixed puzzle formats for 9 and 7.',
         },
         'stage-16': {
-          title: 'Crown Citadel',
+          title: 'World 2 - Level 8',
           subtitle: 'Final mixed challenge for 2, 3, 4, 6, 7, 8 and 9.',
         },
       },
@@ -330,7 +330,7 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
     greek: 'Ελληνικά',
     menu: {
       eyebrow: 'ΜΙΑ ΜΑΘΗΜΑΤΙΚΗ ΠΕΡΙΠΕΤΕΙΑ',
-      title: 'Μάθε την προπαίδεια',
+      title: 'Προπαίδεια με τον Super Mario',
       subtitle: 'Απόκτησε ταχύτητα, ακρίβεια και αυτοπεποίθηση με μικρές προκλήσεις.',
       actionsAriaLabel: 'Ενέργειες κεντρικού μενού',
       continueSavedGame: 'Συνέχεια',
@@ -344,13 +344,13 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
     },
     game: {
       score: 'Σκορ',
-      streak: 'Σερι',
-      longest: 'Μεγαλυτερο Σερι',
-      mainMenu: 'Κεντρικό Μενού',
+      streak: 'Στη σειρά',
+      longest: 'Πιο πολλά στη σειρά',
+      mainMenu: 'Μενού',
       stageCompleteTitle: 'Το στάδιο ολοκληρώθηκε!',
       stageCompleteMessage: 'Η επόμενη τοποθεσία ξεκλειδώθηκε.',
       notificationClose: 'Κλείσιμο',
-      adventureMapTitle: 'Χάρτης Περιπέτειας',
+      adventureMapTitle: 'Super Mario Land',
       adventureMapHint: 'Προχώρα στη διαδρομή και ξεκλείδωσε νέες περιοχές πολλαπλασιασμού.',
       adventureMapSelectPrompt: 'Επίλεξε την τρέχουσα τοποθεσία για να ξεκινήσεις το κουίζ.',
       completedLocation: 'Ολοκληρώθηκε',
@@ -366,67 +366,67 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       correctLabel: 'Σωστές',
       journeyLocations: {
         'stage-1': {
-          title: 'Πεδίο Βλαστών',
+          title: 'Κόσμος 1 - Επίπεδο 1',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 1.',
         },
         'stage-2': {
-          title: 'Δέκα Αναβαθμίδες',
+          title: 'Κόσμος 1 - Επίπεδο 2',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 10.',
         },
         'stage-3': {
-          title: 'Πέντε Μονοπάτια',
+          title: 'Κόσμος 1 - Επίπεδο 3',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 5.',
         },
         'stage-4': {
-          title: 'Δίδυμα Ρεύματα',
+          title: 'Κόσμος 1 - Επίπεδο 4',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 2.',
         },
         'stage-5': {
-          title: 'Τέταρτο Άλσος',
+          title: 'Κόσμος 1 - Επίπεδο 5',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 4.',
         },
         'stage-6': {
-          title: 'Οκτάγωνο Φρούριο',
+          title: 'Κόσμος 1 - Επίπεδο 6',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 8.',
         },
         'stage-7': {
-          title: 'Τριπλά Βράχια',
+          title: 'Κόσμος 1 - Επίπεδο 7',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 3.',
         },
         'stage-8': {
-          title: 'Έξαπλό Λιμάνι',
+          title: 'Κόσμος 1 - Επίπεδο 8',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 6.',
         },
         'stage-9': {
-          title: 'Επτά Κορυφές',
+          title: 'Κόσμος 2 - Επίπεδο 1',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 7.',
         },
         'stage-10': {
-          title: 'Ένατος Ορίζοντας',
+          title: 'Κόσμος 2 - Επίπεδο 2',
           subtitle: 'Πρόκληση μίας προπαίδειας με το 9.',
         },
         'stage-11': {
-          title: 'Πύλη Γρίφων',
+          title: 'Κόσμος 2 - Επίπεδο 3',
           subtitle: 'Μικτές μορφές ερωτήσεων για 1 και 10.',
         },
         'stage-12': {
-          title: 'Ζαφειρένιοι Καταρράκτες',
+          title: 'Κόσμος 2 - Επίπεδο 4',
           subtitle: 'Μικτές μορφές ερωτήσεων για 5 και 2.',
         },
         'stage-13': {
-          title: 'Κρυστάλλινη Γέφυρα',
+          title: 'Κόσμος 2 - Επίπεδο 5',
           subtitle: 'Μικτές μορφές ερωτήσεων για 4 και 8.',
         },
         'stage-14': {
-          title: 'Δοκιμασίες Ηφαιστείου',
+          title: 'Κόσμος 2 - Επίπεδο 6',
           subtitle: 'Μικτές μορφές ερωτήσεων για 3 και 6.',
         },
         'stage-15': {
-          title: 'Παγωμένη Ράχη',
+          title: 'Κόσμος 2 - Επίπεδο 7',
           subtitle: 'Μικτές μορφές ερωτήσεων για 9 και 7.',
         },
         'stage-16': {
-          title: 'Ακρόπολη του Στέμματος',
+          title: 'Κόσμος 2 - Επίπεδο 8',
           subtitle: 'Τελική μικτή πρόκληση για 2, 3, 4, 6, 7, 8 και 9.',
         },
       },

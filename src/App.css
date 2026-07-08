@@ -510,6 +510,7 @@ p {
 
   .screen {
     padding: 0.8rem;
+    width: calc(100% - 0.2rem);
   }
 
   .scoreboard {
