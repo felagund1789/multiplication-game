@@ -556,7 +556,7 @@ p {
     background-image: url('/images/map/road-vertical-rocks.png');
   }
   .map-spacer {
-    background-image: url('/images/map/road-vertical.png') !important;
+    display: none;
   }
  
   .practice-header,
