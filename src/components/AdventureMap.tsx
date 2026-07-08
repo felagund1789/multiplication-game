@@ -24,6 +24,12 @@ interface AdventureMapProps {
 }
 
 // const LOCATION_ICONS = ['🌱', '🔟', '✋', '🌊', '🌿', '🏰', '🪨', '⚓', '🏔️', '🌅', '🧩', '🌈', '🌉', '🌋', '🧊', '👑'] as const
+const WORLDS = ["grassland", "desert", "water"];
+const SPACER_TILES = {
+  "grassland": ["rocks", "bushes"],
+  "desert": ["pyramids", "palm-trees"],
+  "water": ["islands", "waves"]
+}
 
 function stageStatus(
   stage: StageDefinition,
@@ -78,19 +84,21 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
           const locationText = text.journeyLocations[stage.id]
           const locationTitle = locationText?.title ?? stage.title
           // const locationSubtitle = locationText?.subtitle ?? stage.description
+          const world = WORLDS[Math.floor(index / 5)] ?? "grassland";
+          const spacerTiles = SPACER_TILES[world as keyof typeof SPACER_TILES] ?? ["rocks", "bushes"];
 
           return (
             <>
               {isOddRow && isLastArticleInRow && (<>
-                <div key={`spacer-1-${index}`} className="map-spacer map-spacer-rocks" style={{ gridColumn: 1 }} aria-hidden="true"></div>
-                <div key={`spacer-2-${index}`} className="map-spacer map-spacer-bushes" style={{ gridColumn: 2 }} aria-hidden="true"></div>
+                <div key={`spacer-1-${index}`} className={`map-spacer map-spacer-${spacerTiles[0]}`} style={{ gridColumn: 1 }} aria-hidden="true"></div>
+                <div key={`spacer-2-${index}`} className={`map-spacer map-spacer-${spacerTiles[1]}`} style={{ gridColumn: 2 }} aria-hidden="true"></div>
               </>)}
               {isOddRow && isMiddleArticleInRow && (<>
-                <div key={`spacer-1-${index}`} className="map-spacer map-spacer-left-corner" style={{ gridColumn: 1 }} aria-hidden="true"></div>
+                <div key={`spacer-1-${index}`} className={`map-spacer map-spacer-${world} map-spacer-left-corner`} style={{ gridColumn: 1 }} aria-hidden="true"></div>
               </>)}
               <article
                 key={stage.id}
-                className={`map-node map-node-${stage.id} ${status}`}
+                className={`map-node map-node-${stage.id} map-node-${world} ${status}`}
                 style={{ gridColumn: column }}
                 aria-label={`${locationTitle} ${status}`}
               >
@@ -98,7 +106,7 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
                   <span className="map-node-icon" aria-hidden="true">
                     {/* <i className="nes-mario"></i> */}
                   </span>
-                  <span className="map-node-index">{index + 1}</span>
+                  {index < stages.length - 1 && <span className="map-node-index">{(index % 5) + 1}</span>}
                 </div>
                 {/* <p className="map-node-title text-size-md">{locationTitle}</p>
                 <p className="map-node-subtitle text-size-base">{locationSubtitle}</p> */}
@@ -122,11 +130,11 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
                 )}
               </article>
               {isOddRow && isMiddleArticleInRow && (<>
-                <div key={`spacer-3-${index}`} className="map-spacer map-spacer-right-corner" style={{ gridColumn: 3 }} aria-hidden="true"></div>
+                <div key={`spacer-3-${index}`} className={`map-spacer map-spacer-${world} map-spacer-right-corner`} style={{ gridColumn: 3 }} aria-hidden="true"></div>
               </>)}
               {isOddRow && isFirstArticleInRow && (<>
-                <div key={`spacer-2-${index}`} className="map-spacer map-spacer-rocks" style={{ gridColumn: 2 }} aria-hidden="true"></div>
-                <div key={`spacer-3-${index}`} className="map-spacer map-spacer-bushes" style={{ gridColumn: 3 }} aria-hidden="true"></div>
+                <div key={`spacer-2-${index}`} className={`map-spacer map-spacer-${spacerTiles[0]}`} style={{ gridColumn: 2 }} aria-hidden="true"></div>
+                <div key={`spacer-3-${index}`} className={`map-spacer map-spacer-${spacerTiles[1]}`} style={{ gridColumn: 3 }} aria-hidden="true"></div>
               </>)}
             </>
           )

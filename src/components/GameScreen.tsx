@@ -190,11 +190,8 @@ export function GameScreen({
             </div>
           )}
           <div className="stage-goal text-size-md">
-            <p>
-              {text.stageLabel}: {activeStageName} - {" "}
-              {text.answeredLabel}: {activeStageProgress.answered} - {" "}
-              {text.correctLabel}: {activeStageProgress.correct}
-            </p>
+            <p>{activeStageName}</p>
+            <p>{text.answeredLabel}: {activeStageProgress.correct} / {activeStageProgress.answered}</p>
           </div>
           <h2>{activeQuestion.prompt}</h2>
 

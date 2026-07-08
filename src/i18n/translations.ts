@@ -159,47 +159,47 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           subtitle: 'Single-table sprint with table 4.',
         },
         'stage-6': {
-          title: 'World 1 - Level 6',
+          title: 'World 2 - Level 1',
           subtitle: 'Single-table sprint with table 8.',
         },
         'stage-7': {
-          title: 'World 1 - Level 7',
+          title: 'World 2 - Level 2',
           subtitle: 'Single-table sprint with table 3.',
         },
         'stage-8': {
-          title: 'World 1 - Level 8',
+          title: 'World 2 - Level 3',
           subtitle: 'Single-table sprint with table 6.',
         },
         'stage-9': {
-          title: 'World 2 - Level 1',
+          title: 'World 2 - Level 4',
           subtitle: 'Single-table sprint with table 7.',
         },
         'stage-10': {
-          title: 'World 2 - Level 2',
+          title: 'World 2 - Level 5',
           subtitle: 'Single-table sprint with table 9.',
         },
         'stage-11': {
-          title: 'World 2 - Level 3',
+          title: 'World 3 - Level 1',
           subtitle: 'Mixed puzzle formats for 1 and 10.',
         },
         'stage-12': {
-          title: 'World 2 - Level 4',
+          title: 'World 3 - Level 2',
           subtitle: 'Mixed puzzle formats for 5 and 2.',
         },
         'stage-13': {
-          title: 'World 2 - Level 5',
+          title: 'World 3 - Level 3',
           subtitle: 'Mixed puzzle formats for 4 and 8.',
         },
         'stage-14': {
-          title: 'World 2 - Level 6',
+          title: 'World 3 - Level 4',
           subtitle: 'Mixed puzzle formats for 3 and 6.',
         },
         'stage-15': {
-          title: 'World 2 - Level 7',
+          title: 'World 3 - Level 5',
           subtitle: 'Mixed puzzle formats for 9 and 7.',
         },
         'stage-16': {
-          title: 'World 2 - Level 8',
+          title: 'Final Challenge',
           subtitle: 'Final mixed challenge for 2, 3, 4, 6, 7, 8 and 9.',
         },
       },

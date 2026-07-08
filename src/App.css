@@ -238,25 +238,47 @@ p {
 .map-node.map-node-stage-1 {
   background-image: url('/images/map/road-start.png');
 }
-.map-node.map-node-stage-3 ,
-.map-node.map-node-stage-9,
+.map-node.map-node-stage-3,
 .map-node.map-node-stage-15 {
   background-image: url('/images/map/road-angle-with-bushes.png');
 }
-.map-node.map-node-stage-4 ,
-.map-node.map-node-stage-12 {
+.map-node.map-node-stage-4 {
   background-image: url('/images/map/road-vertical-bushes.png');
 }
 .map-node.map-node-stage-6,
 .map-node.map-node-stage-10 {
   background-image: url('/images/map/road-vertical-rocks.png');
 }
-.map-node.map-node-stage-7,
+.map-node.map-node-stage-6.map-node-desert,
+.map-node.map-node-stage-10.map-node-desert {
+  background-image: url('/images/map/road-vertical-desert-palm-trees.png');
+}
+.map-node.map-node-stage-7 {
+  background-image: url('/images/map/road-angle-2-desert.png');
+}
+.map-node.map-node-stage-8 {
+  background-image: url('/images/map/road-desert.png');
+}
+.map-node.map-node-stage-9 {
+  background-image: url('/images/map/road-angle-3-desert.png');
+}
+.map-node.map-node-stage-11 {
+  background-image: url('/images/map/road-water.png');
+}
+.map-node.map-node-stage-12 {
+  background-image: url('/images/map/road-vertical-water.png');
+}
 .map-node.map-node-stage-13 {
-  background-image: url('/images/map/road-angle-2.png');
+  background-image: url('/images/map/road-angle-2-water.png');
+}
+.map-node.map-node-stage-14 {
+  background-image: url('/images/map/road-water-2.png');
+}
+.map-node.map-node-stage-15 {
+  background-image: url('/images/map/road-angle-3-water.png');
 }
 .map-node.map-node-stage-16 {
-  background-image: url('/images/map/road-vertical-end.png');
+  background-image: url('/images/map/road-vertical-end-castle.png');
 }
 .map-spacer.map-spacer-rocks {
   background-image: url('/images/map/rocks.png');
@@ -269,6 +291,24 @@ p {
 }
 .map-spacer.map-spacer-left-corner {
   background-image: url('/images/map/road-angle-with-moat.png');
+}
+.map-spacer.map-spacer-pyramids {
+  background-image: url('/images/map/desert-pyramids.png');
+}
+.map-spacer.map-spacer-palm-trees {
+  background-image: url('/images/map/desert-palm-trees.png');
+}
+.map-spacer.map-spacer-waves {
+  background-image: url('/images/map/waves.png');
+}
+.map-spacer.map-spacer-islands {
+  background-image: url('/images/map/islands.png');
+}
+.map-spacer.map-spacer-water.map-spacer-right-corner {
+  background-image: url('/images/map/road-angle-1-water.png');
+}
+.map-spacer.map-spacer-water.map-spacer-left-corner {
+  background-image: url('/images/map/road-angle-4-water.png');
 }
 
 .map-node-top {
@@ -547,18 +587,28 @@ p {
   .map-node.map-node-stage-4,
   .map-node.map-node-stage-7,
   .map-node.map-node-stage-8,
-  .map-node.map-node-stage-10,
-  .map-node.map-node-stage-11,
-  .map-node.map-node-stage-13,
-  .map-node.map-node-stage-14,
-  .map-node.map-node-stage-15 {
+  .map-node.map-node-stage-10 {
     background-image: url('/images/map/road-vertical-bushes.png');
   }
   .map-node.map-node-stage-5,
-  .map-node.map-node-stage-6,
-  .map-node.map-node-stage-9,
-  .map-node.map-node-stage-12 {
+  .map-node.map-node-stage-6 {
     background-image: url('/images/map/road-vertical-rocks.png');
+  }
+  .map-node.map-node-stage-7 {
+    background-image: url('/images/map/road-vertical-desert-pyramids.png');
+  }
+  .map-node.map-node-stage-8 {
+    background-image: url('/images/map/road-vertical-desert-palm-trees.png');
+  }
+  .map-node.map-node-stage-9 {
+    background-image: url('/images/map/road-vertical-desert-pyramids.png');
+  }
+  .map-node.map-node-stage-11,
+  .map-node.map-node-stage-12,
+  .map-node.map-node-stage-13,
+  .map-node.map-node-stage-14,
+  .map-node.map-node-stage-15 {
+    background-image: url('/images/map/road-vertical-water.png');
   }
   .map-spacer {
     display: none;
