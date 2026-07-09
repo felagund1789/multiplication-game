@@ -104,7 +104,7 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
                 aria-label={`${locationTitle} ${status}`}
               >
                 <div className="map-node-top">
-                  <span className="map-node-icon" aria-hidden="true">
+                  <span className={`map-node-icon ${isOddRow ? 'left' : 'right'}`} aria-hidden="true">
                     {/* <i className="nes-mario"></i> */}
                   </span>
                   {index < stages.length - 1 && <span className="map-node-index">{(index % 5) + 1}</span>}

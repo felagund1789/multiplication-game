@@ -41,6 +41,60 @@
   gap: 1rem;
 }
 
+.game-screen {
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+}
+.game-screen.world-1-1 {
+  background-image: url('/images/backgrounds/world-1-1.png');
+}
+.game-screen.world-1-2 {
+  background-image: url('/images/backgrounds/world-1-2.png');
+}
+.game-screen.world-1-3 {
+  background-image: url('/images/backgrounds/world-1-3.png');
+}
+.game-screen.world-1-4 {
+  background-image: url('/images/backgrounds/world-1-4.png');
+}
+.game-screen.world-1-5 {
+  background-image: url('/images/backgrounds/world-1-5.png');
+}
+.game-screen.world-2-1 {
+  background-image: url('/images/backgrounds/world-2-1.png');
+}
+.game-screen.world-2-2 {
+  background-image: url('/images/backgrounds/world-2-2.png');
+}
+.game-screen.world-2-3 {
+  background-image: url('/images/backgrounds/world-2-3.png');
+}
+.game-screen.world-2-4 {
+  background-image: url('/images/backgrounds/world-2-4.png');
+}
+.game-screen.world-2-5 {
+  background-image: url('/images/backgrounds/world-2-5.png');
+}
+.game-screen.world-3-1 {
+  background-image: url('/images/backgrounds/world-3-1.png');
+}
+.game-screen.world-3-2 {
+  background-image: url('/images/backgrounds/world-3-2.png');
+}
+.game-screen.world-3-3 {
+  background-image: url('/images/backgrounds/world-3-3.png');
+}
+.game-screen.world-3-4 {
+  background-image: url('/images/backgrounds/world-3-4.png');
+}
+.game-screen.world-3-5 {
+  background-image: url('/images/backgrounds/world-3-5.png');
+}
+.game-screen.world-4-1 {
+  background-image: url('/images/backgrounds/world-4-1.png');
+}
+
 .language-switcher {
   width: 100%;
   display: flex;
@@ -108,6 +162,7 @@ p {
   grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
   gap: 0.75rem;
   align-items: start;
+  background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .confirmation-actions {
@@ -128,6 +183,7 @@ p {
 .question-panel {
   display: grid;
   gap: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .answers-grid {
@@ -156,6 +212,28 @@ p {
 
 .action-btn.nes-btn {
   min-width: 12rem;
+}
+
+.stage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.stage-progress-bar {
+  width: 100%;
+  height: 0.5rem;
+  background-color: #e0e0e0;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.stage-progress-fill {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease-in-out;
 }
 
 .stage-goal {
@@ -329,6 +407,10 @@ p {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.map-node-icon.left {
+  transform: scaleX(-1);
 }
 
 .map-node.done .map-node-icon,

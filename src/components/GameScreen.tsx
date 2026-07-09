@@ -151,7 +151,7 @@ export function GameScreen({
   }
 
   return (
-    <main className="screen game-screen">
+    <main className={`screen game-screen ${viewMode === "map" ? '' : `world-${Math.floor(activeStageIndex / 5) + 1}-${activeStageIndex % 5 + 1}`}`}>
       <header className="panel scoreboard nes-container">
         <div>
           <p className="metric-label">{text.score}</p>
@@ -184,14 +184,22 @@ export function GameScreen({
           {isReplayMode && (
             <div className="replay-mode-banner nes-container">
               <span>{text.replayModeLabel}</span>
-              <button type="button" className="nes-btn is-primary replay-exit-btn" onClick={handleExitReplay}>
-                {text.adventureMapTitle} &rarr;
-              </button>
             </div>
           )}
-          <div className="stage-goal text-size-md">
-            <p>{activeStageName}</p>
-            <p>{text.answeredLabel}: {activeStageProgress.correct} / {activeStageProgress.answered}</p>
+          <div className="stage-progress-bar">
+            <div
+              className="stage-progress-fill"
+              style={{ width: `${(activeStageProgress.answered / 10) * 100}%` }}
+            ></div>
+          </div>
+          <div className="stage-header">
+            <div className="stage-goal text-size-md">
+              <p>{activeStageName}</p>
+              <p>{text.answeredLabel}: {activeStageProgress.correct} / {activeStageProgress.answered}</p>
+            </div>
+            <button type="button" className="nes-btn is-primary replay-exit-btn" onClick={handleExitReplay}>
+              {text.adventureMapTitle} &rarr;
+            </button>
           </div>
           <h2>{activeQuestion.prompt}</h2>
 
