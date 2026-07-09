@@ -16,21 +16,21 @@
 }
 
 .app-root--menu {
-  background-image: url('/menu-background.png');
+  background-image: url('/images/backgrounds/menu-background.png');
 }
 
 .app-root--game {
   background-color: #f8d89f;
-  background-image: url('/game-background.png');
+  background-image: url('/images/backgrounds/game-background.png');
 }
 
 .app-root--practice {
-  background-image: url('/menu-background.png');
+  background-image: url('/images/backgrounds/practice-background.png');
 }
 
 .app-root--collection {
   background-color: #f8d89f;
-  background-image: url('/collection-background.png');
+  background-image: url('/images/backgrounds/collection-background.png');
 }
 
 .screen {
@@ -309,6 +309,9 @@ p {
 }
 .map-spacer.map-spacer-water.map-spacer-left-corner {
   background-image: url('/images/map/road-angle-4-water.png');
+}
+.map-spacer.map-spacer-skulls {
+  background-image: url('/images/map/skulls.png');
 }
 
 .map-node-top {

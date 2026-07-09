@@ -442,7 +442,7 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
       eyebrow: 'Λειτουργία Εξάσκησης',
       title: 'Διάλεξε Πίνακες',
       selectedLabel: 'Επιλεγμένα',
-      mainMenu: 'Κεντρικό Μενού',
+      mainMenu: 'Μενού',
       applySelection: 'Εφαρμογή Επιλογής',
       submitAnswer: 'Υποβολή Απάντησης',
       nextQuestion: 'Επόμενη Ερώτηση',
@@ -453,9 +453,9 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
     },
     collection: {
       title: 'Συλλογή Μεταλλίων',
-      earned: 'Στη συλλογή σου',
+      earned: 'Στη συλλογή',
       locked: 'Κλειδωμένο',
-      backToMenu: 'Κεντρικό Μενού',
+      backToMenu: 'Μενού',
     },
     rewards: {
       toastTitle: 'Νέα Μετάλλια!',

@@ -24,11 +24,12 @@ interface AdventureMapProps {
 }
 
 // const LOCATION_ICONS = ['🌱', '🔟', '✋', '🌊', '🌿', '🏰', '🪨', '⚓', '🏔️', '🌅', '🧩', '🌈', '🌉', '🌋', '🧊', '👑'] as const
-const WORLDS = ["grassland", "desert", "water"];
+const WORLDS = ["grass", "desert", "water", "dark"];
 const SPACER_TILES = {
-  "grassland": ["rocks", "bushes"],
+  "grass": ["rocks", "bushes"],
   "desert": ["pyramids", "palm-trees"],
-  "water": ["islands", "waves"]
+  "water": ["islands", "waves"],
+  "dark": ["skulls", "skulls"]
 }
 
 function stageStatus(
@@ -84,7 +85,7 @@ export function AdventureMap({ stages, currentStageIndex, stageProgress, onStart
           const locationText = text.journeyLocations[stage.id]
           const locationTitle = locationText?.title ?? stage.title
           // const locationSubtitle = locationText?.subtitle ?? stage.description
-          const world = WORLDS[Math.floor(index / 5)] ?? "grassland";
+          const world = WORLDS[Math.floor(index / 5)] ?? "grass";
           const spacerTiles = SPACER_TILES[world as keyof typeof SPACER_TILES] ?? ["rocks", "bushes"];
 
           return (
