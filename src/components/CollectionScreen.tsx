@@ -34,7 +34,8 @@ export function CollectionScreen({ text, badgeDefinitions, collectedBadgeIds, on
 
             return (
               <article key={badge.id} className={`badge-card nes-container ${isEarned ? 'earned' : 'locked'}`}>
-                <div className="badge-emoji">{badge.emoji}</div>
+                {badge.imageUrl && <img src={badge.imageUrl} alt={badge.name} className="badge-image" />}
+                {!badge.imageUrl && badge.emoji && <div className="badge-emoji">{badge.emoji}</div>}
                 <p className="badge-name text-size-md">{badge.name}</p>
                 <p className="badge-description text-size-base">{badge.description}</p>
                 {!isEarned && <p className="badge-locked-label text-size-base">{text.locked}</p>}

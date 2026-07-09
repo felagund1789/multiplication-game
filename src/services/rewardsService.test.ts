@@ -42,14 +42,14 @@ describe('determineBadgesToAward', () => {
   })
 
   it('should award streak badges for reaching streak milestones', () => {
-    const badges5 = determineBadgesToAward([], 5, false, null, false, 0)
-    expect(badges5).toContain('streak5')
+    const badges20 = determineBadgesToAward([], 20, false, null, false, 0)
+    expect(badges20).toContain('streak20')
 
-    const badges15 = determineBadgesToAward([], 15, false, null, false, 0)
-    expect(badges15).toContain('streak15')
+    const badges50 = determineBadgesToAward([], 50, false, null, false, 0)
+    expect(badges50).toContain('streak50')
 
-    const badges25 = determineBadgesToAward([], 25, false, null, false, 0)
-    expect(badges25).toContain('streak25')
+    const badges100 = determineBadgesToAward([], 100, false, null, false, 0)
+    expect(badges100).toContain('streak100')
   })
 
   it('should award perfectStage badge for 100% accuracy stage completion', () => {

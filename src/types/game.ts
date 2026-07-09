@@ -51,9 +51,9 @@ export interface GameProgress {
 }
 
 export type BadgeType = 
-  | 'streak5'
-  | 'streak15'
-  | 'streak25'
+  | 'streak20'
+  | 'streak50'
+  | 'streak100'
   | 'stageComplete'
   | 'perfectStage'
   | 'stage1Complete'
@@ -77,7 +77,8 @@ export type BadgeType =
 export interface Badge {
   id: string
   type: BadgeType
-  emoji: string
+  emoji?: string
+  imageUrl?: string
   name: string
   description: string
   unlockedAt?: number

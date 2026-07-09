@@ -238,80 +238,80 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           description: 'Complete any stage.',
         },
         stage1Complete: {
-          name: 'Sprout Field Emblem',
-          description: 'Complete Sprout Field (Stage 1).',
+          name: 'Anchor',
+          description: 'Complete World 1 - Level 1.',
         },
         stage2Complete: {
-          name: 'Tenfold Terrace Emblem',
-          description: 'Complete Tenfold Terrace (Stage 2).',
+          name: 'Blue Coin',
+          description: 'Complete World 1 - Level 2.',
         },
         stage3Complete: {
-          name: 'Fiveforge Trail Emblem',
-          description: 'Complete Fiveforge Trail (Stage 3).',
+          name: 'Brick',
+          description: 'Complete World 1 - Level 3.',
         },
         stage4Complete: {
-          name: 'Twin Current Emblem',
-          description: 'Complete Twin Current (Stage 4).',
+          name: 'Fire Flower',
+          description: 'Complete World 1 - Level 4.',
         },
         stage5Complete: {
-          name: 'Quadrant Grove Emblem',
-          description: 'Complete Quadrant Grove (Stage 5).',
+          name: 'Frog',
+          description: 'Complete World 1 - Level 5.',
         },
         stage6Complete: {
-          name: 'Octa Outpost Emblem',
-          description: 'Complete Octa Outpost (Stage 6).',
+          name: 'Empty Box',
+          description: 'Complete World 2 - Level 1.',
         },
         stage7Complete: {
-          name: 'Triad Cliffs Emblem',
-          description: 'Complete Triad Cliffs (Stage 7).',
+          name: 'Hammer',
+          description: 'Complete World 2 - Level 2.',
         },
         stage8Complete: {
-          name: 'Hexa Harbor Emblem',
-          description: 'Complete Hexa Harbor (Stage 8).',
+          name: 'Magic Flute',
+          description: 'Complete World 2 - Level 3.',
         },
         stage9Complete: {
-          name: 'Seventh Summit Emblem',
-          description: 'Complete Seventh Summit (Stage 9).',
+          name: 'Music Box',
+          description: 'Complete World 2 - Level 4.',
         },
         stage10Complete: {
-          name: 'Ninth Horizon Emblem',
-          description: 'Complete Ninth Horizon (Stage 10).',
+          name: 'P Wing',
+          description: 'Complete World 2 - Level 5.',
         },
         stage11Complete: {
-          name: 'Puzzle Gate Emblem',
-          description: 'Complete Puzzle Gate (Stage 11).',
+          name: 'Cloud',
+          description: 'Complete World 3 - Level 1.',
         },
         stage12Complete: {
-          name: 'Sapphire Waterfalls Emblem',
-          description: 'Complete Sapphire Waterfalls (Stage 12).',
+          name: 'Coin',
+          description: 'Complete World 3 - Level 2.',
         },
         stage13Complete: {
-          name: 'Crystal Bridge Emblem',
-          description: 'Complete Crystal Bridge (Stage 13).',
+          name: 'Full Box',
+          description: 'Complete World 3 - Level 3.',
         },
         stage14Complete: {
-          name: 'Volcano Trials Emblem',
-          description: 'Complete Volcano Trials (Stage 14).',
+          name: 'Green Super Leaf',
+          description: 'Complete World 3 - Level 4.',
         },
         stage15Complete: {
-          name: 'Frozen Ridge Emblem',
-          description: 'Complete Frozen Ridge (Stage 15).',
+          name: 'Red Super Leaf',
+          description: 'Complete World 3 - Level 5.',
         },
         stage16Complete: {
-          name: 'Crown Citadel Emblem',
-          description: 'Complete Crown Citadel (Stage 16).',
+          name: 'Tanooki',
+          description: 'Complete Final Challenge.',
         },
-        streak5: {
+        streak20: {
           name: 'Hot Streak',
-          description: 'Reach a 5-question streak.',
+          description: 'Reach a 20-question streak.',
         },
-        streak15: {
+        streak50: {
           name: 'Burning Hot',
-          description: 'Reach a 15-question streak.',
+          description: 'Reach a 50-question streak.',
         },
-        streak25: {
+        streak100: {
           name: 'Unstoppable',
-          description: 'Reach a 25-question streak.',
+          description: 'Reach a 100-question streak.',
         },
         perfectStage: {
           name: 'Flawless',
@@ -466,80 +466,80 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
           description: 'Ολοκλήρωσε οποιοδήποτε στάδιο.',
         },
         stage1Complete: {
-          name: 'Έμβλημα Πεδίου Βλαστών',
-          description: 'Ολοκλήρωσε το Πεδίο Βλαστών (Στάδιο 1).',
+          name: 'Άγκυρα',
+          description: 'Ολοκλήρωσε το Επίπεδο 1 του Κόσμου 1.',
         },
         stage2Complete: {
-          name: 'Έμβλημα Δέκα Αναβαθμίδων',
-          description: 'Ολοκλήρωσε τις Δέκα Αναβαθμίδες (Στάδιο 2).',
+          name: 'Μπλε Νόμισμα',
+          description: 'Ολοκλήρωσε το Επίπεδο 2 του Κόσμου 1.',
         },
         stage3Complete: {
-          name: 'Έμβλημα Πέντε Μονοπατιών',
-          description: 'Ολοκλήρωσε τα Πέντε Μονοπάτια (Στάδιο 3).',
+          name: 'Τούβλο',
+          description: 'Ολοκλήρωσε το Επίπεδο 3 του Κόσμου 1.',
         },
         stage4Complete: {
-          name: 'Έμβλημα Δίδυμων Ρευμάτων',
-          description: 'Ολοκλήρωσε τα Δίδυμα Ρεύματα (Στάδιο 4).',
+          name: 'Λουλούδι της Φωτιάς',
+          description: 'Ολοκλήρωσε το Επίπεδο 4 του Κόσμου 1.',
         },
         stage5Complete: {
-          name: 'Έμβλημα Τέταρτου Άλσους',
-          description: 'Ολοκλήρωσε το Τέταρτο Άλσος (Στάδιο 5).',
+          name: 'Βάτραχος',
+          description: 'Ολοκλήρωσε το Επίπεδο 5 του Κόσμου 1.',
         },
         stage6Complete: {
-          name: 'Έμβλημα Οκτάγωνου Φρουρίου',
-          description: 'Ολοκλήρωσε το Οκτάγωνο Φρούριο (Στάδιο 6).',
+          name: 'Άδειο Κουτί',
+          description: 'Ολοκλήρωσε το Επίπεδο 1 του Κόσμου 2.',
         },
         stage7Complete: {
-          name: 'Έμβλημα Τριπλών Βράχων',
-          description: 'Ολοκλήρωσε τα Τριπλά Βράχια (Στάδιο 7).',
+          name: 'Σφυρί',
+          description: 'Ολοκλήρωσε το Επίπεδο 2 του Κόσμου 2.',
         },
         stage8Complete: {
-          name: 'Έμβλημα Εξαπλού Λιμανιού',
-          description: 'Ολοκλήρωσε το Εξαπλό Λιμάνι (Στάδιο 8).',
+          name: 'Μαγική Φλογέρα',
+          description: 'Ολοκλήρωσε το Επίπεδο 3 του Κόσμου 2.',
         },
         stage9Complete: {
-          name: 'Έμβλημα Επτά Κορυφών',
-          description: 'Ολοκλήρωσε τις Επτά Κορυφές (Στάδιο 9).',
+          name: 'Μουσικό Κουτί',
+          description: 'Ολοκλήρωσε το Επίπεδο 4 του Κόσμου 2.',
         },
         stage10Complete: {
-          name: 'Έμβλημα Ένατου Ορίζοντα',
-          description: 'Ολοκλήρωσε τον Ένατο Ορίζοντα (Στάδιο 10).',
+          name: 'P Wing',
+          description: 'Ολοκλήρωσε το Επίπεδο 5 του Κόσμου 2.',
         },
         stage11Complete: {
-          name: 'Έμβλημα Πύλης Γρίφων',
-          description: 'Ολοκλήρωσε την Πύλη Γρίφων (Στάδιο 11).',
+          name: 'Σύννεφο',
+          description: 'Ολοκλήρωσε το Επίπεδο 1 του Κόσμου 3.',
         },
         stage12Complete: {
-          name: 'Έμβλημα Ζαφειρένιων Καταρρακτών',
-          description: 'Ολοκλήρωσε τους Ζαφειρένιους Καταρράκτες (Στάδιο 12).',
+          name: 'Νόμισμα',
+          description: 'Ολοκλήρωσε το Επίπεδο 2 του Κόσμου 3.',
         },
         stage13Complete: {
-          name: 'Έμβλημα Κρυστάλλινης Γέφυρας',
-          description: 'Ολοκλήρωσε την Κρυστάλλινη Γέφυρα (Στάδιο 13).',
+          name: 'Γεμάτο Κουτί',
+          description: 'Ολοκλήρωσε το Επίπεδο 3 του Κόσμου 3.',
         },
         stage14Complete: {
-          name: 'Έμβλημα Δοκιμασιών Ηφαιστείου',
-          description: 'Ολοκλήρωσε τις Δοκιμασίες Ηφαιστείου (Στάδιο 14).',
+          name: 'Πράσινο Σούπερ Φύλλο',
+          description: 'Ολοκλήρωσε το Επίπεδο 4 του Κόσμου 3.',
         },
         stage15Complete: {
-          name: 'Έμβλημα Παγωμένης Ράχης',
-          description: 'Ολοκλήρωσε την Παγωμένη Ράχη (Στάδιο 15).',
+          name: 'Κόκκινο Σούπερ Φύλλο',
+          description: 'Ολοκλήρωσε το Επίπεδο 5 του Κόσμου 3.',
         },
         stage16Complete: {
-          name: 'Έμβλημα Ακρόπολης του Στέμματος',
-          description: 'Ολοκλήρωσε την Ακρόπολη του Στέμματος (Στάδιο 16).',
+          name: 'Τανούκι',
+          description: 'Ολοκλήρωσε την τελική δοκιμασία.',
         },
-        streak5: {
-          name: '5-Σερί',
-          description: 'Φτάσε σε σερί 5 σωστών απαντήσεων.',
+        streak20: {
+          name: '20 στη σειρά',
+          description: 'Απάντησε σωστά 20 φορές στη σειρά.',
         },
-        streak15: {
-          name: '15-Σερί',
-          description: 'Φτάσε σε σερί 15 σωστών απαντήσεων.',
+        streak50: {
+          name: '50 στη σειρά',
+          description: 'Απάντησε σωστά 50 φορές στη σειρά.',
         },
-        streak25: {
+        streak100: {
           name: 'Ασταμάτητος',
-          description: 'Φτάσε σε σερί 25 σωστών απαντήσεων.',
+          description: 'Τερμάτισε απαντώντας σωστά 100 φορές στη σειρά.',
         },
         perfectStage: {
           name: 'Αψεγάδιαστος',

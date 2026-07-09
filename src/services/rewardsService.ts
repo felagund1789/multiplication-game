@@ -2,116 +2,138 @@ import type { Badge, BadgeType } from '../types/game'
 import { STAGES } from '../data/stages'
 import type { RewardsText } from '../i18n/translations'
 
-const BADGE_BASES: Record<BadgeType, Pick<Badge, 'id' | 'type' | 'emoji'>> = {
+const BADGE_BASES: Record<BadgeType, Pick<Badge, 'id' | 'type' | 'emoji' | 'imageUrl'>> = {
   stageComplete: {
     id: 'stage-complete',
     type: 'stageComplete',
-    emoji: '⭐',
+    emoji: '🍄',
+    imageUrl: '/images/badges/mushroom.png'
   },
   stage1Complete: {
     id: 'stage-1-complete-badge',
     type: 'stage1Complete',
-    emoji: '🌱',
+    emoji: '⚓',
+    imageUrl: '/images/badges/anchor.png',
   },
   stage2Complete: {
     id: 'stage-2-complete-badge',
     type: 'stage2Complete',
-    emoji: '🔟',
+    emoji: '🔵',
+    imageUrl: '/images/badges/blue-coin.png',
   },
   stage3Complete: {
     id: 'stage-3-complete-badge',
     type: 'stage3Complete',
-    emoji: '✋',
+    emoji: '🧱',
+    imageUrl: '/images/badges/brick.png',
   },
   stage4Complete: {
     id: 'stage-4-complete-badge',
     type: 'stage4Complete',
-    emoji: '🌊',
+    emoji: '🌹',
+    imageUrl: '/images/badges/fire-flower.png',
   },
   stage5Complete: {
     id: 'stage-5-complete-badge',
     type: 'stage5Complete',
-    emoji: '🌿',
+    emoji: '🐸',
+    imageUrl: '/images/badges/frog.png',
   },
   stage6Complete: {
     id: 'stage-6-complete-badge',
     type: 'stage6Complete',
-    emoji: '🏰',
+    emoji: '⬜',
+    imageUrl: '/images/badges/empty-box.png',
   },
   stage7Complete: {
     id: 'stage-7-complete-badge',
     type: 'stage7Complete',
-    emoji: '🪨',
+    emoji: '🔨',
+    imageUrl: '/images/badges/hammer.png',
   },
   stage8Complete: {
     id: 'stage-8-complete-badge',
     type: 'stage8Complete',
-    emoji: '⚓',
+    emoji: '🪈',
+    imageUrl: '/images/badges/magic-flute.png',
   },
   stage9Complete: {
     id: 'stage-9-complete-badge',
     type: 'stage9Complete',
-    emoji: '🏔️',
+    emoji: '🎵',
+    imageUrl: '/images/badges/music-box.png',
   },
   stage10Complete: {
     id: 'stage-10-complete-badge',
     type: 'stage10Complete',
-    emoji: '🌅',
+    emoji: '🪽',
+    imageUrl: '/images/badges/p-wing.png',
   },
   stage11Complete: {
     id: 'stage-11-complete-badge',
     type: 'stage11Complete',
-    emoji: '🧩',
+    emoji: '☁️',
+    imageUrl: '/images/badges/cloud.png',
   },
   stage12Complete: {
     id: 'stage-12-complete-badge',
     type: 'stage12Complete',
-    emoji: '🌈',
+    emoji: '🪙',
+    imageUrl: '/images/badges/coin.png',
   },
   stage13Complete: {
     id: 'stage-13-complete-badge',
     type: 'stage13Complete',
-    emoji: '🌉',
+    emoji: '📦',
+    imageUrl: '/images/badges/full-box.png',
   },
   stage14Complete: {
     id: 'stage-14-complete-badge',
     type: 'stage14Complete',
-    emoji: '🌋',
+    emoji: '🌿',
+    imageUrl: '/images/badges/super-leaf.png',
   },
   stage15Complete: {
     id: 'stage-15-complete-badge',
     type: 'stage15Complete',
-    emoji: '🧊',
+    emoji: '🍂',
+    imageUrl: '/images/badges/super-leaf-2.png',
   },
   stage16Complete: {
     id: 'stage-16-complete-badge',
     type: 'stage16Complete',
-    emoji: '👑',
+    emoji: '🦝',
+    imageUrl: '/images/badges/tanooki.png',
   },
-  streak5: {
-    id: 'streak-5',
-    type: 'streak5',
+  streak20: {
+    id: 'streak-20',
+    type: 'streak20',
+    emoji: '🍄',
+    imageUrl: '/images/badges/card-mushroom.png',
+  },
+  streak50: {
+    id: 'streak-50',
+    type: 'streak50',
     emoji: '🔥',
+    imageUrl: '/images/badges/card-fire-flower.png',
   },
-  streak15: {
-    id: 'streak-15',
-    type: 'streak15',
-    emoji: '🌟',
-  },
-  streak25: {
-    id: 'streak-25',
-    type: 'streak25',
-    emoji: '💥',
+  streak100: {
+    id: 'streak-100',
+    type: 'streak100',
+    emoji: '⭐',
+    imageUrl: '/images/badges/card-starman.png',
   },
   perfectStage: {
     id: 'perfect-stage',
     type: 'perfectStage',
-    emoji: '💯',
+    emoji: '🍄‍🟫',
+    imageUrl: '/images/badges/1up.png'
   },
   allStagesComplete: {
     id: 'all-stages',
     type: 'allStagesComplete',
-    emoji: '👑',
+    emoji: '🌟',
+    imageUrl: '/images/badges/starman.png',
   },
 }
 
@@ -140,20 +162,20 @@ export function badgeTypeToId(type: BadgeType): string {
 
 export function buildBadgeDefinitions(rewardsText: RewardsText): Record<BadgeType, Badge> {
   return {
-    streak5: {
-      ...BADGE_BASES.streak5,
-      name: rewardsText.badges.streak5.name,
-      description: rewardsText.badges.streak5.description,
+    streak20: {
+      ...BADGE_BASES.streak20,
+      name: rewardsText.badges.streak20.name,
+      description: rewardsText.badges.streak20.description,
     },
-    streak15: {
-      ...BADGE_BASES.streak15,
-      name: rewardsText.badges.streak15.name,
-      description: rewardsText.badges.streak15.description,
+    streak50: {
+      ...BADGE_BASES.streak50,
+      name: rewardsText.badges.streak50.name,
+      description: rewardsText.badges.streak50.description,
     },
-    streak25: {
-      ...BADGE_BASES.streak25,
-      name: rewardsText.badges.streak25.name,
-      description: rewardsText.badges.streak25.description,
+    streak100: {
+      ...BADGE_BASES.streak100,
+      name: rewardsText.badges.streak100.name,
+      description: rewardsText.badges.streak100.description,
     },
     stageComplete: {
       ...BADGE_BASES.stageComplete,
@@ -275,16 +297,16 @@ export function determineBadgesToAward(
     }
   }
 
-  if (currentStreak >= 5 && !collectedBadges.includes(badgeTypeToId('streak5'))) {
-    newBadges.push('streak5')
+  if (currentStreak >= 20 && !collectedBadges.includes(badgeTypeToId('streak20'))) {
+    newBadges.push('streak20')
   }
 
-  if (currentStreak >= 15 && !collectedBadges.includes(badgeTypeToId('streak15'))) {
-    newBadges.push('streak15')
+  if (currentStreak >= 50 && !collectedBadges.includes(badgeTypeToId('streak50'))) {
+    newBadges.push('streak50')
   }
 
-  if (currentStreak >= 25 && !collectedBadges.includes(badgeTypeToId('streak25'))) {
-    newBadges.push('streak25')
+  if (currentStreak >= 100 && !collectedBadges.includes(badgeTypeToId('streak100'))) {
+    newBadges.push('streak100')
   }
 
   if (stageJustCompleted && stageWasPerfect && !collectedBadges.includes(badgeTypeToId('perfectStage'))) {

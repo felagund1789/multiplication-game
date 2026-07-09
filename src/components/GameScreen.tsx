@@ -279,11 +279,20 @@ export function GameScreen({
 
                 return (
                   <div key={badgeId} className="badge-toast-item">
-                    <span className="badge-toast-emoji">{badge.emoji}</span>
+                    {badge.imageUrl && (
+                      <img
+                        src={badge.imageUrl}
+                        alt={badge.name}
+                        className="badge-toast-image"
+                      />
+                    )}
+                    {!badge.imageUrl && badge.emoji && (
+                      <span className="badge-toast-emoji">{badge.emoji}</span>
+                    )}
                     <span className="badge-toast-name">{badge.name}</span>
                     <span className="badge-toast-description">{badge.description}</span>
                   </div>
-                )
+                );
               })}
             </div>
           )}
