@@ -1,6 +1,6 @@
-# Multiplication Game
+# Super Mario Multiplication Game
 
-A React + TypeScript learning game that teaches multiplication through a 9-stage adventure campaign, practice mode, and a badge reward system.
+A React and TypeScript learning game that teaches multiplication through a 16-stage Mario-themed campaign, practice mode, and collectible badges.
 
 ## Table of Contents
 
@@ -13,41 +13,44 @@ A React + TypeScript learning game that teaches multiplication through a 9-stage
 7. [Project structure overview](#project-structure-overview)
 8. [Configuration details](#configuration-details)
 9. [Troubleshooting](#troubleshooting)
-10. [Contributing](#contributing)
-11. [License](#license)
-12. [Assumptions and gaps](#assumptions-and-gaps)
+10. [Disclaimer](#disclaimer)
+11. [Contributing](#contributing)
+12. [License](#license)
+13. [Assumptions and gaps](#assumptions-and-gaps)
 
 ## Features and current capabilities
 
-- Campaign mode with a map-based journey of 9 stages.
-- Stage progression based on performance thresholds.
+- Main menu, game map/quiz flow, practice mode, and badge collection screen.
+- Per-screen background configuration for menu, game, practice, and collection views.
+- Campaign mode with 16 stages:
+  - Stages 1 to 10 are single-table standard multiplication.
+  - Stages 11 to 15 are mixed-format stages over paired tables.
+  - Stage 16 is a final mixed challenge over multiple tables.
+- Map-based progression with replay support:
+  - Current stage can be started or continued.
+  - Completed stages can be replayed without affecting campaign progress.
+- Stage thresholds and progression rules:
   - Each stage requires at least 10 answers.
-  - Minimum accuracy target is 80%.
-  - If 10 answers are reached without meeting accuracy, stage progress resets for that stage.
-- Stage replay from the adventure map for already completed locations.
-- Practice mode with selectable multiplication tables.
-  - Default selection starts at tables 2, 3, and 4.
-  - Practice does not affect campaign progress.
-- Multiple question formats:
+  - Minimum accuracy target is 80 percent.
+  - If minimum answers are reached without minimum accuracy, that stage run resets.
+- Question formats implemented:
   - Standard multiplication
   - Missing left factor
   - Missing right factor
-  - Which equation equals a target product
-  - True/False multiplication statements
-- Scoring and streak system:
-  - Base points scale by stage index.
-  - Question-format multipliers increase difficulty rewards.
+  - Which equation equals the shown product
+  - True or False statement validation
+- Scoring and streak behavior:
+  - Stage index and question format both affect point rewards.
   - Streak bonus is awarded every 3 consecutive correct answers.
 - Badge and rewards system:
   - Stage completion badge
-  - Stage-specific badges for all 9 adventure locations
-  - Streak badges (5, 15, 25)
+  - Stage-specific badges for stages 1 through 16
+  - Streak badges at 20, 50, and 100
   - Perfect stage badge
   - All stages complete badge
-  - Reward popup shows earned badge icon, name, and description
-- Badge collection screen with earned/locked state.
+  - Badge notifications and collection entries use image assets from public/images/badges.
 - Bilingual UI (English and Greek) with persisted language preference.
-- Local persistence for campaign progress and collected badges.
+- Campaign progress and collected badges persisted in browser local storage.
 
 ## Tech stack
 
@@ -116,6 +119,12 @@ npm run lint
 
 ```text
 .
+|- public/
+|  |- images/
+|  |  |- backgrounds/
+|  |  |- badges/
+|  |  \- map/
+|  \- favicon.svg
 |- src/
 |  |- components/
 |  |  |- AdventureMap.tsx
@@ -130,7 +139,8 @@ npm run lint
 |  |- data/
 |  |  \- stages.ts
 |  |- hooks/
-|  |  \- useMultiplicationGame.ts
+|  |  |- useMultiplicationGame.ts
+|  |  \- useMultiplicationGame.test.ts
 |  |- i18n/
 |  |  \- translations.ts
 |  |- services/
@@ -143,66 +153,75 @@ npm run lint
 |  |  \- rewardsService.test.ts
 |  |- types/
 |  |  \- game.ts
-|  |- App.tsx
 |  |- App.css
+|  |- App.tsx
 |  |- index.css
 |  \- main.tsx
-|- public/
 |- index.html
 |- package.json
+|- vercel.json
 |- vite.config.ts
 \- tsconfig*.json
 ```
 
 ## Configuration details
 
-Gameplay and content are code-configured in these areas:
+Core behavior is configured directly in source files.
 
-- Stages and requirements:
-  - File: src/data/stages.ts
-  - Contains stage IDs, table groups, allowed question formats, minimum answers, and minimum accuracy.
-- Question generation and scoring:
-  - File: src/services/questionService.ts
-  - Contains format builders, distractor generation, and stage/format point multipliers.
-- Progression logic:
-  - File: src/services/progressionService.ts
-  - Contains stage completion checks and stage advancement/reset threshold behavior.
-- Rewards and badge definitions:
-  - File: src/services/rewardsService.ts
-  - Contains badge catalog, stage-to-badge mapping, and badge award rules.
-- Localization:
-  - File: src/i18n/translations.ts
-  - Contains full English and Greek UI/reward copy.
+- Stage order, tables, format mix, and thresholds:
+  - src/data/stages.ts
+- Question generation, distractors, and point multipliers:
+  - src/services/questionService.ts
+- Stage completion and threshold evaluation:
+  - src/services/progressionService.ts
+- Badge definitions, image URLs, and award conditions:
+  - src/services/rewardsService.ts
+- Main screen routing and language persistence:
+  - src/App.tsx
+- App-level and stage-level background styling:
+  - src/App.css
+- Localized text for English and Greek:
+  - src/i18n/translations.ts
 
 Local storage keys currently used:
 
-- multiplication-game-save-v2
-  - Saved campaign progress, score, stage progress, and collected badge IDs.
-- multiplication-game-language
-  - Current UI language (en or el).
+- multiplication-game-save-v2 for campaign progress and collected badges.
+- multiplication-game-language for UI language preference.
+
+Deployment note:
+
+- vercel.json rewrites all routes to / for single-page app hosting.
 
 ## Troubleshooting
 
-- Continue button is disabled on main menu:
-  - A saved campaign was not detected yet. Start a new game once to create progress.
-- Strange progress or badge state after development changes:
-  - Clear browser local storage entries:
+- Continue Saved Game is disabled on main menu:
+  - No saved campaign was detected yet. Start and answer at least one campaign question first.
+- Progress, language, or badges appear stale after development changes:
+  - Clear browser local storage keys:
     - multiplication-game-save-v2
     - multiplication-game-language
-- Tests fail due to environment assumptions:
-  - Run tests using npm scripts so Vitest and jsdom settings are applied consistently.
-- Build fails on type checks:
-  - Run npm install to ensure lockfile-matched dependencies are present.
+- Badge images are not visible:
+  - Confirm files exist under public/images/badges and that imageUrl values in src/services/rewardsService.ts match file names.
+- A screen background is missing:
+  - Confirm files exist under public/images/backgrounds for the paths referenced in src/App.css.
+- Tests fail unexpectedly in local runs:
+  - Use npm scripts to run Vitest with the expected project settings.
+
+## Disclaimer
+
+Super Mario, Mario, Super Mario Bros. 3, and related characters, game elements, names, images, and audio/visual themes are the property of Nintendo. This project is an unofficial fan-made educational game and is not affiliated with, endorsed by, sponsored by, or approved by Nintendo.
+
+All Nintendo trademarks, logos, and copyrighted properties remain the property of their respective owners. If you plan to distribute this project publicly, review the assets and references you include and make sure your usage is appropriate for your intended context.
 
 ## Contributing
 
 1. Create a branch for your change.
-2. Keep changes scoped and include tests for service logic or UI behavior when relevant.
-3. Run:
+2. Keep changes scoped to a clear behavior update.
+3. Add or update tests for logic/UI changes when relevant.
+4. Run checks before opening a pull request:
    - npm run lint
    - npm run test
    - npm run build
-4. Open a pull request with a short description of behavior changes.
 
 ## License
 
@@ -212,5 +231,5 @@ See [LICENSE](LICENSE) for full text.
 
 ## Assumptions and gaps
 
-- Node.js minimum version is not explicitly pinned in package.json (no engines field).
-- Deployment/runtime environment details are not documented in repository docs.
+- package.json does not define an engines field, so no explicit minimum Node.js version is pinned.
+- src/App.css references /images/backgrounds/game-background.png and /images/backgrounds/collection-background.png, but those files are not currently present in public/images/backgrounds.
