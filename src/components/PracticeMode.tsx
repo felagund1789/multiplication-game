@@ -7,9 +7,18 @@ import type { Question } from '../types/game'
 interface PracticeModeProps {
   text: PracticeText
   onBackToMenu: () => void
+  onAnswerSelected: () => void
+  onAnswerCorrect: () => void
+  onAnswerWrong: () => void
 }
 
-export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
+export function PracticeMode({
+  text,
+  onBackToMenu,
+  onAnswerSelected,
+  onAnswerCorrect,
+  onAnswerWrong,
+}: PracticeModeProps) {
   const [selectedTables, setSelectedTables] = useState<number[]>([10])
   const [question, setQuestion] = useState<Question>(() => createPracticeQuestion([10]))
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
@@ -42,6 +51,11 @@ export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
     }
 
     const isCorrect = selectedAnswer === question.correctAnswer
+    if (isCorrect) {
+      onAnswerCorrect()
+    } else {
+      onAnswerWrong()
+    }
 
     setFeedback(
       isCorrect
@@ -82,6 +96,15 @@ export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
     setFeedback(text.campaignHint)
   }
 
+  const handleSelectAnswer = (answerValue: string) => {
+    if (isSubmitted) {
+      return
+    }
+
+    setSelectedAnswer(answerValue)
+    onAnswerSelected()
+  }
+
   return (
     <main className="screen practice-screen">
       <header className="panel practice-header nes-container">
@@ -119,7 +142,7 @@ export function PracticeMode({ text, onBackToMenu }: PracticeModeProps) {
               key={option.value}
               type="button"
               className={answerButtonClassName(option.value)}
-              onClick={() => setSelectedAnswer(option.value)}
+              onClick={() => handleSelectAnswer(option.value)}
               disabled={isSubmitted}
             >
               {option.label}

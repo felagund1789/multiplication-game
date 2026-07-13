@@ -19,6 +19,30 @@ interface GameScreenProps {
   onAnswer: (answer: string) => AnswerFeedback
   onNextQuestion: () => void
   onBackToMenu: () => void
+  onAnswerSelected: () => void
+  onAnswerCorrect: () => void
+  onAnswerWrong: () => void
+  onBadgeEarned: () => void
+  onLevelMusicTrackChange: (track: string | null) => void
+}
+
+const LEVEL_MUSIC_TRACKS: Record<string, string> = {
+  'stage-1': '/audio/music/overworld-theme.mp3',
+  'stage-2': '/audio/music/athletic-theme.mp3',
+  'stage-3': '/audio/music/coin-heaven-theme.mp3',
+  'stage-4': '/audio/music/overworld-theme.mp3',
+  'stage-5': '/audio/music/fortress-theme.mp3',
+  'stage-6': '/audio/music/athletic-theme.mp3',
+  'stage-7': '/audio/music/overworld-theme.mp3',
+  'stage-8': '/audio/music/coin-heaven-theme.mp3',
+  'stage-9': '/audio/music/overworld-theme.mp3',
+  'stage-10': '/audio/music/athletic-theme.mp3',
+  'stage-11': '/audio/music/waterworld-theme.mp3',
+  'stage-12': '/audio/music/waterworld-theme.mp3',
+  'stage-13': '/audio/music/overworld-theme.mp3',
+  'stage-14': '/audio/music/coin-heaven-theme.mp3',
+  'stage-15': '/audio/music/waterworld-theme.mp3',
+  'stage-16': '/audio/music/fortress-theme.mp3',
 }
 
 export function GameScreen({
@@ -35,6 +59,11 @@ export function GameScreen({
   onAnswer,
   onNextQuestion,
   onBackToMenu,
+  onAnswerSelected,
+  onAnswerCorrect,
+  onAnswerWrong,
+  onBadgeEarned,
+  onLevelMusicTrackChange,
 }: GameScreenProps) {
   const [viewMode, setViewMode] = useState<'map' | 'quiz'>('map')
   const [replayStageIndex, setReplayStageIndex] = useState<number | null>(null)
@@ -61,6 +90,19 @@ export function GameScreen({
     setFeedback(null)
     setActiveNotification(null)
   }, [question])
+
+  useEffect(() => {
+    if (viewMode !== 'quiz') {
+      onLevelMusicTrackChange(null)
+      return
+    }
+
+    onLevelMusicTrackChange(LEVEL_MUSIC_TRACKS[activeStage.id] ?? null)
+
+    return () => {
+      onLevelMusicTrackChange(null)
+    }
+  }, [activeStage.id, onLevelMusicTrackChange, viewMode])
 
   const handleStartFromMap = () => {
     setReplayStageIndex(null)
@@ -103,6 +145,11 @@ export function GameScreen({
 
     if (isReplayMode && replayQuestion) {
       const isCorrect = selectedAnswer === replayQuestion.correctAnswer
+      if (isCorrect) {
+        onAnswerCorrect()
+      } else {
+        onAnswerWrong()
+      }
       setFeedback({
         isCorrect,
         selectedAnswer,
@@ -117,6 +164,16 @@ export function GameScreen({
     }
 
     const result = onAnswer(selectedAnswer)
+    if (result.isCorrect) {
+      onAnswerCorrect()
+    } else {
+      onAnswerWrong()
+    }
+
+    if (result.newBadgeIds.length > 0) {
+      onBadgeEarned()
+    }
+
     setFeedback(result)
     if (result.stageAdvanced || result.newBadgeIds.length > 0) {
       setActiveNotification({
@@ -126,6 +183,15 @@ export function GameScreen({
         shouldReturnToMap: result.stageAdvanced,
       })
     }
+  }
+
+  const handleSelectAnswer = (answerValue: string) => {
+    if (hasSubmitted) {
+      return
+    }
+
+    setSelectedAnswer(answerValue)
+    onAnswerSelected()
   }
 
   const answerButtonClassName = (optionValue: string) => {
@@ -209,7 +275,7 @@ export function GameScreen({
                 key={option.value}
                 type="button"
                 className={answerButtonClassName(option.value)}
-                onClick={() => setSelectedAnswer(option.value)}
+                onClick={() => handleSelectAnswer(option.value)}
                 disabled={hasSubmitted}
               >
                 {option.label === 'TRUE'

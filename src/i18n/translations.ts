@@ -89,6 +89,9 @@ export interface LanguageText {
   languageLabel: string
   english: string
   greek: string
+  soundToggleLabel: string
+  soundOnLabel: string
+  soundOffLabel: string
   menu: MenuText
   game: GameText
   practice: PracticeText
@@ -101,6 +104,9 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
     languageLabel: 'Language',
     english: 'English',
     greek: 'Greek',
+    soundToggleLabel: 'Toggle sounds',
+    soundOnLabel: 'Sound: On',
+    soundOffLabel: 'Sound: Off',
     menu: {
       eyebrow: 'Math Adventure',
       title: 'Super Mario Multiplication Game',
@@ -328,6 +334,9 @@ export const TRANSLATIONS: Record<Language, LanguageText> = {
     languageLabel: 'Γλώσσα',
     english: 'Αγγλικά',
     greek: 'Ελληνικά',
+    soundToggleLabel: 'Εναλλαγή ήχου',
+    soundOnLabel: 'Ήχος: Ναι',
+    soundOffLabel: 'Ήχος: Όχι',
     menu: {
       eyebrow: 'ΜΙΑ ΜΑΘΗΜΑΤΙΚΗ ΠΕΡΙΠΕΤΕΙΑ',
       title: 'Προπαίδεια με τον Super Mario',

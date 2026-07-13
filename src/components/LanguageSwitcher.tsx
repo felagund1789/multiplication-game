@@ -5,7 +5,12 @@ interface LanguageSwitcherProps {
   label: string
   englishLabel: string
   greekLabel: string
+  soundsEnabled: boolean
+  soundToggleLabel: string
+  soundOnLabel: string
+  soundOffLabel: string
   onChange: (lang: Language) => void
+  onToggleSounds: () => void
 }
 
 export function LanguageSwitcher({
@@ -13,7 +18,12 @@ export function LanguageSwitcher({
   label,
   englishLabel,
   greekLabel,
+  soundsEnabled,
+  soundToggleLabel,
+  soundOnLabel,
+  soundOffLabel,
   onChange,
+  onToggleSounds,
 }: LanguageSwitcherProps) {
   return (
     <div className="language-switcher" aria-label={label}>
@@ -30,6 +40,14 @@ export function LanguageSwitcher({
         onClick={() => onChange('el')}
       >
         {greekLabel}
+      </button>
+      <button
+        type="button"
+        className={`nes-btn language-btn ${soundsEnabled ? 'is-success' : 'is-error'}`}
+        aria-label={soundToggleLabel}
+        onClick={onToggleSounds}
+      >
+        {soundsEnabled ? soundOnLabel : soundOffLabel}
       </button>
     </div>
   )
